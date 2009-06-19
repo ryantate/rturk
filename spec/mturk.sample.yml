@@ -1,0 +1,8 @@
+# Your AWSAccessKeyId ( leave commented to use global default )
+AWSAccessKeyId: 0000000000000000000000S
+
+# Your AWSAccessKey ( leave commented to use global default )
+AWSAccessKey: YOURSECRETACCESSKEYGOESHERE
+
+# Host to talk to ( Prod or Sandbox )
+Host: Sandbox

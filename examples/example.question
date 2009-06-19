@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<% require 'cgi' %>
+<ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
+	<ExternalURL>http://s3.amazonaws.com/mpercival.com/newtweet.html</ExternalURL>	
+	<FrameHeight>600</FrameHeight>
+</ExternalQuestion>
