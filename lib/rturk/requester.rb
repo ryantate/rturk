@@ -23,12 +23,9 @@ module RTurk
       @secret_key = secret_key
       @host = opts[:sandbox] ? SANDBOX : PRODUCTION
     end
-
-    def request(params = {})
-      params = params.inject({}) do |options, (key, value)|
-        options[(key.to_s rescue key) || key] = value
-        options
-      end
+    
+    def raw_request(params = {})
+      params = stringify_keys(params)
       base_params = {
         'Service'=>'AWSMechanicalTurkRequester',
         'AWSAccessKeyId' => self.access_key,
@@ -42,12 +39,17 @@ module RTurk
       querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
 
       response = RestClient.get("#{self.host}?#{querystring}")
-      XmlSimple.xml_in(response.to_s)
+    end
+
+    def request(params = {})
+      response = self.raw_request(params)
+      XmlSimple.xml_in(response.to_s, {'ForceArray' => false})
     end
 
     def method_missing(method, opts)
-      method = method.to_s.capitalize
-      opts.merge(:Operation => method)
+      method = method.to_s
+      method = method[0,1].upcase + method[1,method.size-1]
+      opts.merge!(:Operation => method)
       request(opts)
     end
 

@@ -21,4 +21,4 @@ page = RTurk::ExternalQuestionBuilder.build("http://s3.amazonaws.com/mpercival.c
 
 puts page
 
-p @turk.createHIT(props, page)
+p @turk.create_hit(props, page)

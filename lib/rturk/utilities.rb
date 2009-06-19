@@ -13,9 +13,5 @@ module RTurk::Utilities
     end
     ahash
   end
-  
-  def url_for_hit
-    
-  end
 
 end

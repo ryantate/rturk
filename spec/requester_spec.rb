@@ -9,7 +9,6 @@ describe RTurk::Requester do
 
   it "should perform raw operations" do
     @turk.request(:Operation => 'GetHIT', 'HITId' => 'test').include?(:errors).should be_true
-    # p turk.getHIT(:HITId => 'test')
   end
   
   it "should also interpret methods as operations" do
