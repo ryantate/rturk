@@ -2,7 +2,7 @@ require '../lib/rturk'
 
 props = {:Title=>"Write a twitter update", 
          :MaxAssignments=>1, :LifetimeInSeconds=>3600, 
-         :Reward=>{:Amount=>0.05, :CurrencyCode=>"USD"}, 
+         :Reward=>{:Amount=>0.10, :CurrencyCode=>"USD"}, 
          :Keywords=>"twitter, blogging, writing, english", 
          :Description=>"Simply write a twitter update for me",
          :RequesterAnnotation=>"Example1",
@@ -21,4 +21,5 @@ page = RTurk::ExternalQuestionBuilder.build("http://s3.amazonaws.com/mpercival.c
 
 puts page
 
-p @turk.create_hit(props, page)
+p hit = @turk.create_hit(props, page)
+p @turk.url_for_hit_type(hit['HIT']['HITTypeId'])

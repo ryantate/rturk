@@ -2,25 +2,30 @@ module RTurk::Actions
   # Overides createHIT to allow for easier entry
   def create_hit(props, page)
     props = format_props(props)
-    p props = props.merge(:Question => page, :Operation => 'CreateHIT')
+    props = props.merge(:Question => page, :Operation => 'CreateHIT')
     request(props)
   end
-  
+
   # Attempt to expire hit, then approve assignments, and finally dispose of
   def kill_hit(hit_id)
-    p forceExpireHIT(:HITId => hit_id)
+    forceExpireHIT(:HITId => hit_id)
     get_assignments_for_hit(hit_id).each do |assignment|
       p approveAssignment(:AssignmentId => assignment[:AssignmentId])
     end
     p disposeHIT(:HITId => hit_id)
   end
-  
+
   # Wipe out all HIT's associated with this account
   def blank_slate
-    
+    search_response = searchHITs(:PageSize => 100)
+    if search_results = search_response['SearchHITsResult']['HIT']
+      search_results.each do |hit|
+        kill_hit(hit['HITId'])
+      end
+    end
   end
-  
-  
+
+
   def get_assignments_for_hit(hit)
     response = request(:Operation => 'GetAssignmentsForHIT', :HITId => hit)
     assignments = []
@@ -32,19 +37,20 @@ module RTurk::Actions
         assignments << assignment
       end
     else
-      assignment = response['GetAssignmentsForHITResult']['Assignment']
-      answer = RTurk::Answer.parse(response['GetAssignmentsForHITResult']['Assignment']['Answer'])
-      assignment.delete('Answer')
-      assignment['Answer'] = answer
-      assignments << assignment
+      if assignment = response['GetAssignmentsForHITResult']['Assignment']
+        answer = RTurk::Answer.parse(response['GetAssignmentsForHITResult']['Assignment']['Answer'])
+        assignment.delete('Answer')
+        assignment['Answer'] = answer
+        assignments << assignment
+      end
     end
     assignments
   end
-  
+
   def url_for_hit(hit_id)
     url_for_hit_type(getHIT(:HITId => hit_id)[:HITTypeId])
   end
-  
+
   def url_for_hit_type(hit_type_id)
     if @host =~ /sandbox/
       "http://workersandbox.mturk.com/mturk/preview?groupId=#{hit_type_id}" # Sandbox Url
@@ -65,6 +71,8 @@ module RTurk::Actions
       params["QualificationRequirement.#{i+1}.QualificationTypeId"] = qualifier[:QualificationTypeId]
       params["QualificationRequirement.#{i+1}.Comparator"] = qualifier[:Comparator]
       params["QualificationRequirement.#{i+1}.IntegerValue"] = qualifier[:IntegerValue]
+      params["QualificationRequirement.#{i+1}.RequiredToPreview"] = qualifier[:RequiredToPreview]
+      params["QualificationRequirement.#{i+1}.Locale"] = qualifier[:Locale]
     end
     params
   end
