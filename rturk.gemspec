@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.summary = 'simple Twitter API wrapper'
 
   s.add_dependency(%q<rest-client>, [">= 0.9"])
-  s.add_dependency(%q<xmlsimple>, [">= 1.1.3"])
+  s.add_dependency(%q<xml-simple>, [">= 1.0.12"])
 
 end

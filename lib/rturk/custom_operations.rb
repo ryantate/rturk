@@ -1,4 +1,4 @@
-module RTurk::Actions
+module RTurk::CustomOperations
   # Overides createHIT to allow for easier entry
   def create_hit(props, page)
     props = format_props(props)
@@ -10,9 +10,9 @@ module RTurk::Actions
   def kill_hit(hit_id)
     forceExpireHIT(:HITId => hit_id)
     get_assignments_for_hit(hit_id).each do |assignment|
-      p approveAssignment(:AssignmentId => assignment[:AssignmentId])
+      approveAssignment(:AssignmentId => assignment[:AssignmentId])
     end
-    p disposeHIT(:HITId => hit_id)
+    disposeHIT(:HITId => hit_id)
   end
 
   # Wipe out all HIT's associated with this account
