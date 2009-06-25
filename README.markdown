@@ -17,6 +17,8 @@ You'd be better off with amazon's official library, in all its XML cruftiness.
 
 Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers can add some tags to items in your catalogue.
 
+### Creating HIT's
+
     require 'rturk'
 
     props = {:Title=>"Add tags to an item", 
@@ -39,6 +41,17 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
     page = RTurk::ExternalQuestionBuilder.build(
       "http://myapp.com/turkers/add_tags", :item_id => '1234')
     
-    # Turkers will be directed to http://myapp.com/turkers/add_tags?item_id=1234
+    # Turkers will be directed to http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=abcd12345
 
     p @turk.create_hit(props, page)
+    
+### Reviewing HIT's
+
+    require 'rturk'
+    @turk = RTurk::Requester.new(AWSAccessKeyId, AWSAccessKey, :sandbox => true)
+
+    p @turk.getAssignmentsForHIT(:HITId => 'abcde1234567890')
+    
+    
+    
+    
