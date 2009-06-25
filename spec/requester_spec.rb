@@ -8,11 +8,21 @@ describe RTurk::Requester do
   end
 
   it "should perform raw operations" do
-    @turk.request(:Operation => 'GetHIT', 'HITId' => 'test').include?(:errors).should be_true
+    @turk.request(:Operation => 'GetHIT', 'HITId' => 'test')['HIT']['Request'].include?('Errors').should be_true
   end
   
   it "should also interpret methods as operations" do
     @turk.getHIT(:HITId => 'test')
+  end
+  
+  it "should return its environment" do 
+    @turk.environment.should == 'sandbox'
+  end
+  
+  it "should return its environment as production, the default" do
+    aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
+    @turk = RTurk::Requester.new(aws['AWSAccessKeyId'], aws['AWSAccessKey'])
+    @turk.environment.should == 'production'
   end
   
 end

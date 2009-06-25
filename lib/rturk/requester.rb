@@ -11,7 +11,7 @@ require 'xmlsimple'
 module RTurk
   class Requester
     include RTurk::Utilities 
-    include RTurk::Actions
+    include RTurk::CustomOperations
 
     SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
     PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
@@ -44,6 +44,10 @@ module RTurk
     def request(params = {})
       response = self.raw_request(params)
       XmlSimple.xml_in(response.to_s, {'ForceArray' => false})
+    end
+    
+    def environment
+      @host.match(/sandbox/) ? 'sandbox' : 'production'
     end
 
     def method_missing(method, opts)
