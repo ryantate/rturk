@@ -1,0 +1,91 @@
+<!-- This file needs to be hosted on an external server.  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title>Title, an XHTML requirement. This message brought to you by the W3C</title>
+  <script type='text/javascript'>
+  /*<![CDATA[*/
+  
+  //
+  // This method Gets URL Parameters (GUP)
+  //
+  function gup( name )
+  {
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var tmpURL = window.location.href;
+    var results = regex.exec( tmpURL );
+    if( results == null )
+      return "";
+    else
+      return results[1];
+  }
+
+  //
+  // This method decodes the query parameters that were URL-encoded
+  //
+  function decode(strToDecode)
+  {
+    var encoded = strToDecode;
+    return unescape(encoded.replace(/\+/g,  " "));
+  }
+  
+  function lengthCheck()
+  {
+    if (document.getElementById('tweet').value.length > 120) {
+      alert("Must be less than 140 characters! Currently " + document.getElementById('tweet').value.length);
+      return false;
+    }
+  }
+    
+  
+  /*]]>*/
+  </script>
+</head>
+<body>
+<form id="mturk_form" method="post" action="http://www.mturk.com/mturk/externalSubmit" onSubmit="return lengthCheck()">
+<input type="hidden" id="assignmentId" name="assignmentId" value="" />
+<h1>Help me write a clever twitter update</h1>
+
+<p />
+<h2>Criteria</h2>
+<ul>
+  <li>You should be familiar with Twitter and microblogging</li>
+  <li>MUST BE LESS THAN 120 CHARACTERS</li>
+  <li>Could be about an interesting topic or current event</li>
+  <li>Could also make up something about what I'm currently doing</li>
+  <li>Should not be vulgar or crass</li>
+
+  <li>Should fool people into thinking I am clever and witty</li>
+</ul>
+<textarea rows="4" cols="40" tabindex="1" autocomplete="off" name="tweet" id="tweet"></textarea>
+
+<p/>
+<input id="submitButton" type="submit" name="Submit" value="Submit" />
+<p/>
+
+</form>
+<script type='text/javascript'>
+    /*<![CDATA[*/
+    document.getElementById('assignmentId').value = gup('assignmentId');
+
+
+    //
+    // Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
+    //
+    if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE")
+    {
+      // If we're previewing, disable the button and give it a helpful message
+      document.getElementById('submitButton').disabled = true;
+      document.getElementById('submitButton').value = "You must ACCEPT the HIT before you can submit the results.";
+    } else {
+        var form = document.getElementById('mturk_form');
+        if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+            form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+        }
+    }
+    /*]]>*/
+</script>
+</body>
+</html>
