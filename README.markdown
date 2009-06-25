@@ -52,6 +52,26 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
 
     p @turk.getAssignmentsForHIT(:HITId => 'abcde1234567890')
     
+## Nitty Gritty
+
+Here's a quick peak at what happens on the Mechanical Turk side.
+
+A worker takes a look at your hit. The page will contain an iframe with your external URL loaded inside of it.
+
+Amazon will append the AssignmentID parameter to the URL for your own information. In preview mode this will look like
+    http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE
     
+If the Turker accepts the HIT, the page will reload and the iframe URL will resemble
+
+    http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=1234567890123456789ABC
+    
+The form in your page MUST CONTAIN the AssignmentID in a hidden input element. You could do this on the server side with a rails app, or on the client side with javascript(check the examples)
+
+Anything submitted in this form will be sent to Amazon and saved for your review later.
+
+## More information
+
+Take a look at the [Amazon MTurk developer docs](http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/) for more information. They have a complete list of API operations, all of which can be called with this library.
+
     
     
