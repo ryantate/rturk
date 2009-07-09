@@ -1,22 +1,61 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 1.3") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = '2009-06-20'
-  s.description = 'Mechanical Turk API wrapper - super simple'
-  s.summary = %q{Mechanical Turk API wrapper}
-  s.email = 'mark@markpercival.us'
-  s.files = Dir['lib/**/*.rb'] + Dir['spec/**/*.rb'] + ['README.markdown'] + Dir['examples/**/*']
-  # s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "README.txt"]
-  s.has_rdoc = false
-  s.homepage = 'http://github.com/markpercival/rturk'
+  s.date = %q{2009-07-09}
+  s.email = %q{mark@mpercival.com}
+  s.extra_rdoc_files = [
+    "LICENSE",
+     "README.markdown"
+  ]
+  s.files = [
+    ".gitignore",
+     "README.markdown",
+     "VERSION",
+     "examples/blank_slate.rb",
+     "examples/external_page.rb",
+     "examples/mturk.sample.yml",
+     "examples/newtweet.html",
+     "examples/review_answer.rb",
+     "lib/rturk.rb",
+     "lib/rturk/answer.rb",
+     "lib/rturk/custom_operations.rb",
+     "lib/rturk/external_question_builder.rb",
+     "lib/rturk/requester.rb",
+     "lib/rturk/utilities.rb",
+     "spec/answer_spec.rb",
+     "spec/external_question_spec.rb",
+     "spec/mturk.sample.yml",
+     "spec/requester_spec.rb",
+     "spec/spec_helper.rb"
+  ]
+  s.has_rdoc = true
+  s.homepage = %q{http://github.com/markpercival/rturk}
+  s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = '1.3.1'
-  s.summary = 'simple Twitter API wrapper'
+  s.rubygems_version = %q{1.3.1}
+  s.summary = %q{Mechanical Turk API Wrapper}
+  s.test_files = [
+    "spec/answer_spec.rb",
+     "spec/external_question_spec.rb",
+     "spec/requester_spec.rb",
+     "spec/spec_helper.rb",
+     "examples/blank_slate.rb",
+     "examples/external_page.rb",
+     "examples/review_answer.rb"
+  ]
 
-  s.add_dependency(%q<rest-client>, [">= 0.9"])
-  s.add_dependency(%q<xml-simple>, [">= 1.0.12"])
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
 
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    else
+    end
+  else
+  end
 end

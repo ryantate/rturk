@@ -1,5 +1,9 @@
-SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT
-$LOAD_PATH.unshift(File.join(SPEC_ROOT, '..', 'lib'))
-require 'rubygems'
 require 'spec'
+
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'rturk'
+
+Spec::Runner.configure do |config|
+  
+end
