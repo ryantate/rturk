@@ -11,7 +11,7 @@ You'd be better off with amazon's official library, in all its XML cruftiness.
 
 ## Installation
 
-    sudo gem install markpercival-rturk --sources http://gems.github.com
+    sudo gem install markpercival-rturk --source http://gems.github.com
     
 ## Use
 

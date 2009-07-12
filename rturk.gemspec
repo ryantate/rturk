@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "1.0.3"
+  s.version = "1.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
@@ -54,7 +54,10 @@ Gem::Specification.new do |s|
     s.specification_version = 2
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_dependency('rest-client', '>=0.9')
+      s.add_dependency('xml-simple', '>=1.0.12')
     else
+      puts "Please update your rubygems to 1.3 or higher"
     end
   else
   end
