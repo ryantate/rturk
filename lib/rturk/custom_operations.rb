@@ -70,9 +70,9 @@ module RTurk::CustomOperations
     qualifiers.each_with_index do |qualifier, i|
       params["QualificationRequirement.#{i+1}.QualificationTypeId"] = qualifier[:QualificationTypeId]
       params["QualificationRequirement.#{i+1}.Comparator"] = qualifier[:Comparator]
-      params["QualificationRequirement.#{i+1}.IntegerValue"] = qualifier[:IntegerValue]
+      params["QualificationRequirement.#{i+1}.IntegerValue"] = qualifier[:IntegerValue] if qualifier[:IntegerValue]
+      params["QualificationRequirement.#{i+1}.LocaleValue.Country"] = qualifier[:Country] if qualifier[:Country]
       params["QualificationRequirement.#{i+1}.RequiredToPreview"] = qualifier[:RequiredToPreview]
-      params["QualificationRequirement.#{i+1}.Locale"] = qualifier[:Locale]
     end
     params
   end
