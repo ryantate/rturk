@@ -8,7 +8,8 @@ describe RTurk::Requester do
   end
 
   it "should perform raw operations" do
-    @turk.request(:Operation => 'GetHIT', 'HITId' => 'test')['HIT']['Request'].include?('Errors').should be_true
+    response = @turk.request(:Operation => 'GetHIT', 'HITId' => 'test')
+    response['HIT']['Request'].include?('Errors').should be_true
   end
   
   it "should also interpret methods as operations" do
