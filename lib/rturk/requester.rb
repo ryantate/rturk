@@ -42,8 +42,7 @@ module RTurk
     end
 
     def request(params = {})
-      response = self.raw_request(params)
-      XmlSimple.xml_in(response.to_s, {'ForceArray' => false})
+      RTurk::Response.new(self.raw_request(params))
     end
     
     def environment
@@ -59,12 +58,11 @@ module RTurk
 
     private
 
+
     def sign(service,method,time)
       msg = "#{service}#{method}#{time}"
       return hmac_sha1( self.secret_key, msg )
     end
-
-
 
     def hmac_sha1(key, s)
       ipad = [].fill(0x36, 0, 64)

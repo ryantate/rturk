@@ -1,4 +1,6 @@
 module RTurk
+  # Add logging - Should be able to log interaction with Amazon and actions
+  
 end
 
 $:.unshift(File.dirname(__FILE__)) unless
@@ -9,3 +11,4 @@ require 'rturk/custom_operations'
 require 'rturk/answer'
 require 'rturk/external_question_builder'
 require 'rturk/requester'
+require 'rturk/qualifications'
