@@ -37,23 +37,28 @@ module RTurk
       signature = sign(params['Service'], params['Operation'], params["Timestamp"])
       params['Signature'] = signature
       querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
-
       response = RestClient.get("#{self.host}?#{querystring}")
     end
 
-    def request(params = {})
-      RTurk::Response.new(self.raw_request(params))
+    def request(obj)
+      if obj.is_a? Hash
+        response = self.raw_request(params)
+      elsif obj.respond_to?(:to_aws_params)
+        response = self.raw_request(obj.to_aws_params)
+        obj.respond_to?(:parse) ? 
+          obj.parse(response) : RTurk::Response.parse(response)
+      end
     end
     
     def environment
       @host.match(/sandbox/) ? 'sandbox' : 'production'
     end
 
-    def method_missing(method, opts)
-      method = method.to_s
-      method = method[0,1].upcase + method[1,method.size-1]
-      opts.merge!(:Operation => method)
-      request(opts)
+    def method_missing(method, &blk)
+      # if Request.subclasses.include?(method.to_s.capitalize)
+      #   klass = RTurk.const_get(method.to_s.capitalize.to_sym)
+      #   klass.send :new, *args, &blk
+      # end
     end
 
     private
