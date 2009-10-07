@@ -1,4 +1,4 @@
-class Hit < RTurk::Request
+class Hit < RTurk::Operation
   #
   # We perform the magic here to create a HIT with the minimum amount of fuss.
   # You should be able to pass in a hash with all the setting(ala YAML) or
@@ -32,7 +32,7 @@ class Hit < RTurk::Request
   end
   
   def parse(results)
-    
+    RTurk.logger.debug(results)
   end
   
   private

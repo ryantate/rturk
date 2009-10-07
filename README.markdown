@@ -53,7 +53,7 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
     p @turk.getAssignmentsForHIT(:HITId => 'abcde1234567890')
     
 ### Logging
-RESTCLIENT_LOG=stdout
+RestClient.log = $stdout
     
 ## Nitty Gritty
 

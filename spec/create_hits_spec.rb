@@ -18,7 +18,6 @@ describe "The creation of HIT's" do
       hit.question.url_params = {:chapter => 1} #gives us http://mpercival.com?chapter=1
     end
     hit.assignments.should eql 5
-    p hit.to_aws_params
     @turk.request(hit)
   end
   

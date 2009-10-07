@@ -11,7 +11,7 @@ require 'xmlsimple'
 module RTurk
   class Requester
     include RTurk::Utilities 
-    include RTurk::CustomOperations
+    include RTurk::Macros
 
     SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
     PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
@@ -42,23 +42,27 @@ module RTurk
 
     def request(obj)
       if obj.is_a? Hash
-        response = self.raw_request(params)
+        response = self.raw_request(obj)
+        response = RTurk::Response.new(response)
       elsif obj.respond_to?(:to_aws_params)
         response = self.raw_request(obj.to_aws_params)
         obj.respond_to?(:parse) ? 
-          obj.parse(response) : RTurk::Response.parse(response)
+          obj.parse(response) : RTurk::Response.new(response)
       end
+      response
     end
     
     def environment
       @host.match(/sandbox/) ? 'sandbox' : 'production'
     end
 
-    def method_missing(method, &blk)
-      # if Request.subclasses.include?(method.to_s.capitalize)
-      #   klass = RTurk.const_get(method.to_s.capitalize.to_sym)
-      #   klass.send :new, *args, &blk
-      # end
+    def method_missing(method, *args)
+      if RTurk::Macros.respond_to?(method)
+        RTurk::Macros.send(method, *args)
+      else
+        request_hash = {:Operation => method}.merge(*args)
+        request(request_hash)
+      end
     end
 
     private

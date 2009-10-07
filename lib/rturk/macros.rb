@@ -1,4 +1,4 @@
-module RTurk::CustomOperations
+module RTurk::Macros
   # Overides createHIT to allow for easier entry
   def create_hit(props, page)
     props = format_props(props)
