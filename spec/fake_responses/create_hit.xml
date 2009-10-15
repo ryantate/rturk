@@ -1,0 +1,12 @@
+<CreateHITResponse>
+  <OperationRequest>
+    <RequestId>ece2785b-6292-4b12-a60e-4c34847a7916</RequestId>
+  </OperationRequest>
+  <HIT>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <HITId>GBHZVQX3EHXZ2AYDY2T0</HITId>
+    <HITTypeId>NYVZTQ1QVKJZXCYZCZVZ</HITTypeId>
+  </HIT>
+</CreateHITResponse>
