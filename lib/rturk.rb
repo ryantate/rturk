@@ -1,26 +1,12 @@
 module RTurk
-  require 'logger'
-  
-  class << self
-    def logger=(logger_obj)
-      @logger = logger_obj
-    end
+  require 'rturk/logging'
+  extend RTurk::Logging
 
-    def logger
-      if @logger
-        @logger
-      else
-        @logger = Logger.new(STDOUT)
-        @logger.level = Logger::INFO
-      end
-      @logger
-    end
+  attr_accessor :key, :secret, :host
 
-    def log_level=(level=Logger::INFO)
-      logger.level = level
-    end
+  def self.setup(key, secret, opts = {})
+    
   end
-
 end
 
 $:.unshift(File.dirname(__FILE__)) unless
@@ -28,11 +14,11 @@ $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname
 
 require 'rturk/utilities'
 require 'rturk/macros'
-require 'rturk/answer'
-require 'rturk/external_question_builder'
+require 'rturk/parsers/answer_parser'
 require 'rturk/requester'
 require 'rturk/response'
 require 'rturk/operation'
-require 'rturk/qualifications'
-require 'rturk/question'
-require 'rturk/operations/hit'
+require 'rturk/builders/qualifications_builder'
+require 'rturk/builders/question_builder'
+require 'rturk/operations/create_hit'
+require 'rturk/responses/create_hit_response'

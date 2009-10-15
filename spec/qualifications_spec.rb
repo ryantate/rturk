@@ -8,6 +8,7 @@ describe RTurk::Qualifications do
   end
   
   it "should build a qualification for Approval rate" do
+    @qualifications.add :approval_rate => {:gt => 90}
     @qualifications.approval_rate(:gt => 80)
     @qualifications.to_aws_params['QualificationRequirement.1.Comparator'].should == 'GreaterThan'
     @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 80
@@ -46,9 +47,11 @@ describe RTurk::Qualifications do
   it "should allow more than one requirement" do
     @qualifications.country(:eql => 'PH')
     @qualifications.approval_rate(:gt => 80)
+    @qualifications.adult true
     @qualifications.to_aws_params['QualificationRequirement.1.LocaleValue.Country'].should == 'PH'
     @qualifications.to_aws_params['QualificationRequirement.1.QualificationTypeId'].should == '00000000000000000071'
     @qualifications.to_aws_params['QualificationRequirement.2.IntegerValue'].should == 80
+    @qualifications.to_aws_params['QualificationRequirement.3.IntegerValue'].should == 1
   end
   
 end

@@ -6,22 +6,15 @@ require 'time'
 require 'base64'
 require 'digest/sha1'
 require 'restclient'
-require 'xmlsimple'
+require 'nokogiri'
 
 module RTurk
   class Requester
     include RTurk::Utilities 
     include RTurk::Macros
-
-    SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
-    PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
-
-    attr_reader :access_key, :secret_key, :host
-
-    def initialize(access_key, secret_key, opts ={})
-      @access_key = access_key
-      @secret_key = secret_key
-      @host = opts[:sandbox] ? SANDBOX : PRODUCTION
+    
+    def initialize(account, key, opts = {})
+      
     end
     
     def raw_request(params = {})
@@ -43,11 +36,11 @@ module RTurk
     def request(obj)
       if obj.is_a? Hash
         response = self.raw_request(obj)
-        response = RTurk::Response.new(response)
+        response = RTurk::BasicResponse.new(response)
       elsif obj.respond_to?(:to_aws_params)
         response = self.raw_request(obj.to_aws_params)
         obj.respond_to?(:parse) ? 
-          obj.parse(response) : RTurk::Response.new(response)
+          obj.parse(response) : RTurk::BasicResponse.new(response)
       end
       response
     end
@@ -56,9 +49,15 @@ module RTurk
       @host.match(/sandbox/) ? 'sandbox' : 'production'
     end
 
-    def method_missing(method, *args)
+    def method_missing(method, *args, &blk)
       if RTurk::Macros.respond_to?(method)
         RTurk::Macros.send(method, *args)
+      elsif macros.include?(method)
+        macros[method].call
+      elsif RTurk::Operation.defined_operations.include?(method.to_s)
+        klass = RTurk::Operation.defined_operations[method.to_s].new(*args, &blk)
+        response = request(klass.to_aws_params)
+        klass.parse(response)
       else
         request_hash = {:Operation => method}.merge(*args)
         request(request_hash)

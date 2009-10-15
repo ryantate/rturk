@@ -1,29 +1,20 @@
 module RTurk
   class Response
     #
-    # Should be able to query a MTurk response for things like success, and HIT ID.
+    # In some cases we want more than just a hash parsed from the returned
+    # XML. This class is our response object, and it can be extended for more
+    # functionality.
     #
     
-    attr_reader :contents
-
+    attr_reader :xml
     
     def initialize(response)
-      parse(response)
-    end
-    
-    def parse(response)
-      @contents = XmlSimple.xml_in(response.to_s, {'ForceArray' => false})
+      @xml = response
     end
     
     def success?
-      # Was the action successfull?
+      @xml.xpath('//Result/IsValid').first.to_s == 'true'
     end
-    
-    def [](key)
-      @contents[key]
-    end
-    
-    
     
   end
 end

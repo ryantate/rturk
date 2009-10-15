@@ -1,10 +1,4 @@
 module RTurk::Macros
-  # Overides createHIT to allow for easier entry
-  def create_hit(props, page)
-    props = format_props(props)
-    props = props.merge(:Question => page, :Operation => 'CreateHIT')
-    request(props)
-  end
 
   # Attempt to expire hit, then approve assignments, and finally dispose of
   def kill_hit(hit_id)
@@ -59,22 +53,5 @@ module RTurk::Macros
     end
   end
 
-  private
-
-  def format_props(params)
-    reward = params[:Reward]
-    qualifiers = params[:QualificationRequirement]
-    params.delete(:Reward)
-    params.delete(:QualificationRequirement)
-    params.merge!('Reward.1.Amount' => reward[:Amount], 'Reward.1.CurrencyCode' => reward[:CurrencyCode])
-    qualifiers.each_with_index do |qualifier, i|
-      params["QualificationRequirement.#{i+1}.QualificationTypeId"] = qualifier[:QualificationTypeId]
-      params["QualificationRequirement.#{i+1}.Comparator"] = qualifier[:Comparator]
-      params["QualificationRequirement.#{i+1}.IntegerValue"] = qualifier[:IntegerValue] if qualifier[:IntegerValue]
-      params["QualificationRequirement.#{i+1}.LocaleValue.Country"] = qualifier[:Country] if qualifier[:Country]
-      params["QualificationRequirement.#{i+1}.RequiredToPreview"] = qualifier[:RequiredToPreview]
-    end
-    params
-  end
 
 end
