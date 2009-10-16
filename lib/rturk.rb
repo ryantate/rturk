@@ -2,11 +2,19 @@ module RTurk
   require 'rturk/logging'
   extend RTurk::Logging
 
-  attr_accessor :key, :secret, :host
+  SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
+  PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
+  class << self
+    attr_reader :access_key, :secret_key, :host
 
-  def self.setup(key, secret, opts = {})
-    
+    def setup(access_key, secret_key, opts ={})
+      @access_key = access_key
+      @secret_key = secret_key
+      @host = opts[:sandbox] ? SANDBOX : PRODUCTION
+    end
+
   end
+
 end
 
 $:.unshift(File.dirname(__FILE__)) unless

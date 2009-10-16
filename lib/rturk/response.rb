@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module RTurk
   class Response
     #
@@ -6,14 +8,16 @@ module RTurk
     # functionality.
     #
     
-    attr_reader :xml
+    attr_reader :xml, :raw_xml
     
     def initialize(response)
-      @xml = response
+      @raw_xml = response
+      @xml = Nokogiri::XML(@raw_xml)
     end
     
     def success?
-      @xml.xpath('//Result/IsValid').first.to_s == 'true'
+      @xml.xpath('//Request/IsValid').inner_text.strip == "True"
+      
     end
     
   end
