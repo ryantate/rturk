@@ -1,43 +1,17 @@
 module RTurk
-  class GetAssignment < Operation
-    #
-    # We perform the magic here to create a HIT with the minimum amount of fuss.
-    # You should be able to pass in a hash with all the setting(ala YAML) or
-    # do all the config in a block.
-    #
+  class GetAssignments < Operation
 
-    def self.create(opts = {}, &blk)
-      hit = self.new(opts, &blk)
-      hit.request
-    end
-
-    def initialize(opts = {})
-      opts.each_pair do |k,v|
-        if self.respond_to?("#{k.to_sym}=")
-          self.send "#{k}=".to_sym, v
-        elsif v.is_a?(Array)
-          v.each do |a|
-            (self.send k.to_s).send a[0].to_sym, a[1]
-          end
-        elsif self.respond_to?(k.to_sym)
-          self.send k.to_sym, v
-        end
-      end
-      yield(self) if block_given?
-      self
-    end
-
-    def to_params
-      hit_params.merge(qualifications.to_params).merge(question.to_params)
-    end
+    operation 'GetAssignmentsForHIT'
+    required_params 'Operation', 'HITId'
+    
 
     def parse(xml)
-      RTurk::CreateHitResponse.new(xml)
+      RTurk::GetAssignmentsResponse.new(xml)
     end
 
     private
 
-      def hit_params
+      def operation_params
         {'Title'=>self.title,
          'MaxAssignments' => self.assignments,
          'LifetimeInSeconds'=> self.lifetime,

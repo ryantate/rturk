@@ -33,6 +33,7 @@ describe "using mechanical turk with RTurk" do
   it "should let me create a hit with just option arguments" do
     hit = RTurk::CreateHit.new(:title => "Look at some pictures from 4Chan",
                                :assignments => 5,
+                               :reward => nil,
                                :question => 'http://mpercival.com?picture=1',
                                :qualifications => [
                                  [:approval_rate, {:gt => 80}],
@@ -41,6 +42,7 @@ describe "using mechanical turk with RTurk" do
                                )
     hit.assignments.should eql(5)
     hit.qualifications.qualifications.size.should eql(2)
+    lambda{hit.request}.should raise_error RTurk::MissingParameters
   end
 
   it "should rerturn a CreateHitResponse after the request" do

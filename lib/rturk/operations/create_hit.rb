@@ -1,58 +1,57 @@
 module RTurk
   class CreateHit < Operation
-    #
-    # We perform the magic here to create a HIT with the minimum amount of fuss.
-    # You should be able to pass in a hash with all the setting(ala YAML) or
-    # do all the config in a block.
-    #
+    
+    operation 'CreateHIT'
 
     attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
-    attr_accessor :lifetime, :duration, :auto_approval, :note
-
-
-    def self.create(opts = {}, &blk)
-      hit = self.new(opts, &blk)
-      hit.request
-    end
-
-    def initialize(opts = {})
-      opts.each_pair do |k,v|
-        if self.respond_to?("#{k.to_sym}=")
-          self.send "#{k}=".to_sym, v
-        elsif v.is_a?(Array)
-          v.each do |a|
-            (self.send k.to_s).send a[0].to_sym, a[1]
-          end
-        elsif self.respond_to?(k.to_sym)
-          self.send k.to_sym, v
-        end
-      end
-      yield(self) if block_given?
-      self
-    end
+    attr_accessor :lifetime, :duration, :auto_approval, :note, :hit_type_id
 
     def qualifications
       @qualifications ||= RTurk::Qualifications.new
     end
 
     def question(*args)
-      @question ||= RTurk::Question.new(*args)
+      if args
+        @question ||= RTurk::Question.new(*args)
+      else
+        @question
+      end
     end
-
+    
+    # Returns parameters specific to this instance
+    # Any class level default parameters get loaded in at
+    # the time of request
     def to_params
-      hit_params.merge(qualifications.to_params).merge(question.to_params)
+      params = map_params.merge(qualifications.to_params)
+      params = params.merge(question.to_params)
     end
 
     def parse(xml)
       RTurk::CreateHitResponse.new(xml)
     end
+    
+    # We need some basic checking to see if this hit is valid to send.
+    # For example, we shouldn't even bother sending if we are missing required
+    # parameters such as a question.
+    #
+    def validate
+      if hit_type_id
+        unless question && lifetime
+          raise RTurk::MissingParameters, "When you specify a HitTypeID, you must incude a question and lifetime length"
+        end
+      else
+        unless  title && reward && question
+          raise RTurk::MissingParameters, "You're missing some required parameters"
+        end
+      end
+    end
 
     private
 
-      def hit_params
+      def map_params
         {'Title'=>self.title,
-         'MaxAssignments' => self.assignments,
-         'LifetimeInSeconds'=> self.lifetime,
+         'MaxAssignments' => (self.assignments || 1),
+         'LifetimeInSeconds'=> (self.lifetime || 86400),
          'Reward.Amount' => self.reward,
          'Reward.CurrencyCode' => (self.currency || 'USD'),
          'Keywords' => self.keywords,
