@@ -18,4 +18,8 @@ module RTurk
       logger.level = level
     end
   end
+  
+  def self.log
+    RTurk::Logger.logger
+  end
 end
