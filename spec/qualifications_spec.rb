@@ -7,51 +7,24 @@ describe RTurk::Qualifications do
     @qualifications = RTurk::Qualifications.new
   end
   
-  it "should build a qualification for Approval rate" do
-    @qualifications.add :approval_rate => {:gt => 90}
-    @qualifications.approval_rate(:gt => 80)
-    @qualifications.to_aws_params['QualificationRequirement.1.Comparator'].should == 'GreaterThan'
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 80
+  it "should build a qualification set with multiple qualifications" do
+    @qualifications.add :approval_rate, {:gt => 80}
+    @qualifications.approval_rate(:lt => 90)
+    @qualifications.to_params['QualificationRequirement.1.Comparator'].should == 'GreaterThan'
+    @qualifications.to_params['QualificationRequirement.2.IntegerValue'].should == 90
   end
   
-  it "should also work for countries" do
-    @qualifications.country(:eql => 'PH')
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should be_nil
-    @qualifications.to_aws_params['QualificationRequirement.1.LocaleValue.Country'].should == 'PH'
+  it "should build a qualification set with booleans" do
+    @qualifications.add :adult, true
+    @qualifications.to_params['QualificationRequirement.1.Comparator'].should == 'EqualTo'
+    @qualifications.to_params['QualificationRequirement.1.IntegerValue'].should == 1
   end
   
-  it "should also work for booleans like adult" do
-    @qualifications.adult(:eql => true)
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 1
-    @qualifications.to_aws_params['QualificationRequirement.1.Comparator'].should == "EqualTo"
-  end
-  
-  it "should also work for booleans without a given comparator" do
-    @qualifications.adult(true)
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 1
-    @qualifications.to_aws_params['QualificationRequirement.1.Comparator'].should == "EqualTo"
-  end
-  
-  it "should allow custom requirements" do
-    @qualifications.add(:type_id => '1234567', :lt => 90)
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 90
-    @qualifications.to_aws_params['QualificationRequirement.1.QualificationTypeId'].should == '1234567'
-  end
-  
-  it "should allow custom types to be added" do
-    @qualifications.add(:type_id => '1234567', :lt => 90)
-    @qualifications.to_aws_params['QualificationRequirement.1.IntegerValue'].should == 90
-    @qualifications.to_aws_params['QualificationRequirement.1.QualificationTypeId'].should == '1234567'
-  end
-  
-  it "should allow more than one requirement" do
-    @qualifications.country(:eql => 'PH')
-    @qualifications.approval_rate(:gt => 80)
-    @qualifications.adult true
-    @qualifications.to_aws_params['QualificationRequirement.1.LocaleValue.Country'].should == 'PH'
-    @qualifications.to_aws_params['QualificationRequirement.1.QualificationTypeId'].should == '00000000000000000071'
-    @qualifications.to_aws_params['QualificationRequirement.2.IntegerValue'].should == 80
-    @qualifications.to_aws_params['QualificationRequirement.3.IntegerValue'].should == 1
+  it "should build a qualification set with a country condition" do
+    @qualifications.add :adult, true
+    @qualifications.country :eql => 'US'
+    @qualifications.to_params['QualificationRequirement.2.Comparator'].should == 'EqualTo'
+    @qualifications.to_params['QualificationRequirement.2.LocaleValue.Country'].should == 'US'
   end
   
 end

@@ -5,7 +5,7 @@ module RTurk
     
     attr_accessor :url, :url_params, :frame_height
     
-    def initialize(url = nil, opts = {})
+    def initialize(url, opts = {})
       @url = url
       self.frame_height = opts.delete(:frame_height) || 400
       self.url_params = opts
@@ -32,8 +32,8 @@ module RTurk
       @url_params = param_set
     end
     
-    def to_aws_params
-      raise MissingURL, "needs a url to build an external question" unless @url
+    def to_params
+      raise RTurk::MissingParameters, "needs a url to build an external question" unless @url
       # TODO: update the xmlns schema... maybe
       xml = <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
@@ -41,7 +41,7 @@ module RTurk
 	<FrameHeight>#{frame_height}</FrameHeight>
 </ExternalQuestion>
       XML
-      xml
+      {:Question => CGI.escape(xml)}
     end
     
   end

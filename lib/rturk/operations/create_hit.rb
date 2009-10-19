@@ -6,61 +6,63 @@ module RTurk
     # do all the config in a block.
     #
 
-    class << self
-      attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
-      attr_accessor :lifetime, :duration, :auto_approval, :note, :qualifications
+    attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
+    attr_accessor :lifetime, :duration, :auto_approval, :note
 
 
-      def create(opts = {})
-        opts.each_pair do |k,v|
-          if self.respond_to?("#{k.to_sym}=")
-            self.send "#{k}=".to_sym, v
-          elsif self.respond_to?(k.to_sym)
-            self.send k.to_sym, v
-          end
-        end
-        yield(self) if block_given?
-        RTurk::Response.new(request(self.to_aws_params))
-      end
-
-      def build
-
-      end
-
-      def qualification
-        @qualifications ||= RTurk::Qualifications.new
-      end
-
-      def question
-        @question ||=  RTurk::Question.new
-      end
-
-      def to_aws_params
-        hit_params.merge(qualification.to_aws_params)
-      end
-
-      # def parse(xml)
-      #   RTurk::CreateHitResponse.parse(xml)
-      # end
-
-      private
-
-        def hit_params
-          {'Title'=>self.title,
-           'MaxAssignments' => self.assignments,
-           'LifetimeInSeconds'=> self.lifetime,
-           'Reward.Amount' => self.reward,
-           'Reward.CurrencyCode' => (self.currency || 'USD'),
-           'Keywords' => self.keywords,
-           'Description' => self.description,
-           'RequesterAnnotation' => note}
-        end
-
+    def self.create(opts = {}, &blk)
+      hit = self.new(opts, &blk)
+      hit.request
     end
+
+    def initialize(opts = {})
+      opts.each_pair do |k,v|
+        if self.respond_to?("#{k.to_sym}=")
+          self.send "#{k}=".to_sym, v
+        elsif v.is_a?(Array)
+          v.each do |a|
+            (self.send k.to_s).send a[0].to_sym, a[1]
+          end
+        elsif self.respond_to?(k.to_sym)
+          self.send k.to_sym, v
+        end
+      end
+      yield(self) if block_given?
+      self
+    end
+
+    def qualifications
+      @qualifications ||= RTurk::Qualifications.new
+    end
+
+    def question(*args)
+      @question ||= RTurk::Question.new(*args)
+    end
+
+    def to_params
+      hit_params.merge(qualifications.to_params).merge(question.to_params)
+    end
+
+    def parse(xml)
+      RTurk::CreateHitResponse.new(xml)
+    end
+
+    private
+
+      def hit_params
+        {'Title'=>self.title,
+         'MaxAssignments' => self.assignments,
+         'LifetimeInSeconds'=> self.lifetime,
+         'Reward.Amount' => self.reward,
+         'Reward.CurrencyCode' => (self.currency || 'USD'),
+         'Keywords' => self.keywords,
+         'Description' => self.description,
+         'RequesterAnnotation' => note}
+      end
 
   end
   def self.CreateHit(*args, &blk)
     RTurk::CreateHit.create(*args, &blk)
   end
-  
+
 end

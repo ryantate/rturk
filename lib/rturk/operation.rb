@@ -8,18 +8,20 @@ module RTurk
     # will call with the AWS response.
 
     # Take a look at the Hit requester for an example
-    class << self
-      def parse(xml)
-        xml
-      end
 
-      def credentials
-        RTurk
-      end
-
-      def request(params)
-        RTurk.Request(credentials.access_key, credentials.secret_key, credentials.host, params)
-      end
+    def parse(xml)
+      # Override this in your operation if you like
+      RTurk::Response.new(xml)
     end
+
+    def credentials
+      RTurk
+    end
+
+    def request
+      parse(RTurk.Request(credentials.access_key, credentials.secret_key, credentials.host, to_params))
+    end
+
+
   end
 end

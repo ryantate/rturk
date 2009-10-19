@@ -17,7 +17,15 @@ module RTurk
     
     def success?
       @xml.xpath('//Request/IsValid').inner_text.strip == "True"
-      
+    end
+    
+    def errors
+      errors = []
+      @xml.xpath('//Errors').each do |error|
+        errors << {:code => error.xpath('Error/Code').inner_text,
+          :message => error.xpath('Error/Message').inner_text}
+      end
+      errors
     end
     
   end
