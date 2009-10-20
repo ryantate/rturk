@@ -23,7 +23,6 @@ module RTurk
     # the time of request
     def to_params
       params = map_params.merge(qualifications.to_params)
-      params = params.merge(question.to_params)
     end
 
     def parse(xml)
@@ -56,6 +55,7 @@ module RTurk
          'Reward.CurrencyCode' => (self.currency || 'USD'),
          'Keywords' => self.keywords,
          'Description' => self.description,
+         'Question' => self.question.to_params,
          'RequesterAnnotation' => note}
       end
 

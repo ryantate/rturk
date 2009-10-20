@@ -11,7 +11,7 @@ You'd be better off with amazon's official library, in all its XML cruftiness.
 
 ## Installation
 
-    sudo gem install markpercival-rturk --source http://gems.github.com
+    sudo gem install markpercival-rturk --source http://gemcutter.org
     
 ## Use
 
@@ -21,21 +21,23 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
 
     require 'rturk'
 
-    RTurk::Requester.new(AWSAccessKeyId, AWSAccessKey, :sandbox => true)
-    response = RTurk::CreateHit(:title => "Help me write a witty tweet") do |hit|
-      hit.assignments = 5
-      hit.question("http://mpercival.com", :frame_height => 600)
+    RTurk::Requester.new(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
+    response = RTurk::CreateHit(:title => "Add some tags to a photo") do |hit|
+      hit.assignments = 2
+      hit.question("http://myapp.com/turkers/add_tags")
       hit.reward = 0.05
       hit.qualifications.approval_rate, {:gt => 80}
     end
     
+    response.hit_id #=>  'abcde1234567890'
+    
 ### Reviewing HIT's
 
     answer = RTurk::GetAssignments(:HITId => 'abcde1234567890')
-    answer #=> {'tweee' =>  'a witty tweet'} 
+    answer #=> {'tags' =>  'fail, drunken'} 
     
 ### Logging
-What to see what's going on - enable logging.
+Want to see what's going on - enable logging.
 
 RTurk.log_level(Logger::DEBUG)
     

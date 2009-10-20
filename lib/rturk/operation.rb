@@ -3,10 +3,12 @@ module RTurk
     
     class << self
       
-      attr_accessor :required_params
-      
       def default_params
         @default_params ||= {}
+      end
+      
+      def required_params
+        @required_params || []
       end
       
       def require_params(*args)
@@ -63,8 +65,19 @@ module RTurk
       if self.respond_to?(:validate)
         validate
       end
+      check_params
       params = to_params.merge(self.default_params)
       parse(RTurk.Request(credentials.access_key, credentials.secret_key, credentials.host, params))
+    end
+    
+    def check_params
+      self.class.required_params.each do |param|
+        if self.respond_to?(param)
+          raise MissingParameters, "Parameter '#{param.to_s}' cannot be blank" if self.send(param).nil?
+        else
+          raise MissingParameters, "The parameter '#{param.to_s}' was required and not available"
+        end
+      end
     end
 
 

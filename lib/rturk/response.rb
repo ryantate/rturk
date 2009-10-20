@@ -28,5 +28,9 @@ module RTurk
       errors
     end
     
+    def elements
+      RTurk::XMLParse(@xml)
+    end
+    
   end
 end

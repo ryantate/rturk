@@ -41,7 +41,7 @@ module RTurk
 	<FrameHeight>#{frame_height}</FrameHeight>
 </ExternalQuestion>
       XML
-      {:Question => CGI.escape(xml)}
+      CGI.escape(xml)
     end
     
   end

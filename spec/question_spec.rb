@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper'
-
+require 'cgi'
 
 describe RTurk::Question do
   
@@ -20,7 +20,8 @@ describe RTurk::Question do
   end
   
   it "should build a question with params" do
-    RTurk::Question.new('http://google.com/', :id => 'foo').to_params.should == 
+    params = RTurk::Question.new('http://google.com/', :id => 'foo').to_params
+    CGI.unescape(params).should == 
     <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
 	<ExternalURL>http://google.com/?id=foo</ExternalURL>	
@@ -30,7 +31,8 @@ describe RTurk::Question do
   end
 
   it "should build a question without params" do
-    RTurk::Question.new('http://google.com/').to_params.should == 
+    params = RTurk::Question.new('http://google.com/').to_params
+    CGI.unescape(params).should == 
     <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
 	<ExternalURL>http://google.com/</ExternalURL>	

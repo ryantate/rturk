@@ -34,6 +34,10 @@ describe RTurk::Response do
       @response.errors.should be_empty
     end
     
+    it "should give back the xml as a hash" do
+      @response.elements['CreateHITResponse']['HIT']['HITId'].should == 'GBHZVQX3EHXZ2AYDY2T0'
+    end
+    
   end
   
 end
