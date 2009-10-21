@@ -12,26 +12,29 @@ module RTurk
     class << self
       include RTurk::Utilities
       
-      def request(access_key, secret_key, host, params = {})
+      def request(params = {})
         params.delete_if {|k,v| v.nil? }
         params = stringify_keys(params)
         base_params = {
           'Service'=>'AWSMechanicalTurkRequester',
-          'AWSAccessKeyId' => access_key,
+          'AWSAccessKeyId' => credentials.access_key,
           'Timestamp' => Time.now.iso8601,
           'Version' => '2008-08-02'
         }
 
         params.merge!(base_params)
-        signature = sign(secret_key, params['Service'], params['Operation'], params["Timestamp"])
+        signature = sign(credentials.secret_key, params['Service'], params['Operation'], params["Timestamp"])
         params['Signature'] = signature
         querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
-        RestClient.get("#{host}?#{querystring}")
-        # RestClient.get("http://mechanicalturk.sandbox.amazonaws.com/?Keywords=&Signature=Qvr1i35ofM%2FC5dEj5SwjRB%2FZLGA%3D&Version=2008-08-02&RequesterAnnotation=&AWSAccessKeyId=0W304Z7TWY999N8ZXCG2&Reward.Amount=0.05&Timestamp=2009-10-15T10%3A17%3A27-04%3A00&MaxAssignments=5&Title=Look+at+some+pictures+from+4Chan&Reward.CurrencyCode=USD&Description=&Service=AWSMechanicalTurkRequester&LifetimeInSeconds=33")
-        # RestClient.get('http://mechanicalturk.sandbox.amazonaws.com/?Keywords=&Signature=Qvr1i35ofM%2FC5dEj5SwjRB%2FZLGA%3D&Version=2008-08-02&RequesterAnnotation=&AWSAccessKeyId=0W304Z7TWY999N8ZXCG2&Reward.Amount=0.05')
+        RTurk.log.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
+        RestClient.get("#{credentials.host}?#{querystring}")
       end
 
       private
+      
+        def credentials
+          RTurk
+        end
 
         def sign(secret_key, service,method,time)
           msg = "#{service}#{method}#{time}"

@@ -1,36 +1,35 @@
 module RTurk
   class Operation
-    
+
     class << self
-      
+
       def default_params
         @default_params ||= {}
       end
-      
+
       def required_params
         @required_params || []
       end
-      
+
       def require_params(*args)
         @required_params ||= []
         @required_params.push(*args)
       end
-      
+
       def operation(op)
         default_params.merge!('Operation' => op)
       end
-      
+
+      def create(opts = {}, &blk)
+        hit = self.new(opts, &blk)
+        response = hit.request
+      end
+
     end
-    
+
     ########################
     ### Instance Methods ###
     ########################
-    
-    
-    def self.create(opts = {}, &blk)
-      hit = self.new(opts, &blk)
-      hit.request
-    end
 
     def initialize(opts = {})
       opts.each_pair do |k,v|
@@ -47,7 +46,7 @@ module RTurk
       yield(self) if block_given?
       self
     end
-    
+
     def default_params
       self.class.default_params
     end
@@ -57,19 +56,15 @@ module RTurk
       RTurk::Response.new(xml)
     end
 
-    def credentials
-      RTurk
-    end
-
     def request
       if self.respond_to?(:validate)
         validate
       end
       check_params
       params = to_params.merge(self.default_params)
-      parse(RTurk.Request(credentials.access_key, credentials.secret_key, credentials.host, params))
+      parse(RTurk.Request(params))
     end
-    
+
     def check_params
       self.class.required_params.each do |param|
         if self.respond_to?(param)

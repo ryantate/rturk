@@ -11,7 +11,7 @@ module RTurk
     end
 
     def question(*args)
-      if args
+      unless args.empty?
         @question ||= RTurk::Question.new(*args)
       else
         @question
@@ -50,7 +50,8 @@ module RTurk
       def map_params
         {'Title'=>self.title,
          'MaxAssignments' => (self.assignments || 1),
-         'LifetimeInSeconds'=> (self.lifetime || 86400),
+         'LifetimeInSeconds'=> (self.lifetime || 3600),
+         'AssignmentDurationInSeconds' => (self.duration || 86400),
          'Reward.Amount' => self.reward,
          'Reward.CurrencyCode' => (self.currency || 'USD'),
          'Keywords' => self.keywords,

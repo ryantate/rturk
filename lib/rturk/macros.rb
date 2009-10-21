@@ -19,28 +19,6 @@ module RTurk::Macros
     end
   end
 
-
-  def get_assignments_for_hit(hit)
-    response = request(:Operation => 'GetAssignmentsForHIT', :HITId => hit)
-    assignments = []
-    if response['GetAssignmentsForHITResult']['Assignment'].instance_of?(Array)
-      response['GetAssignmentsForHITResult']['Assignment'].each do |assignment|
-        answer = RTurk::Answer.parse(assignment['Answer'])
-        assignment.delete('Answer')
-        assignment['Answer'] = answer
-        assignments << assignment
-      end
-    else
-      if assignment = response['GetAssignmentsForHITResult']['Assignment']
-        answer = RTurk::Answer.parse(response['GetAssignmentsForHITResult']['Assignment']['Answer'])
-        assignment.delete('Answer')
-        assignment['Answer'] = answer
-        assignments << assignment
-      end
-    end
-    assignments
-  end
-
   def url_for_hit(hit_id)
     url_for_hit_type(getHIT(:HITId => hit_id)[:HITTypeId])
   end

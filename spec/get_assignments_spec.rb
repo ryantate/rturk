@@ -13,7 +13,7 @@ describe "getting assignments" do
   end
   
   it "should successfully request an assignment" do
-    RTurk::Requester.should_receive(:request).with(anything(), anything(), anything(), hash_including('Operation' => 'GetAssignmentsForHIT'))
+    RTurk::Requester.should_receive(:request).with(hash_including('Operation' => 'GetAssignmentsForHIT'))
     response = RTurk::GetAssignments(:hit_id => "abcd")
   end
   

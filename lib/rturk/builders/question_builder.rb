@@ -1,4 +1,6 @@
 require 'cgi'
+require 'uri'
+
 
 module RTurk
   class Question
@@ -12,7 +14,7 @@ module RTurk
     end
     
     def querystring
-      @url_params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&')
+      @url_params.collect { |key, value| [URI.escape(key.to_s), URI.escape(value.to_s)].join('=') }.join('&')
     end
     
     def url
@@ -37,11 +39,11 @@ module RTurk
       # TODO: update the xmlns schema... maybe
       xml = <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-	<ExternalURL>#{url}</ExternalURL>	
-	<FrameHeight>#{frame_height}</FrameHeight>
+<ExternalURL>#{url}</ExternalURL>	
+<FrameHeight>#{frame_height}</FrameHeight>
 </ExternalQuestion>
       XML
-      CGI.escape(xml)
+      URI.escape(xml)
     end
     
   end

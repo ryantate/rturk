@@ -28,6 +28,10 @@ module RTurk
       errors
     end
     
+    def [](element_name)
+      self.elements[element_name]
+    end
+    
     def elements
       RTurk::XMLParse(@xml)
     end

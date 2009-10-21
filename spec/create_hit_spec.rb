@@ -5,18 +5,21 @@ describe "using mechanical turk with RTurk" do
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
-    faker('create_hit')
+    # faker('create_hit')
   end
 
   it "should let me build and send a hit" do
     hit = RTurk::CreateHit.new(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
+      hit.description = 'blah'
       hit.question("http://mpercival.com", :frame_height => 600)
       hit.reward = 0.05
       hit.qualifications.add :approval_rate, {:gt => 80}
     end
     hit.assignments.should eql(5)
+    p hit.to_params
     response = hit.request
+    p response.xml
     response.success?.should be_true
   end
 

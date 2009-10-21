@@ -45,7 +45,7 @@ RTurk.log_level(Logger::DEBUG)
 
 Here's a quick peak at what happens on the Mechanical Turk side.
 
-A worker takes a look at your hit. The page will contain an iframe with your external URL loaded inside of it.
+A worker takes a look at your hit. The page will contain an iframe with your question URL loaded inside of it.
 
 Amazon will append the AssignmentID parameter to the URL for your own information. In preview mode this will look like
     http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE

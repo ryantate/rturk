@@ -1,3 +1,5 @@
+$:.push File.expand_path(File.dirname(__FILE__))
+
 module RTurk
   require 'rturk/logging'
   extend RTurk::Logging
@@ -11,6 +13,10 @@ module RTurk
       @access_key = access_key
       @secret_key = secret_key
       @host = opts[:sandbox] ? SANDBOX : PRODUCTION
+    end
+    
+    def sandbox?
+      @host == SANDBOX
     end
 
   end
