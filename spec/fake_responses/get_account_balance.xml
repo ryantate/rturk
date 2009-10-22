@@ -1,0 +1,10 @@
+<GetAccountBalanceResult>
+  <Request>
+    <IsValid>True</IsValid>
+  </Request>
+  <AvailableBalance>
+    <Amount>15555.55</Amount>
+    <CurrencyCode>USD</CurrencyCode>
+    <FormattedPrice>$15,555.55</FormattedPrice>
+  </AvailableBalance>
+</GetAccountBalanceResult>

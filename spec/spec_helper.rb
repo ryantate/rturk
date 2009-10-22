@@ -19,8 +19,10 @@ require 'rturk'
 # RTurk.log.level = Logger::DEBUG
 
 @aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
+RTurk.setup(@aws['AWSAccessKeyId'], @aws['AWSAccessKey'], :sandbox => true)
 
 def faker(response_name)
+  FakeWeb.clean_registry
   response = File.read(File.join(SPEC_ROOT, 'fake_responses', "#{response_name.to_s}.xml"))
   FakeWeb.register_uri(:get, /amazonaws\.com/, :body => response)
 end

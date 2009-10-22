@@ -18,7 +18,7 @@ describe "getting assignments" do
   end
   
   it "should parse and return and answer" do
-    response = RTurk::GetAssignments(:hit_id => "abcd")
+    assignments = RTurk::GetAssignments(:hit_id => "abcd")
     response.answer['Question100'].should eql("Move to X.")
   end
 

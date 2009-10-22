@@ -1,9 +1,10 @@
 module RTurk
   
   class GetAssignmentsResponse < Response
+    include Enumerable
     
-    def answer
-      RTurk::AnswerParser(@xml.xpath('//Answer').children.to_s)
+    def assignments
+      RTurk::Assignments.new(@xml.xpath('//Answer'))
     end
     
   end

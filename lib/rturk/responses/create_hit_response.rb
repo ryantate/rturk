@@ -25,5 +25,13 @@ module RTurk
       @xml.xpath('//HITTypeId').inner_text
     end
     
+    def url
+      if RTurk.sandbox?
+        "http://workersandbox.mturk.com/mturk/preview?groupId=#{hit_type_id}" # Sandbox Url
+      else
+        "http://mturk.com/mturk/preview?groupId=#{hit_type_id}" # Production Url
+      end
+    end
+    
   end
 end

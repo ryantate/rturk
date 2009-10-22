@@ -7,7 +7,13 @@ module RTurk
     attr_accessor :hit_id, :page_size, :page_number
     
     def parse(xml)
-      RTurk::GetAssignmentsResponse.new(xml)
+      if (response = RTurk::Response.new(xml)).success?
+        assignments = []
+        response.xml.xpath('//Assignment').each do |assignment_xml|
+          assignments << RTurk::Assignment.new(assignment_xml)
+        end
+        assignments
+      end
     end
     
     def to_params
