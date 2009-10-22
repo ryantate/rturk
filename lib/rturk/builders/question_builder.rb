@@ -2,6 +2,20 @@ require 'cgi'
 require 'uri'
 
 
+#     def self.build(url, opts = {})
+#       frame_height = opts[:frame_height] || 400
+#       opts.delete(:frame_height)
+#       querystring = opts.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&')
+#       url = opts.empty? ? url : "#{url}?#{querystring}"
+#       xml = <<-XML
+# <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
+#   <ExternalURL>#{url}</ExternalURL> 
+#   <FrameHeight>#{frame_height}</FrameHeight>
+# </ExternalQuestion>
+#       XML
+#       xml
+#     end
+
 module RTurk
   class Question
     
@@ -14,7 +28,7 @@ module RTurk
     end
     
     def querystring
-      @url_params.collect { |key, value| [URI.escape(key.to_s), URI.escape(value.to_s)].join('=') }.join('&')
+      @url_params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&')
     end
     
     def url
@@ -43,7 +57,7 @@ module RTurk
 <FrameHeight>#{frame_height}</FrameHeight>
 </ExternalQuestion>
       XML
-      URI.escape(xml)
+      xml
     end
     
   end

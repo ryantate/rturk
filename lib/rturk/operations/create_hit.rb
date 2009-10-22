@@ -39,7 +39,7 @@ module RTurk
           raise RTurk::MissingParameters, "When you specify a HitTypeID, you must incude a question and lifetime length"
         end
       else
-        unless  title && reward && question
+        unless  title && reward && question && description
           raise RTurk::MissingParameters, "You're missing some required parameters"
         end
       end

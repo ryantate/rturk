@@ -1,11 +1,11 @@
-require File.dirname(__FILE__) + '/spec_helper'
+  require File.dirname(__FILE__) + '/spec_helper'
 
 describe "using mechanical turk with RTurk" do
 
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
-    # faker('create_hit')
+    faker('create_hit')
   end
 
   it "should let me build and send a hit" do
@@ -17,15 +17,14 @@ describe "using mechanical turk with RTurk" do
       hit.qualifications.add :approval_rate, {:gt => 80}
     end
     hit.assignments.should eql(5)
-    p hit.to_params
     response = hit.request
-    p response.xml
     response.success?.should be_true
   end
 
   it "should let me create a hit" do
     response = RTurk::CreateHit(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
+      hit.description = 'blah'
       hit.question("http://mpercival.com", :test => 'b')
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
@@ -35,6 +34,7 @@ describe "using mechanical turk with RTurk" do
 
   it "should let me create a hit with just option arguments" do
     hit = RTurk::CreateHit.new(:title => "Look at some pictures from 4Chan",
+                               :description => "Pics from the b-tards",
                                :assignments => 5,
                                :reward => nil,
                                :question => 'http://mpercival.com?picture=1',
@@ -51,6 +51,7 @@ describe "using mechanical turk with RTurk" do
   it "should rerturn a CreateHitResponse after the request" do
     response = RTurk::CreateHit(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
+      hit.description = "foo"
       hit.question("http://mpercival.com", :test => 'b')
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
