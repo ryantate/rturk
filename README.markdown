@@ -21,25 +21,30 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
 
     require 'rturk'
 
-    RTurk::Requester.new(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
-    response = RTurk::CreateHit(:title => "Add some tags to a photo") do |hit|
+    RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
+    hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
       hit.assignments = 2
       hit.question("http://myapp.com/turkers/add_tags")
       hit.reward = 0.05
       hit.qualifications.approval_rate, {:gt => 80}
     end
     
-    response.hit_id #=>  'abcde1234567890'
+    hit.id #=>  'abcde1234567890'
     
-### Reviewing HIT's
+### Reviewing and Approving hits HIT's
 
-    answer = RTurk::GetAssignments(:HITId => 'abcde1234567890')
-    answer #=> {'tags' =>  'fail, drunken'} 
+    RTurk::Hit.all_reviewable do |hit|
+      hit.assignments do |assignment|
+        p assignment.answer['tags']
+        assignment.approve!
+      end
+    end
+    
     
 ### Logging
 Want to see what's going on - enable logging.
 
-RTurk.log_level(Logger::DEBUG)
+RTurk::Logger.level = Logger::DEBUG
     
 ## Nitty Gritty
 

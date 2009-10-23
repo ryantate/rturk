@@ -25,8 +25,8 @@ module RTurk
       params = map_params.merge(qualifications.to_params)
     end
 
-    def parse(xml)
-      RTurk::CreateHitResponse.new(xml)
+    def parse(response)
+      RTurk::Hit.new(response.xml.xpath('//HITId[0]').inner_text, response.xml.xpath('//HITTypeId[0]').inner_text)
     end
     
     # We need some basic checking to see if this hit is valid to send.

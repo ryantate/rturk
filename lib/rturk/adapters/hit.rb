@@ -5,33 +5,9 @@ module RTurk
   class Hit
     
     attr_accessor :id, :type
-
-    class << self
-      # Give is the required parameters and it will request a HIT
-      # creation.
-      #
-      def create(*params, &blk)
-
-      end
-
-      # Get assignments for a hit
-      #
-      def find(hit_id)
-
-      end
-
-      # Expire a HIT
-      #
-      def expire(hit_id)
-
-      end
-
-      # Expire all HIT's
-      #
-      def expire_all
-
-      end
-
+    
+    def initialize(id, type = nil)
+      @id, @type = id, type
     end
     
     def id

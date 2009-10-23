@@ -1,6 +1,5 @@
 module RTurk
-  require 'rturk/logging'
-  extend RTurk::Logging
+  require 'rturk/logger'
 
   SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
   PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
@@ -15,6 +14,10 @@ module RTurk
     
     def sandbox?
       @host == SANDBOX
+    end
+    
+    def log
+      RTurk::Logger.logger
     end
 
   end
