@@ -14,6 +14,8 @@ describe RTurk::AnswerParser do
     <QuestionFormAnswers xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd\">
     <Answer>\n<QuestionIdentifier>tweet</QuestionIdentifier>\n<FreeText>Spec example</FreeText>\n</Answer>
     </QuestionFormAnswers>\n"
+    @answer3 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <QuestionFormAnswers xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd\">\n    <Answer foo='bar'>\n<QuestionIdentifier>tweet</QuestionIdentifier>\n<FreeText>Spec example</FreeText>\n</Answer>\n    <Answer>\n<QuestionIdentifier>Submit</QuestionIdentifier>\n<FreeText>Submit</FreeText>\n</Answer>\n    <Answer>\n<QuestionIdentifier>Foo</QuestionIdentifier>\n<RandomSelector>Bar</RandomSelector>\n</Answer>\n    </QuestionFormAnswers>\n"
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <QuestionFormAnswers xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd\">\n    <Answer>\n<QuestionIdentifier>tweet</QuestionIdentifier>\n<FreeText>Spec example</FreeText>\n</Answer>\n    </QuestionFormAnswers>\n"
   end
   
   it "should parse a answer" do

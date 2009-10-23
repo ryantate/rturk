@@ -30,18 +30,14 @@ module RTurk
     attr_reader :answer
     
     def initialize(xml_object)
-
       map_content(xml_object,
-        :id => '/AssignmentId',
-        :worker_id => '/WorkerId',
-        :status => '/AssignmentStatus',
-        :accepted_at => '/AcceptTime',
-        :approved_at => "/ApprovalTime",
-        :submitted_at => '/SubmitTime',
-        :answer => '/Answer'
-      )
-      @id = xml_object.xpath('/AssignmentId').to_s
-      @worker_id = xml_object.xpath('/WorkerId').to_s
+        :id => 'AssignmentId',
+        :worker_id => 'WorkerId',
+        :status => 'AssignmentStatus',
+        :accepted_at => 'AcceptTime',
+        :approved_at => "ApprovalTime",
+        :submitted_at => 'SubmitTime')
+        self.answer = xml_object.xpath('Answer/*').to_s
     end
     
     def approved_at=(time)
@@ -69,7 +65,9 @@ module RTurk
     end
     
     def answer=(answer_xml)
-      @answer = RTurk::AnswerParser.parse(answer_xml)
+      unless answer_xml.empty?
+        @answer = RTurk::AnswerParser.parse(answer_xml)
+      end
     end
     
   end

@@ -13,13 +13,13 @@ describe "getting assignments" do
   end
   
   it "should successfully request an assignment" do
-    RTurk::Requester.should_receive(:request).with(hash_including('Operation' => 'GetAssignmentsForHIT'))
+    RTurk::Requester.should_receive(:request).once.with(hash_including('Operation' => 'GetAssignmentsForHIT'))
     response = RTurk::GetAssignments(:hit_id => "abcd")
   end
   
   it "should parse and return and answer" do
     assignments = RTurk::GetAssignments(:hit_id => "abcd")
-    response.answer['Question100'].should eql("Move to X.")
+    assignments.first.answer['Question100'].should eql("Move to X.")
   end
 
 end

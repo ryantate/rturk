@@ -10,6 +10,7 @@ module RTurk
       if (response = RTurk::Response.new(xml)).success?
         assignments = []
         response.xml.xpath('//Assignment').each do |assignment_xml|
+          next if assignment_xml.blank?
           assignments << RTurk::Assignment.new(assignment_xml)
         end
         assignments
