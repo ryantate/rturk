@@ -1,23 +1,31 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 
-describe RTurk::XMLParse do
+describe RTurk::XmlUtilities do
   
   before(:all) do
-    @xml = <<-XML
-    <foo>
-      <bar>
-        <baz>
-          <fuck>content!!!</fuck>
-        </baz>
-      </bar>
-    </foo>
-    XML
-    @xml = Nokogiri::XML(@xml)
+    class XMLTest
+      include RTurk::XmlUtilities
+      def xml
+      <<-XML
+      <foo>
+        <bar>
+          <baz>
+            <fuck>content!!!</fuck>
+          </baz>
+        </bar>
+      </foo>
+      XML
+      end
+      def parse
+        xml_to_hash(Nokogiri::XML(xml))
+      end
+    end
   end
   
   it "should parse a answer" do
-    RTurk::XMLParse(@xml).should eql({'foo' => { 'bar' => {'baz' => {'fuck' => 'content!!!'}}}})
+    
+    XMLTest.new.parse.should eql({'foo' => { 'bar' => {'baz' => {'fuck' => 'content!!!'}}}})
   end
 
   

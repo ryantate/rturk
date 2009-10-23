@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 require 'cgi'
 
 describe RTurk::Question do
@@ -24,8 +24,8 @@ describe RTurk::Question do
     CGI.unescape(params).should == 
     <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-	<ExternalURL>http://google.com/?id=foo</ExternalURL>	
-	<FrameHeight>400</FrameHeight>
+  <ExternalURL>http://google.com/?id=foo</ExternalURL>	
+  <FrameHeight>400</FrameHeight>
 </ExternalQuestion>
     XML
   end
@@ -35,8 +35,8 @@ describe RTurk::Question do
     CGI.unescape(params).should == 
     <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-	<ExternalURL>http://google.com/</ExternalURL>	
-	<FrameHeight>400</FrameHeight>
+  <ExternalURL>http://google.com/</ExternalURL>	
+  <FrameHeight>400</FrameHeight>
 </ExternalQuestion>
     XML
   end

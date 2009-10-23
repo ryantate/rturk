@@ -53,8 +53,8 @@ module RTurk
       # TODO: update the xmlns schema... maybe
       xml = <<-XML
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-<ExternalURL>#{url}</ExternalURL>	
-<FrameHeight>#{frame_height}</FrameHeight>
+  <ExternalURL>#{url}</ExternalURL>	
+  <FrameHeight>#{frame_height}</FrameHeight>
 </ExternalQuestion>
       XML
       xml

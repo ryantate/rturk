@@ -2,7 +2,7 @@ module RTurk
   class ForceExpireHIT < Operation
 
     operation 'ForceExpireHIT'
-    required_params :hit_id
+    require_params :hit_id
     attr_accessor :hit_id
     
     def parse(xml)

@@ -1,5 +1,3 @@
-$:.push File.expand_path(File.dirname(__FILE__))
-
 module RTurk
   require 'rturk/logging'
   extend RTurk::Logging
@@ -23,23 +21,15 @@ module RTurk
 
 end
 
-$:.unshift(File.dirname(__FILE__)) unless
-$:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
-
 require 'rturk/utilities'
-require 'rturk/macros'
-require 'rturk/parsers/answer_parser'
+require 'rturk/xml_utilities'
 require 'rturk/requester'
 require 'rturk/response'
+Dir.glob(File.join(File.dirname(__FILE__), 'rturk', 'responses', '*.rb')).each {|f| require f }
 require 'rturk/operation'
-require 'rturk/builders/qualifications_builder'
-require 'rturk/builders/qualification_builder'
-require 'rturk/builders/question_builder'
-require 'rturk/operations/create_hit'
-require 'rturk/operations/get_assignments'
-require 'rturk/operations/get_account_balance'
-require 'rturk/responses/create_hit_response'
-require 'rturk/responses/get_assignments_response'
-require 'rturk/responses/get_account_balance_response'
+Dir.glob(File.join(File.dirname(__FILE__), 'rturk', 'operations', '*.rb')).each {|f| require f }
+Dir.glob(File.join(File.dirname(__FILE__), 'rturk', 'builders', '*.rb')).each {|f| require f }
+Dir.glob(File.join(File.dirname(__FILE__), 'rturk', 'adapters', '*.rb')).each {|f| require f }
+Dir.glob(File.join(File.dirname(__FILE__), 'rturk', 'parsers', '*.rb')).each {|f| require f }
+
 require 'rturk/errors'
-require 'rturk/xml_parse'

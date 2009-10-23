@@ -2,6 +2,8 @@ require 'nokogiri'
 
 module RTurk
   class Response
+    include RTurk::XmlUtilities
+    
     #
     # In some cases we want more than just a hash parsed from the returned
     # XML. This class is our response object, and it can be extended for more
@@ -33,7 +35,7 @@ module RTurk
     end
     
     def elements
-      RTurk::XMLParse(@xml)
+      xml_to_hash(@xml)
     end
     
   end

@@ -57,7 +57,7 @@ module RTurk
     end
     
     def to_params
-      # Override to include extra params
+      {}# Override to include extra params
     end
 
     def request

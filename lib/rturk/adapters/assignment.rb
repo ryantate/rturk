@@ -1,3 +1,5 @@
+require 'time'
+
 module RTurk
   
   # Parses:
@@ -43,15 +45,15 @@ module RTurk
     end
     
     def approved_at=(time)
-      
+      @approved_at = Time.parse(time)
     end
     
     def submitted_at=(time)
-      
+      @submitted_at = Time.parse(time)
     end
 
     def accepted_at=(time)
-      
+      @accepted_at = Time.parse(time)
     end
     
     def approve
