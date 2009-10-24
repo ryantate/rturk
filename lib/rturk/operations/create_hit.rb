@@ -1,5 +1,5 @@
 module RTurk
-  class CreateHit < Operation
+  class CreateHIT < Operation
     
     operation 'CreateHIT'
 
@@ -26,7 +26,7 @@ module RTurk
     end
 
     def parse(response)
-      RTurk::Hit.new(response.xml.xpath('//HITId[0]').inner_text, response.xml.xpath('//HITTypeId[0]').inner_text)
+      RTurk::CreateHITResponse.new(response)
     end
     
     # We need some basic checking to see if this hit is valid to send.
@@ -61,8 +61,8 @@ module RTurk
       end
 
   end
-  def self.CreateHit(*args, &blk)
-    RTurk::CreateHit.create(*args, &blk)
+  def self.CreateHIT(*args, &blk)
+    RTurk::CreateHIT.create(*args, &blk)
   end
 
 end

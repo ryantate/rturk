@@ -1,5 +1,5 @@
 module RTurk
-  class GetReviewableHits < Operation
+  class GetReviewableHITs < Operation
 
     operation 'GetReviewableHITs'
     attr_accessor :page_size, :page_number

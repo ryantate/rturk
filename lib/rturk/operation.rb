@@ -67,7 +67,8 @@ module RTurk
       check_params
       params = self.default_params
       params = to_params.merge(params)
-      parse(RTurk.Request(params))
+      response = RTurk.Request(params)
+      parse(response)
     end
 
     def check_params

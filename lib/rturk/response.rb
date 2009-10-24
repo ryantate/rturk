@@ -15,6 +15,7 @@ module RTurk
     def initialize(response)
       @raw_xml = response
       @xml = Nokogiri::XML(@raw_xml)
+      raise_errors
     end
     
     def success?
@@ -30,8 +31,23 @@ module RTurk
       errors
     end
     
+    def humanized_errors
+      string = self.errors.inject('') { |str, error|
+        str + "#{error[:code]}: #{error[:message]}"
+      }
+      string
+    end
+    
+    def raise_errors
+      raise InvalidRequest, self.humanized_errors unless self.success?
+    end
+    
     def [](element_name)
       self.elements[element_name]
+    end
+    
+    def xpath(*args)
+      self.xml.xpath(*args)
     end
     
     def elements

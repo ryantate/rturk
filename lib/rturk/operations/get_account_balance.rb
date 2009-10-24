@@ -4,7 +4,7 @@ module RTurk
     operation 'GetAccountBalance'
     
     def parse(xml)
-      RTurk::GetAccountBalanceResponse.new(xml).balance
+       RTurk::GetAccountBalanceResponse.new(xml)
     end
     
   end

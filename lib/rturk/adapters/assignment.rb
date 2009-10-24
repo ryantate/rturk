@@ -26,8 +26,8 @@ module RTurk
   class Assignment
     include RTurk::XmlUtilities
     
-    attr_accessor :worker_id, :answer, :id, :status, :submitted_at, :accepted_at, :approved_at
-    attr_reader :answer
+    attr_accessor :worker_id, :id, :status, :submitted_at, :accepted_at, :approved_at
+    attr_reader :answers
     
     def initialize(xml_object)
       map_content(xml_object,
@@ -37,7 +37,7 @@ module RTurk
         :accepted_at => 'AcceptTime',
         :approved_at => "ApprovalTime",
         :submitted_at => 'SubmitTime')
-        self.answer = xml_object.xpath('Answer/*').to_s
+        self.answers = xml_object.xpath('Answer/*').to_s
     end
     
     def approved_at=(time)
@@ -52,21 +52,21 @@ module RTurk
       @accepted_at = Time.parse(time)
     end
     
-    def approve
+    def approve!(feedback = nil)
+      ApproveAssignment(:assignment_id => self.id, :feedback => feedback)
+    end
+    
+    def reject!(reason)
       
     end
     
-    def reject(reason)
+    def bonus!(amount, reason)
       
     end
     
-    def bonus(amount)
-      
-    end
-    
-    def answer=(answer_xml)
+    def answers=(answer_xml)
       unless answer_xml.empty?
-        @answer = RTurk::AnswerParser.parse(answer_xml)
+        @answers = RTurk::Answers.new(answer_xml)
       end
     end
     

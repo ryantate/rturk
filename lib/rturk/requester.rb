@@ -12,6 +12,8 @@ module RTurk
     class << self
       include RTurk::Utilities
       
+      # Returns the XML only, with no processing
+      #
       def request(params = {})
         params.delete_if {|k,v| v.nil? }
         params = stringify_keys(params)
@@ -27,7 +29,7 @@ module RTurk
         params['Signature'] = signature
         querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
         RTurk.log.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
-        Response.new(RestClient.get("#{credentials.host}?#{querystring}"))
+        RestClient.get("#{credentials.host}?#{querystring}")
       end
 
       private

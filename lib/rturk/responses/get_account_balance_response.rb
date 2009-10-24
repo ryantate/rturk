@@ -2,7 +2,7 @@ module RTurk
   
   class GetAccountBalanceResponse < Response
     
-    def balance
+    def amount
       @xml.xpath('//AvailableBalance[1]/Amount').inner_text.to_f
     end
     

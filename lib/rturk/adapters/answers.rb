@@ -1,6 +1,6 @@
 module RTurk
-  class AnswerParser
-    
+  class Answers
+
     # <?xml version="1.0" encoding="UTF-8"?>
     # <QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd\">
     #   <Answer>
@@ -16,18 +16,18 @@ module RTurk
     #     <RandomSelector>Bar</RandomSelector>
     #   </Answer>
     # </QuestionFormAnswers>
-    
+
     # <?xml version="1.0" encoding="UTF-8"?>
     # <QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd">
     # <Answer>
     # <QuestionIdentifier>tweet</QuestionIdentifier>\n<FreeText>Spec example</FreeText>\n</Answer>
     # </QuestionFormAnswers>
-    
-    
-    def self.parse(xml)
+
+    attr_accessor :answer_hash
+
+    def initialize(xml)
       answer_xml = Nokogiri::XML(xml)
-      responses = []
-      response = {}
+      @answer_hash = {}
       answers = answer_xml.xpath('//xmlns:Answer')
       answers.each do |answer|
         key, value = nil, nil
@@ -39,14 +39,17 @@ module RTurk
             value = child.inner_text
           end
         end
-        response[key] = value
+        @answer_hash[key] = value
       end
-      response
     end
     
-  end
-  
-  def self.AnswerParser(xml)
-    RTurk::AnswerParser.parse(xml)
+    def[](key)
+      @answer_hash[key]
+    end
+    
+    def to_hash
+      @answer_hash
+    end
+
   end
 end

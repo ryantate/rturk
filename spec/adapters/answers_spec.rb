@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 
-describe RTurk::AnswerParser do
+describe RTurk::Answers do
   
   before(:all) do
     @answer =  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -19,8 +19,8 @@ describe RTurk::AnswerParser do
   end
   
   it "should parse a answer" do
-    RTurk::AnswerParser(@answer).should == {'Submit' => 'Submit', 'tweet' => 'Spec example', 'Foo' => 'Bar'}
-    RTurk::AnswerParser(@answer2).should == {'tweet' => 'Spec example'}
+    RTurk::Answers.new(@answer).to_hash.should == {'Submit' => 'Submit', 'tweet' => 'Spec example', 'Foo' => 'Bar'}
+    RTurk::Answers.new(@answer2).to_hash.should == {'tweet' => 'Spec example'}
   end
 
   

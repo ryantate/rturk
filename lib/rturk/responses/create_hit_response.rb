@@ -15,7 +15,7 @@
 # </CreateHITResponse>
 
 module RTurk
-  class CreateHitResponse < Response
+  class CreateHITResponse < Response
     
     def hit_id
       @xml.xpath('//HITId').inner_text
@@ -25,12 +25,8 @@ module RTurk
       @xml.xpath('//HITTypeId').inner_text
     end
     
-    def url
-      if RTurk.sandbox?
-        "http://workersandbox.mturk.com/mturk/preview?groupId=#{hit_type_id}" # Sandbox Url
-      else
-        "http://mturk.com/mturk/preview?groupId=#{hit_type_id}" # Production Url
-      end
+    def hit
+      RTurk::Hit.new(self.hit_id, self.hit_type_id)
     end
     
   end

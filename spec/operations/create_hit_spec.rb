@@ -5,11 +5,12 @@ describe "using mechanical turk with RTurk" do
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
-    faker('create_hit')
+    FakeWeb.clean_registry
+    faker('create_hit', :operation => "CreateHIT")
   end
 
   it "should let me build and send a hit" do
-    hit = RTurk::CreateHit.new(:title => "Look at some pictures from 4Chan") do |hit|
+    hit = RTurk::CreateHIT.new(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
       hit.description = 'blah'
       hit.question("http://mpercival.com", :frame_height => 600)
@@ -18,22 +19,22 @@ describe "using mechanical turk with RTurk" do
     end
     hit.assignments.should eql(5)
     response = hit.request
-    response.success?.should be_true
+    response.hit_id.should_not be_nil
   end
 
   it "should let me create a hit" do
-    response = RTurk::CreateHit(:title => "Look at some pictures from 4Chan") do |hit|
+    response = RTurk::CreateHIT(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
       hit.description = 'blah'
       hit.question("http://mpercival.com", :test => 'b')
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
     end
-    hit.reward
+    response.hit.url.should eql('http://workersandbox.mturk.com/mturk/preview?groupId=NYVZTQ1QVKJZXCYZCZVZ')
   end
 
   it "should let me create a hit with just option arguments" do
-    hit = RTurk::CreateHit.new(:title => "Look at some pictures from 4Chan",
+    hit = RTurk::CreateHIT.new(:title => "Look at some pictures from 4Chan",
                                :description => "Pics from the b-tards",
                                :assignments => 5,
                                :reward => nil,
@@ -48,15 +49,15 @@ describe "using mechanical turk with RTurk" do
     lambda{hit.request}.should raise_error RTurk::MissingParameters
   end
 
-  it "should rerturn a CreateHitResponse after the request" do
-    response = RTurk::CreateHit(:title => "Look at some pictures from 4Chan") do |hit|
+  it "should rerturn a CreateHITResponse after the request" do
+    response = RTurk::CreateHIT(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
       hit.description = "foo"
       hit.question("http://mpercival.com", :test => 'b')
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
     end
-    response.is_a?(RTurk::CreateHitResponse).should be_true
+    response.is_a?(RTurk::CreateHITResponse).should be_true
     response.hit_id.should == 'GBHZVQX3EHXZ2AYDY2T0'
     response.hit_type_id.should == 'NYVZTQ1QVKJZXCYZCZVZ'
   end
