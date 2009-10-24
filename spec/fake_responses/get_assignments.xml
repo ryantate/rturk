@@ -18,8 +18,12 @@
       <?xml version="1.0" encoding="UTF-8"?>
       <QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd">
         <Answer>
-          <QuestionIdentifier>Question100</QuestionIdentifier>
+          <QuestionIdentifier>Question1</QuestionIdentifier>
           <FreeText>Move to X.</FreeText>
+        </Answer>
+        <Answer>
+          <QuestionIdentifier>Question 2</QuestionIdentifier>
+          <FreeText>Move to Y.</FreeText>
         </Answer>
       </QuestionFormAnswers>
     </Answer>

@@ -5,9 +5,7 @@ module RTurk
     attr_accessor :page_size, :page_number
     
     def parse(xml)
-      if (response = RTurk::GetReviewableHitsResponse.new(xml)).success?
-        response.hits
-      end
+      RTurk::GetReviewableHITsResponse.new(xml)
     end
     
     def to_params
@@ -18,8 +16,8 @@ module RTurk
     end
 
   end
-  def self.GetReviewableHits(*args, &blk)
-    RTurk::GetReviewableHits.create(*args, &blk)
+  def self.GetReviewableHITs(*args, &blk)
+    RTurk::GetReviewableHITs.create(*args, &blk)
   end
 
 end

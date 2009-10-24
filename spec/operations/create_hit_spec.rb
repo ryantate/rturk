@@ -7,6 +7,7 @@ describe "using mechanical turk with RTurk" do
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
     FakeWeb.clean_registry
     faker('create_hit', :operation => "CreateHIT")
+    faker('get_hit', :operation => "GetHIT")
   end
 
   it "should let me build and send a hit" do
