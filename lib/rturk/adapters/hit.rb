@@ -11,27 +11,29 @@ module RTurk
         response = RTurk::CreateHIT(*args, &blk)
         response.hit
       end
+      
+      def find(id)
+        
+      end
 
     end
 
     attr_accessor :id, :type
 
-    def initialize(id, type = nil)
+    def initialize(id, type = nil, xml = nil)
       @id, @type = id, type
     end
 
     def assignments
-      GetAssignmentsForHIT(:hit_id => self.id)
+      GetAssignmentsForHIT(:hit_id => self.id).assignments
     end
 
-    def type
-      @type ||= self.populate['type']
+    def type_id
+      @type_id ||= details.type_id
     end
     
-    # Fetches the HIT details and fills in the attributes accordingly
-    # Requires that @id@ be set
-    def populate
-      
+    def details
+      @details ||= RTurk::GetHIT(:hit_id => self.id)
     end
 
 

@@ -14,7 +14,7 @@ describe "getting assignments" do
   
   it "should successfully request an assignment" do
     RTurk::Requester.should_receive(:request).once.with(
-    hash_including('Operation' => 'GetAssignmentsForHIT'))
+      hash_including('Operation' => 'GetAssignmentsForHIT'))
     RTurk::GetAssignmentsForHIT(:hit_id => "abcd") rescue RTurk::InvalidRequest
   end
   
