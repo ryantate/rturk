@@ -12,7 +12,9 @@ module RTurk
     class << self
       include RTurk::Utilities
       
-      # Returns the XML only, with no processing
+      # @param [Hash] params
+      # @option [String] 'Operation' The operation - Required
+      # @option [String] Any Pass any other params and they will be included in the request
       #
       def request(params = {})
         params.delete_if {|k,v| v.nil? }

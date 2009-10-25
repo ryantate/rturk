@@ -1,3 +1,7 @@
+# Operation to approve an assignment
+# @params [Hash] opts
+# @options :assignment_id
+#
 # http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester
 # &AWSAccessKeyId=[the Requester's Access Key ID]
 # &Version=2008-08-02

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <title>README.markdown</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section docstring readme">
+        <h1 id='rturk__a_ridiculously_simple_mechanical_turk_library_in_ruby'>RTurk - A ridiculously simple Mechanical Turk library in Ruby</h1>
+
+<h2 id='whats_it_do'>What&#8217;s it do?!?</h2>
+
+<p>RTurk is designed to fire off Mechanical Turk tasks for pages that reside on a external site.</p>
+
+<p>The pages could be a part of a rails app, or just a simple javascript enabled form.</p>
+
+<p>If you want to build forms that are hosted on Mechanical Turk, this is not the library you need. You&#8217;d be better off with amazon&#8217;s official library, in all its XML cruftiness.</p>
+
+<h2 id='installation'>Installation</h2>
+
+<pre class="code"><span class='sudo identifier id'>sudo</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='markpercival identifier id'>markpercival</span><span class='minus op'>-</span><span class='rturk identifier id'>rturk</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='source identifier id'>source</span> <span class='http identifier id'>http</span><span class='symbol val'>:/</span><span class='regexp val'>/gemcutter.org
+</span></pre>
+
+<h2 id='use'>Use</h2>
+
+<p>Let&#8217;s say you have a form at &#8220;http://myapp.com/turkers/add_tags&#8221; where Turkers can add some tags to items in your catalogue.</p>
+
+<h3 id='creating_hits'>Creating HIT&#8217;s</h3>
+
+<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'rturk'</span>
+
+<span class='RTurk constant id'>RTurk</span><span class='dot token'>.</span><span class='setup identifier id'>setup</span><span class='lparen token'>(</span><span class='YourAWSAccessKeyId constant id'>YourAWSAccessKeyId</span><span class='comma token'>,</span> <span class='YourAWSAccessKey constant id'>YourAWSAccessKey</span><span class='comma token'>,</span> <span class='symbol val'>:sandbox</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='rparen token'>)</span>
+<span class='hit identifier id'>hit</span> <span class='assign token'>=</span> <span class='RTurk constant id'>RTurk</span><span class='colon2 op'>::</span><span class='Hit constant id'>Hit</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span><span class='symbol val'>:title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Add some tags to a photo&quot;</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='hit identifier id'>hit</span><span class='bitor op'>|</span>
+  <span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='assignments identifier id'>assignments</span> <span class='assign token'>=</span> <span class='integer val'>2</span>
+  <span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='question identifier id'>question</span><span class='lparen token'>(</span><span class='string val'>&quot;http://myapp.com/turkers/add_tags&quot;</span><span class='rparen token'>)</span>
+  <span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='reward identifier id'>reward</span> <span class='assign token'>=</span> <span class='integer val'>0</span><span class='integer val'>.05</span>
+  <span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='qualifications identifier id'>qualifications</span><span class='dot token'>.</span><span class='approval_rate identifier id'>approval_rate</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:gt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>80</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+
+<span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='id identifier id'>id</span> <span class='comment val'>#=&gt;  'abcde1234567890'</span>
+</pre>
+
+<h3 id='reviewing_and_approving_hits_hits'>Reviewing and Approving hits HIT&#8217;s</h3>
+
+<pre class="code"><span class='RTurk constant id'>RTurk</span><span class='colon2 op'>::</span><span class='Hit constant id'>Hit</span><span class='dot token'>.</span><span class='all_reviewable identifier id'>all_reviewable</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='hit identifier id'>hit</span><span class='bitor op'>|</span>
+  <span class='hit identifier id'>hit</span><span class='dot token'>.</span><span class='assignments identifier id'>assignments</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='assignment identifier id'>assignment</span><span class='bitor op'>|</span>
+    <span class='p identifier id'>p</span> <span class='assignment identifier id'>assignment</span><span class='dot token'>.</span><span class='answer identifier id'>answer</span><span class='lbrack token'>[</span><span class='string val'>'tags'</span><span class='rbrack token'>]</span>
+    <span class='assignment identifier id'>assignment</span><span class='dot token'>.</span><span class='approve! fid id'>approve!</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+
+<h3 id='logging'>Logging</h3>
+
+<p>Want to see what&#8217;s going on - enable logging.</p>
+
+<p>RTurk::Logger.level = Logger::DEBUG</p>
+
+<h2 id='nitty_gritty'>Nitty Gritty</h2>
+
+<p>Here&#8217;s a quick peak at what happens on the Mechanical Turk side.</p>
+
+<p>A worker takes a look at your hit. The page will contain an iframe with your question URL loaded inside of it.</p>
+
+<p>Amazon will append the AssignmentID parameter to the URL for your own information. In preview mode this will look like http://myapp.com/turkers/add_tags?item_id=1234&amp;AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE</p>
+
+<p>If the Turker accepts the HIT, the page will reload and the iframe URL will resemble</p>
+
+<pre class="code"><span class='http identifier id'>http</span><span class='symbol val'>:/</span><span class='regexp val'>/myapp.com/</span><span class='turkers identifier id'>turkers</span><span class='div op'>/</span><span class='add_tags? fid id'>add_tags?</span><span class='item_id identifier id'>item_id</span><span class='assign token'>=</span><span class='integer val'>1234</span><span class='bitand op'>&amp;</span><span class='AssignmentId constant id'>AssignmentId</span><span class='assign token'>=</span><span class='integer val'>1234567890123456789</span><span class='ABC constant id'>ABC</span>
+</pre>
+
+<p>The form in your page MUST CONTAIN the AssignmentID in a hidden input element. You could do this on the server side with a rails app, or on the client side with javascript(check the examples)</p>
+
+<p>Anything submitted in this form will be sent to Amazon and saved for your review later.</p>
+
+<h2 id='more_information'>More information</h2>
+
+<p>Take a look at the <a href='http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/'>Amazon MTurk developer docs</a> for more information. They have a complete list of API operations, all of which can be called with this library.</p>
+      </div>
+    </div>
+    <div id="yard_info">
+  Generated on Saturday, October 24 2009 at 08:06:59 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
