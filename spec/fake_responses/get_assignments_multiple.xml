@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<GetAssignmentsForHITResponse>
+  <OperationRequest>
+    <RequestId>a964d1f8-d315-4bbb-9ab6-692625d662ff</RequestId>
+  </OperationRequest>
+  <GetAssignmentsForHITResult>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <NumResults>3</NumResults>
+    <TotalNumResults>3</TotalNumResults>
+    <PageNumber>1</PageNumber>
+    <Assignment>
+      <AssignmentId>32A8TDZQEZYRV84XKZ4ZBT6JT05DKJRZ1BC42YSZ</AssignmentId>
+      <WorkerId>ADOJP7RNRYAFG</WorkerId>
+      <HITId>32A8TDZQEZYRV84XKZ4Z</HITId>
+      <AssignmentStatus>Submitted</AssignmentStatus>
+      <AutoApprovalTime>2009-11-25T05:17:32Z</AutoApprovalTime>
+      <AcceptTime>2009-10-26T05:17:18Z</AcceptTime>
+      <SubmitTime>2009-10-26T05:17:32Z</SubmitTime>
+      <Answer>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd"&gt;
+&lt;Answer&gt;
+&lt;QuestionIdentifier&gt;tweet&lt;/QuestionIdentifier&gt;
+&lt;FreeText&gt;This is my tweet!&lt;/FreeText&gt;
+&lt;/Answer&gt;
+&lt;Answer&gt;
+&lt;QuestionIdentifier&gt;Submit&lt;/QuestionIdentifier&gt;
+&lt;FreeText&gt;Submit&lt;/FreeText&gt;
+&lt;/Answer&gt;
+&lt;/QuestionFormAnswers&gt;
+</Answer>
+    </Assignment>
+        <Assignment>
+          <AssignmentId>32A8TDZQEZYRV84XKZ4ZBT6JT05DKJRZ1BC42YSX</AssignmentId>
+          <WorkerId>ADOJP7RNRYAF</WorkerId>
+          <HITId>32A8TDZQEZYRV84XKZ4Z</HITId>
+          <AssignmentStatus>Submitted</AssignmentStatus>
+          <AutoApprovalTime>2009-11-25T05:17:32Z</AutoApprovalTime>
+          <AcceptTime>2009-10-26T05:17:18Z</AcceptTime>
+          <SubmitTime>2009-10-26T05:17:32Z</SubmitTime>
+          <Answer>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd"&gt;
+    &lt;Answer&gt;
+    &lt;QuestionIdentifier&gt;tweet&lt;/QuestionIdentifier&gt;
+    &lt;FreeText&gt;Second Tweet&lt;/FreeText&gt;
+    &lt;/Answer&gt;
+    &lt;Answer&gt;
+    &lt;QuestionIdentifier&gt;Submit&lt;/QuestionIdentifier&gt;
+    &lt;FreeText&gt;Submit&lt;/FreeText&gt;
+    &lt;/Answer&gt;
+    &lt;/QuestionFormAnswers&gt;
+    </Answer>
+        </Assignment>
+            <Assignment>
+              <AssignmentId>32A8TDZQEZYRV84XKZ4ZBT6JT05DKJRZ1BC42YSY</AssignmentId>
+              <WorkerId>ADOJP7RNRYAFI</WorkerId>
+              <HITId>32A8TDZQEZYRV84XKZ4Z</HITId>
+              <AssignmentStatus>Submitted</AssignmentStatus>
+              <AutoApprovalTime>2009-11-25T05:17:32Z</AutoApprovalTime>
+              <AcceptTime>2009-10-26T05:17:18Z</AcceptTime>
+              <SubmitTime>2009-10-26T05:17:32Z</SubmitTime>
+              <Answer>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd"&gt;
+        &lt;Answer&gt;
+        &lt;QuestionIdentifier&gt;tweet&lt;/QuestionIdentifier&gt;
+        &lt;FreeText&gt;Third tweet&lt;/FreeText&gt;
+        &lt;/Answer&gt;
+        &lt;Answer&gt;
+        &lt;QuestionIdentifier&gt;Submit&lt;/QuestionIdentifier&gt;
+        &lt;FreeText&gt;Submit&lt;/FreeText&gt;
+        &lt;/Answer&gt;
+        &lt;/QuestionFormAnswers&gt;
+        </Answer>
+            </Assignment>
+  </GetAssignmentsForHITResult>
+</GetAssignmentsForHITResponse>
