@@ -1,12 +1,21 @@
+$: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require '../lib/rturk'
 
-root = File.expand_path(File.dirname(__FILE__))
-aws = YAML.load(File.open(File.join(root, 'mturk.yml')))
+aws = YAML.load(File.open(File.join(File.dirname(__FILE__), 'mturk.yml')))
 RTurk::setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
 
-hits = RTurk.GetReviewableHits
+hits = RTurk::Hit.all_reviewable
 
-response = RTurk.GetAssignments(:hit_id => '1234567890')
+puts "#{hits.size} reviewable hits. \n"
 
-p response
+unless hits.empty?
+  puts "Reviewing all assignments"
+  
+  hits.each do |hit|
+    hit.assignments.each do |assignment|
+      puts assignment.answers['tweet']
+      assignment.approve! if assignment.status == 'Submitted'
+    end
+  end
+end

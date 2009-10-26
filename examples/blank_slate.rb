@@ -1,6 +1,23 @@
+$: << File.join(File.dirname(__FILE__), '..', 'lib')
+require 'rubygems'
 require '../lib/rturk'
-root = File.expand_path(File.dirname(__FILE__))
-aws = YAML.load(File.open(File.join(root, 'mturk.yml')))
-@turk = RTurk::Requester.new(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
 
-@turk.blank_slate
+aws = YAML.load(File.open(File.join(File.dirname(__FILE__), 'mturk.yml')))
+RTurk::setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
+
+hits = RTurk::Hit.all_reviewable
+
+puts "#{hits.size} reviewable hits. \n"
+
+unless hits.empty?
+  puts "Approving all assignments and disposing of each hit!"
+  
+  hits.each do |hit|
+    hit.expire!
+    hit.assignments.each do |assignment|
+      assignment.approve!
+    end
+    hit.dispose!
+  end
+end
+

@@ -20,7 +20,7 @@ describe "getting assignments" do
   
   it "should parse and return and answer" do
     assignments = RTurk::GetAssignmentsForHIT(:hit_id => "abcd").assignments
-    assignments.first.answers['Question1'].should eql("Move to X.")
+    assignments.first.answers['tweet'].should eql("This is my tweet!")
   end
 
 end

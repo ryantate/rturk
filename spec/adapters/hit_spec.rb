@@ -19,8 +19,8 @@ describe "HIT adapter" do
   
   it "should automagically request additional information on an existing hit" do
     hit = RTurk::Hit.new(12345)
-    hit.type_id.should eql("NYVZTQ1QVKJZXCYZCZVZ")
-    hit.url.should eql("http://workersandbox.mturk.com/mturk/preview?groupId=NYVZTQ1QVKJZXCYZCZVZ")
+    hit.type_id.should eql("YGKZ2W5X6YFZ08ZRXXZZ")
+    hit.url.should eql("http://workersandbox.mturk.com/mturk/preview?groupId=YGKZ2W5X6YFZ08ZRXXZZ")
   end
   
   it "should get all reviewable hits" do
@@ -30,7 +30,7 @@ describe "HIT adapter" do
   
   it "should find assignments for a hit" do
     hits = RTurk::Hit.all_reviewable
-    hits.first.assignments.first.answers["Question1"].should eql('Move to X.')
+    hits.first.assignments.first.answers["tweet"].should eql('This is my tweet!')
   end
   
   it "should expire a hit" do

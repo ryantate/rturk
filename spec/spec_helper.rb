@@ -1,3 +1,6 @@
+SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
+$: << SPEC_ROOT
+$: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require 'spec'
 require 'fakeweb'
@@ -10,10 +13,6 @@ module FakeWeb
     
   end
 end
-
-SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
-$LOAD_PATH.unshift(SPEC_ROOT)
-$LOAD_PATH.unshift(File.join(File.expand_path(File.dirname(__FILE__)), '..', 'lib'))
 
 require 'rturk'
 # RTurk.log.level = Logger::DEBUG

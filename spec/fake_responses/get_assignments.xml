@@ -1,31 +1,35 @@
-<GetAssignmentsForHITResult>
-  <Request>
-    <IsValid>True</IsValid>
-  </Request>
-  <NumResults>1</NumResults>
-  <TotalNumResults>1</TotalNumResults>
-  <PageNumber>1</PageNumber>
-  <Assignment>
-    <AssignmentId>GYFTRHZ5J3DZREY48WNZE38ZR9RR1ZPMXGWE7WE0</AssignmentId>
-    <WorkerId>AD20WXZZP9XXK</WorkerId>
-    <HITId>GYFTRHZ5J3DZREY48WNZ</HITId>
-    <AssignmentStatus>Approved</AssignmentStatus>
-    <AutoApprovalTime>2009-08-12T19:21:54Z</AutoApprovalTime>
-    <AcceptTime>2009-07-13T19:21:40Z</AcceptTime>
-    <SubmitTime>2009-07-13T19:21:54Z</SubmitTime>
-    <ApprovalTime>2009-07-13T19:27:54Z</ApprovalTime>
-    <Answer>
-      <?xml version="1.0" encoding="UTF-8"?>
-      <QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd">
-        <Answer>
-          <QuestionIdentifier>Question1</QuestionIdentifier>
-          <FreeText>Move to X.</FreeText>
-        </Answer>
-        <Answer>
-          <QuestionIdentifier>Question 2</QuestionIdentifier>
-          <FreeText>Move to Y.</FreeText>
-        </Answer>
-      </QuestionFormAnswers>
-    </Answer>
-  </Assignment>
-</GetAssignmentsForHITResult>
+<?xml version="1.0"?>
+<GetAssignmentsForHITResponse>
+  <OperationRequest>
+    <RequestId>a964d1f8-d315-4bbb-9ab6-692625d662ff</RequestId>
+  </OperationRequest>
+  <GetAssignmentsForHITResult>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <NumResults>1</NumResults>
+    <TotalNumResults>1</TotalNumResults>
+    <PageNumber>1</PageNumber>
+    <Assignment>
+      <AssignmentId>32A8TDZQEZYRV84XKZ4ZBT6JT05DKJRZ1BC42YSZ</AssignmentId>
+      <WorkerId>ADOJP7RNRYAFG</WorkerId>
+      <HITId>32A8TDZQEZYRV84XKZ4Z</HITId>
+      <AssignmentStatus>Submitted</AssignmentStatus>
+      <AutoApprovalTime>2009-11-25T05:17:32Z</AutoApprovalTime>
+      <AcceptTime>2009-10-26T05:17:18Z</AcceptTime>
+      <SubmitTime>2009-10-26T05:17:32Z</SubmitTime>
+      <Answer>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd"&gt;
+&lt;Answer&gt;
+&lt;QuestionIdentifier&gt;tweet&lt;/QuestionIdentifier&gt;
+&lt;FreeText&gt;This is my tweet!&lt;/FreeText&gt;
+&lt;/Answer&gt;
+&lt;Answer&gt;
+&lt;QuestionIdentifier&gt;Submit&lt;/QuestionIdentifier&gt;
+&lt;FreeText&gt;Submit&lt;/FreeText&gt;
+&lt;/Answer&gt;
+&lt;/QuestionFormAnswers&gt;
+</Answer>
+    </Assignment>
+  </GetAssignmentsForHITResult>
+</GetAssignmentsForHITResponse>

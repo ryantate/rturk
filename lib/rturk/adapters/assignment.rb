@@ -37,7 +37,7 @@ module RTurk
         :accepted_at => 'AcceptTime',
         :approved_at => "ApprovalTime",
         :submitted_at => 'SubmitTime')
-        self.answers = xml_object.xpath('Answer/*').to_s
+        self.answers = xml_object.xpath('Answer').children.to_s
     end
     
     def approved_at=(time)

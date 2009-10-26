@@ -9,9 +9,9 @@ describe RTurk::GetHIT do
 
   it "should fetch the details of a HIT" do
     response = RTurk.GetHIT(:hit_id => '1234abcd')
-    response.type_id.should eql('NYVZTQ1QVKJZXCYZCZVZ')
-    response.auto_approval.should eql(2592000)
-    response.status.should eql('Assignable')
+    response.type_id.should eql('YGKZ2W5X6YFZ08ZRXXZZ')
+    response.auto_approval.should eql(3600)
+    response.status.should eql('Reviewable')
   end
 
 

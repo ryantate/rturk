@@ -39,7 +39,7 @@ module RTurk
 
     end
 
-    attr_accessor :id, :type
+    attr_accessor :id
 
     def initialize(id, type = nil)
       @id, @type = id, type
@@ -53,16 +53,32 @@ module RTurk
       @type_id ||= details.type_id
     end
     
+    def status
+      @status ||= details.status
+    end
+    
+    def expires_at
+      @expires_at ||= details.expires_at
+    end
+
+    def title
+      @title ||= details.title
+    end
+    
     def details
       @details ||= RTurk::GetHIT(:hit_id => self.id)
     end
-    
+     
     def expire!
       RTurk::ForceExpireHIT(:hit_id => self.id)
     end
     
     def dispose!
       RTurk::DisposeHIT(:hit_id => self.id) 
+    end
+    
+    def disable!
+      RTurk::DisableHIT(:hit_id => self.id) 
     end
 
 

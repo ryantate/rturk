@@ -1,47 +1,46 @@
 # Parses the GetHIT Response
 #
-# <HIT>
-#   <Request>
-#     <IsValid>True</IsValid>
-#   </Request>
-#   <HITId>ZZRZPTY4ERDZWJ868JCZ</HITId>
-#   <HITTypeId>NYVZTQ1QVKJZXCYZCZVZ</HITTypeId>
-#   <CreationTime>2009-07-07T00:56:40Z</CreationTime>
-#   <Title>Location</Title>
-#   <Description>Select the image that best represents</Description>
-#   <Question>
-#     <QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
-#       <Question>
-#         <QuestionIdentifier>Question100</QuestionIdentifier>
-#         <DisplayName>My Question</DisplayName>
-#         <IsRequired>true</IsRequired>
-#         <QuestionContent>
-#           <Binary>
-#             <MimeType>
-#               <Type>image</Type>
-#               <SubType>gif</SubType>
-#             </MimeType>
-#             <DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
-#             <AltText>The game board, with "X" to move.</AltText>
-#           </Binary>
-#         </QuestionContent>
-#         <AnswerSpecification><FreeTextAnswer/></AnswerSpecification>
-#       </Question> 
-#     </QuestionForm>
-#   </Question>
-#   <HITStatus>Assignable</HITStatus>
-#   <MaxAssignments>1</MaxAssignments>
-#   <Reward>
-#     <Amount>5.00</Amount>
-#     <CurrencyCode>USD</CurrencyCode>
-#     <FormattedPrice>$5.00</FormattedPrice>
-#   </Reward>
-#   <AutoApprovalDelayInSeconds>2592000</AutoApprovalDelayInSeconds>
-#   <Expiration>2009-07-14T00:56:40Z</Expiration>
-#   <AssignmentDurationInSeconds>30</AssignmentDurationInSeconds>
-#   <NumberOfSimilarHITs>1</NumberOfSimilarHITs>
-#   <HITReviewStatus>NotReviewed</HITReviewStatus>
-# </HIT>
+# <?xml version="1.0"?>
+# <GetHITResponse>
+#   <OperationRequest>
+#     <RequestId>49341251-fcbd-45c3-ab98-8fbe2e4d8060</RequestId>
+#   </OperationRequest>
+#   <HIT>
+#     <Request>
+#       <IsValid>True</IsValid>
+#     </Request>
+#     <HITId>GR4R3HY3YGBZXDCAPJWZ</HITId>
+#     <HITTypeId>YGKZ2W5X6YFZ08ZRXXZZ</HITTypeId>
+#     <CreationTime>2009-06-25T04:21:17Z</CreationTime>
+#     <Title>Write a twitter update</Title>
+#     <Description>Simply write a twitter update for me</Description>
+#     <Question>&lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;
+#   &lt;ExternalURL&gt;http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo&lt;/ExternalURL&gt; 
+#   &lt;FrameHeight&gt;400&lt;/FrameHeight&gt;
+# &lt;/ExternalQuestion&gt;
+# </Question>
+#     <Keywords>twitter, blogging, writing, english</Keywords>
+#     <HITStatus>Reviewable</HITStatus>
+#     <MaxAssignments>1</MaxAssignments>
+#     <Reward>
+#       <Amount>0.10</Amount>
+#       <CurrencyCode>USD</CurrencyCode>
+#       <FormattedPrice>$0.10</FormattedPrice>
+#     </Reward>
+#     <AutoApprovalDelayInSeconds>3600</AutoApprovalDelayInSeconds>
+#     <Expiration>2009-06-25T05:21:17Z</Expiration>
+#     <AssignmentDurationInSeconds>3600</AssignmentDurationInSeconds>
+#     <NumberOfSimilarHITs>0</NumberOfSimilarHITs>
+#     <RequesterAnnotation>OptionalNote</RequesterAnnotation>
+#     <QualificationRequirement>
+#       <QualificationTypeId>000000000000000000L0</QualificationTypeId>
+#       <Comparator>GreaterThan</Comparator>
+#       <IntegerValue>90</IntegerValue>
+#       <RequiredToPreview>0</RequiredToPreview>
+#     </QualificationRequirement>
+#     <HITReviewStatus>NotReviewed</HITReviewStatus>
+#   </HIT>
+# </GetHITResponse>
 
 module RTurk
   
@@ -54,7 +53,7 @@ module RTurk
       @raw_xml = response
       @xml = Nokogiri::XML(@raw_xml)
       raise_errors
-      map_content(@xml.children,
+      map_content(@xml.xpath('//HIT'),
         :id => 'HITId',
         :type_id => 'HITTypeId',
         :status => 'HITStatus',
