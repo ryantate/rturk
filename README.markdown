@@ -11,7 +11,7 @@ You'd be better off with amazon's official library, in all its XML cruftiness.
 
 ## Installation
 
-    sudo gem install markpercival-rturk --source http://gemcutter.org
+    sudo gem install rturk --source http://gemcutter.org
     
 ## Use
 
@@ -29,14 +29,39 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
       hit.qualifications.approval_rate, {:gt => 80}
     end
     
-    hit.id #=>  'abcde1234567890'
+    p hit.url #=>  'https://workersandbox.mturk.com:443/mturk/preview?groupId=Q29J3XZQ1ASZH5YNKZDZ'
     
 ### Reviewing and Approving hits HIT's
 
-    RTurk::Hit.all_reviewable do |hit|
-      hit.assignments do |assignment|
-        p assignment.answer['tags']
-        assignment.approve!
+    hits = RTurk::Hit.all_reviewable
+
+    puts "#{hits.size} reviewable hits. \n"
+
+    unless hits.empty?
+      puts "Reviewing all assignments"
+  
+      hits.each do |hit|
+        hit.assignments.each do |assignment|
+          puts assignment.answers['tags']
+          assignment.approve! if assignment.status == 'Submitted'
+        end
+      end
+    end
+  
+### Wiping all your hits out
+    hits = RTurk::Hit.all_reviewable
+
+    puts "#{hits.size} reviewable hits. \n"
+
+    unless hits.empty?
+      puts "Approving all assignments and disposing of each hit!"
+  
+      hits.each do |hit|
+        hit.expire!
+        hit.assignments.each do |assignment|
+          assignment.approve!
+        end
+        hit.dispose!
       end
     end
     
