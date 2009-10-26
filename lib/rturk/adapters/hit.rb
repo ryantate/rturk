@@ -48,22 +48,6 @@ module RTurk
     def assignments
       RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments
     end
-
-    def type_id
-      @type_id ||= details.type_id
-    end
-    
-    def status
-      @status ||= details.status
-    end
-    
-    def expires_at
-      @expires_at ||= details.expires_at
-    end
-
-    def title
-      @title ||= details.title
-    end
     
     def details
       @details ||= RTurk::GetHIT(:hit_id => self.id)
@@ -90,6 +74,11 @@ module RTurk
       end
     end
 
+    def method_missing(method, *args)
+      if self.details.respond_to?(method)
+        self.details.send(method, *args)
+      end
+    end
 
 
   end
