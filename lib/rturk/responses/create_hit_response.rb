@@ -15,7 +15,7 @@
 # </CreateHITResponse>
 
 module RTurk
-  class CreateHitResponse < Response
+  class CreateHITResponse < Response
     
     def hit_id
       @xml.xpath('//HITId').inner_text
@@ -23,6 +23,10 @@ module RTurk
       
     def hit_type_id
       @xml.xpath('//HITTypeId').inner_text
+    end
+    
+    def hit
+      RTurk::Hit.new(self.hit_id, self.hit_type_id)
     end
     
   end

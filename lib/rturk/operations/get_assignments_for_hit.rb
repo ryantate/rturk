@@ -1,5 +1,5 @@
 module RTurk
-  class GetAssignments < Operation
+  class GetAssignmentsForHIT < Operation
 
     operation 'GetAssignmentsForHIT'
     require_params :hit_id
@@ -7,7 +7,7 @@ module RTurk
     attr_accessor :hit_id, :page_size, :page_number
     
     def parse(xml)
-      RTurk::GetAssignmentsResponse.new(xml)
+      GetAssignmentsForHITResponse.new(xml)
     end
     
     def to_params
@@ -17,8 +17,8 @@ module RTurk
     end
 
   end
-  def self.GetAssignments(*args, &blk)
-    RTurk::GetAssignments.create(*args, &blk)
+  def self.GetAssignmentsForHIT(*args, &blk)
+    RTurk::GetAssignmentsForHIT.create(*args, &blk)
   end
 
 end

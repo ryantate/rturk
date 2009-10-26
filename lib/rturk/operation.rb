@@ -55,14 +55,20 @@ module RTurk
       # Override this in your operation if you like
       RTurk::Response.new(xml)
     end
+    
+    def to_params
+      {}# Override to include extra params
+    end
 
     def request
       if self.respond_to?(:validate)
         validate
       end
       check_params
-      params = to_params.merge(self.default_params)
-      parse(RTurk.Request(params))
+      params = self.default_params
+      params = to_params.merge(params)
+      response = RTurk.Request(params)
+      parse(response)
     end
 
     def check_params
