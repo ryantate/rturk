@@ -43,7 +43,10 @@ module RTurk
       end
     end
     
-    def[](key)
+    
+    # @param [<String, Symbol>] The string or symbol of the question name
+    # @return [String] The value of the question name
+    def [](key)
       @answer_hash[key]
     end
     

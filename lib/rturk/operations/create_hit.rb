@@ -6,10 +6,19 @@ module RTurk
     attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
     attr_accessor :lifetime, :duration, :auto_approval, :note, :hit_type_id
 
+    # @param [Symbol, Hash] qualification_key opts The unique qualification key
+    # @option opts [Hash] :comparator A comparator and value e.g. :gt => 80
+    # @option opts [Boolean] :boolean true or false
+    # @option opts [Symbol] :exists A comparator without a value
+    # @return [RTurk::Qualifications]
     def qualifications
       @qualifications ||= RTurk::Qualifications.new
     end
-
+    
+    # Gives us access to a question builder attached to this HIT
+    #
+    # @param [String, Hash] URL Params, if none is passed, simply returns the question
+    # @return [RTurk::Question] The question if instantiated or nil
     def question(*args)
       unless args.empty?
         @question ||= RTurk::Question.new(*args)
@@ -19,8 +28,10 @@ module RTurk
     end
     
     # Returns parameters specific to this instance
-    # Any class level default parameters get loaded in at
-    # the time of request
+    #
+    # @return [Hash]
+    #   Any class level default parameters get loaded in at
+    #   the time of request
     def to_params
       params = map_params.merge(qualifications.to_params)
     end
@@ -29,9 +40,7 @@ module RTurk
       RTurk::CreateHITResponse.new(response)
     end
     
-    # We need some basic checking to see if this hit is valid to send.
-    # For example, we shouldn't even bother sending if we are missing required
-    # parameters such as a question.
+    # More complicated validation run before request
     #
     def validate
       if hit_type_id

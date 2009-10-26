@@ -1,15 +1,23 @@
 module RTurk
+  
+  # == Reject Assignment
+  # 
+  # Operation to reject a workers assignment, requires a reason
+  
   class RejectAssignment < Operation
 
     operation 'RejectAssignment'
+    attr_accessor :assignment_id, :feedback
+    require_params :assignment_id, :feedback
     
-    def parse(xml)
-      RTurk::RejectAssignmentResponse.new(xml).balance
+    def to_params
+      {'AssignmentId' => self.assignment_id,
+        'RequesterFeedback' => self.feedback}
     end
     
   end
-  def self.RejectAssignment
-    RTurk::RejectAssignment.create
+  def self.RejectAssignment(*args)
+    RTurk::RejectAssignment.create(*args)
   end
 
 end

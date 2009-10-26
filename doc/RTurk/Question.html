@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: RTurk::Question</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class RTurk_Question">
+  <h1 class="title">Class: RTurk::Question</h1>
+  <div class="section attributes">
+  <h1>Attributes</h1>
+
+  
+    <div class="instance">
+      <h2>Instance Attributes</h2>
+      <table>
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>frame_height</span>
+          </td>
+          <td class="readwrite">
+            [<span id='frame_height-instance_method'>R</span><span id='frame_height=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Sets the attribute <tt>frame_height</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>url_params</span>
+          </td>
+          <td class="readwrite">
+            [<span id='url_params-instance_method'>R</span><span id='url_params=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Sets the attribute <tt>url_params</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+        
+        <tr class="">
+          <th class='signature'>
+            <span class='name'>url</span>
+          </td>
+          <td class="readwrite">
+            [R<span id='url=-instance_method'>W</span>] 
+          </td>
+          <td class="visibility">
+            public
+          </td>
+          <td class="docstring">
+            <p>
+Sets the attribute <tt>url</tt>.
+</p>
+
+            
+          </td>
+        </tr>
+        
+      
+      </table>
+    </div>
+  
+</div>
+<div class="section constants">
+  
+</div><div class="section constructor">
+<h1>Constructor Summary</h1>
+  <div id="initialize-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>initialize</span><span class='args'>(url, opts = {})</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+9
+10
+11
+12
+13</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='@url ivar id'>@url</span> <span class='assign token'>=</span> <span class='url identifier id'>url</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='frame_height identifier id'>frame_height</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:frame_height</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='integer val'>400</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='url_params identifier id'>url_params</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary instance public">
+    <h1>Public Instance Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#params-instance_method" title="#params">#params</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#params%3D-instance_method" title="#params=">#params=</a></span><span class='args'>(param_set)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#querystring-instance_method" title="#querystring">#querystring</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#to_params-instance_method" title="#to_params">#to_params</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a href="#url-instance_method" title="#url">#url</a></span><span class='args'></span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Returns the value of attribute <tt>url</tt>.
+</p>
+
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+<div class="section methoddetails instance public">
+  <h1>Public Instance Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>params</h3>
+</div><div id="params-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>params</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+28
+29
+30</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='params identifier id'>params</span>
+  <span class='@url_params ivar id'>@url_params</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>params=</h3>
+</div><div id="params=-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>params=</span><span class='args'>(param_set)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+32
+33
+34</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='params= identifier id'>params=</span><span class='lparen token'>(</span><span class='param_set identifier id'>param_set</span><span class='rparen token'>)</span>
+  <span class='@url_params ivar id'>@url_params</span> <span class='assign token'>=</span> <span class='param_set identifier id'>param_set</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>querystring</h3>
+</div><div id="querystring-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>querystring</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+15
+16
+17</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='querystring identifier id'>querystring</span>
+  <span class='@url_params ivar id'>@url_params</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span> <span class='lbrack token'>[</span><span class='CGI constant id'>CGI</span><span class='dot token'>.</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='CGI constant id'>CGI</span><span class='dot token'>.</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'='</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'&amp;'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>to_params</h3>
+</div><div id="to_params-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>to_params</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="raise">
+  <h3>Raises:</h3>
+  <dl>
+  
+    <dt>
+      
+        <span class='type'>[<tt><a href="MissingParameters.html" title="RTurk::MissingParameters">RTurk::MissingParameters</a></tt>]</span>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'></span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 36</span>
+
+<span class='def def kw'>def</span> <span class='to_params identifier id'>to_params</span>
+  <span class='raise identifier id'>raise</span> <span class='RTurk constant id'>RTurk</span><span class='colon2 op'>::</span><span class='MissingParameters constant id'>MissingParameters</span><span class='comma token'>,</span> <span class='string val'>&quot;needs a url to build an external question&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='@url ivar id'>@url</span>
+  <span class='comment val'># TODO: update the xmlns schema... maybe</span>
+  <span class='xml identifier id'>xml</span> <span class='assign token'>=</span> <span class='string val'>&quot;&lt;ExternalQuestion xmlns=\&quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\&quot;&gt;\n&lt;ExternalURL&gt;\#{url}&lt;/ExternalURL&gt;\n&lt;FrameHeight&gt;\#{frame_height}&lt;/FrameHeight&gt;\n&lt;/ExternalQuestion&gt;\n&quot;</span>
+  <span class='xml identifier id'>xml</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>url</h3>
+</div><div id="url-instance_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>url</span><span class='args'></span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Returns the value of attribute <tt>url</tt>
+</p>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/rturk/builders/question_builder.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='url identifier id'>url</span>
+  <span class='unless unless kw'>unless</span> <span class='querystring identifier id'>querystring</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='comment val'># slam the params onto url, if url already has params, add 'em with a &amp;</span>
+    <span class='@url ivar id'>@url</span><span class='dot token'>.</span><span class='index identifier id'>index</span><span class='lparen token'>(</span><span class='string val'>'?'</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='dstring node'>&quot;#{@url}&amp;#{querystring}&quot;</span> <span class='colon op'>:</span> <span class='dstring node'>&quot;#{@url}?#{querystring}&quot;</span> 
+  <span class='else else kw'>else</span>
+    <span class='@url ivar id'>@url</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Sunday, October 25 2009 at 08:58:57 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

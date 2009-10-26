@@ -1,7 +1,24 @@
 module RTurk
 
-  # Here's the basic way we'll interact with MTurk for most tasks.
+  # =The RTurk Hit Adapter
+  # 
+  # Lets us interact with Mechanical Turk without having to know all the operations.
   #
+  # == Basic usage
+  # @example
+  #     require 'rturk'
+  # 
+  #     RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
+  #     hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
+  #       hit.assignments = 2
+  #       hit.question("http://myapp.com/turkers/add_tags")
+  #       hit.reward = 0.05
+  #       hit.qualifications.approval_rate, {:gt => 80}
+  #     end
+  #     
+  #     hit.url #=>  'http://mturk.amazonaws.com/?group_id=12345678'
+  
+  
   class Hit
     include RTurk::XmlUtilities
 

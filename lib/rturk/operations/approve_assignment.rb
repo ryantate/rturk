@@ -1,6 +1,4 @@
 # Operation to approve an assignment
-# @params [Hash] opts
-# @options :assignment_id
 #
 # http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester
 # &AWSAccessKeyId=[the Requester's Access Key ID]
@@ -23,8 +21,8 @@ module RTurk
     end
     
   end
-  def self.ApproveAssignment
-    RTurk::ApproveAssignment.create
+  def self.ApproveAssignment(*args)
+    RTurk::ApproveAssignment.create(*args)
   end
 
 end

@@ -53,15 +53,15 @@ module RTurk
     end
     
     def approve!(feedback = nil)
-      ApproveAssignment(:assignment_id => self.id, :feedback => feedback)
+      RTurk::ApproveAssignment(:assignment_id => self.id, :feedback => feedback)
     end
     
     def reject!(reason)
-      
+      RTurk::ApproveAssignment(:assignment_id => self.id, :feedback => reason)
     end
     
     def bonus!(amount, reason)
-      
+     RTurk::GrantBonus(:amount, :feedback => reason)
     end
     
     def answers=(answer_xml)
