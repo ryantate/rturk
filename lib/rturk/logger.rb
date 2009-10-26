@@ -17,4 +17,8 @@ module RTurk
     end
   end
   
+  def self.Logger(*args)
+    RTurk::Logger.logger(*args)
+  end
+  
 end

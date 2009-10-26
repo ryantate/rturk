@@ -70,7 +70,7 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
 ### Logging
 Want to see what's going on - enable logging.
 
-    RTurk::Logger.level = Logger::DEBUG
+    RTurk::log.level = Logger::DEBUG
     
 ## Nitty Gritty
 
