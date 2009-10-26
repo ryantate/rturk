@@ -1,9 +1,11 @@
 $: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require '../lib/rturk'
+require 'yaml'
 
 aws = YAML.load(File.open(File.join(File.dirname(__FILE__), 'mturk.yml')))
-RTurk::setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
+RTurk::setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'])
+file = File.open(File.join(File.dirname(__FILE__), 'answers.yml'), 'w')
 
 hits = RTurk::Hit.all_reviewable
 
@@ -14,7 +16,7 @@ unless hits.empty?
   
   hits.each do |hit|
     hit.assignments.each do |assignment|
-      puts assignment.answers['tweet']
+      file.puts assignment.answers.to_hash.to_yaml
       assignment.approve! if assignment.status == 'Submitted'
     end
   end
