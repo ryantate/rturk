@@ -30,7 +30,7 @@ module RTurk
         signature = sign(credentials.secret_key, params['Service'], params['Operation'], params["Timestamp"])
         params['Signature'] = signature
         querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
-        RTurk.log.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
+        RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
         RestClient.get("#{credentials.host}?#{querystring}")
       end
 

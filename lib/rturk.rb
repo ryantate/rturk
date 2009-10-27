@@ -16,7 +16,7 @@ module RTurk
       @host == SANDBOX
     end
     
-    def log
+    def logger
       RTurk::Logger.logger
     end
 
