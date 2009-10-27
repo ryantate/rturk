@@ -36,13 +36,18 @@ module RTurk
       def all_reviewable
         RTurk.GetReviewableHITs.hits
       end
+      
+      def all
+        RTurk.SearchHITs.hits
+      end
 
     end
 
     attr_accessor :id
 
-    def initialize(id, type = nil)
+    def initialize(id, type = nil, xml_obj = nil)
       @id, @type = id, type
+      if xml_obj
     end
 
     def assignments
