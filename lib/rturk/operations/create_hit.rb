@@ -1,8 +1,6 @@
 module RTurk
   class CreateHIT < Operation
     
-    operation 'CreateHIT'
-
     attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
     attr_accessor :lifetime, :duration, :auto_approval, :note, :hit_type_id
 

@@ -2,7 +2,6 @@
 module RTurk
   class DisableHIT < Operation
     
-    operation 'DisableHIT'
     require_params :hit_id
     attr_accessor :hit_id
     

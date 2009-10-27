@@ -11,7 +11,6 @@
 module RTurk
   class ApproveAssignment < Operation
 
-    operation 'ApproveAssignment'
     attr_accessor :assignment_id, :feedback
     require_params :assignment_id
     

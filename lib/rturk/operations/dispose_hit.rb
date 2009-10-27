@@ -2,7 +2,6 @@
 module RTurk
   class DisposeHIT < Operation
     
-    operation 'DisposeHIT'
     require_params :hit_id
     attr_accessor :hit_id
     

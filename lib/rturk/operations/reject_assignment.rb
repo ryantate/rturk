@@ -6,7 +6,6 @@ module RTurk
   
   class RejectAssignment < Operation
 
-    operation 'RejectAssignment'
     attr_accessor :assignment_id, :feedback
     require_params :assignment_id, :feedback
     

@@ -16,7 +16,7 @@ module RTurk
         @required_params.push(*args)
       end
 
-      def operation(op)
+      def set_operation(op)
         default_params.merge!('Operation' => op)
       end
 
@@ -65,7 +65,8 @@ module RTurk
         validate
       end
       check_params
-      params = self.default_params
+      params = {'Operation' => self.class.to_s.gsub('RTurk::', '')}
+      params = params.merge(self.default_params)
       params = to_params.merge(params)
       response = RTurk.Request(params)
       parse(response)

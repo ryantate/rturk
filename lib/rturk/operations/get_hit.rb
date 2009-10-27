@@ -1,7 +1,6 @@
 module RTurk
   class GetHIT < Operation
 
-    operation 'GetHIT'
     require_params :hit_id
     attr_accessor :hit_id
     

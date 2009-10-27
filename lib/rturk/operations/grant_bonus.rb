@@ -7,7 +7,6 @@ module RTurk
   
   class GrantBonus < Operation
 
-    operation 'GrantBonus'
     attr_accessor :assignment_id, :feedback, :worker_id, :amount, :currency
     require_params :assignment_id, :worker_id, :amount, :feedback
     

@@ -1,7 +1,6 @@
 module RTurk
   class ForceExpireHIT < Operation
 
-    operation 'ForceExpireHIT'
     require_params :hit_id
     attr_accessor :hit_id
     

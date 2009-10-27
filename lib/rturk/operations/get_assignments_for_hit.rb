@@ -1,7 +1,6 @@
 module RTurk
   class GetAssignmentsForHIT < Operation
 
-    operation 'GetAssignmentsForHIT'
     require_params :hit_id
     
     attr_accessor :hit_id, :page_size, :page_number
