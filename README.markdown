@@ -24,9 +24,10 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
     RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
     hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
       hit.assignments = 2
+      hit.description = 'blah'
       hit.question("http://myapp.com/turkers/add_tags")
       hit.reward = 0.05
-      hit.qualifications.approval_rate, {:gt => 80}
+      hit.qualifications.add :approval_rate, { :gt => 80 }
     end
     
     p hit.url #=>  'https://workersandbox.mturk.com:443/mturk/preview?groupId=Q29J3XZQ1ASZH5YNKZDZ'
