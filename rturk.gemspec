@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "2.0.0"
+  s.version = "2.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = %q{2009-10-26}
+  s.date = %q{2009-10-27}
   s.email = %q{mark@mpercival.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
      "lib/rturk/macros.rb",
      "lib/rturk/operation.rb",
      "lib/rturk/operations/approve_assignment.rb",
+     "lib/rturk/operations/block_worker.rb",
      "lib/rturk/operations/create_hit.rb",
      "lib/rturk/operations/disable_hit.rb",
      "lib/rturk/operations/dispose_hit.rb",
@@ -51,6 +52,7 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/get_reviewable_hits.rb",
      "lib/rturk/operations/grant_bonus.rb",
      "lib/rturk/operations/reject_assignment.rb",
+     "lib/rturk/operations/unblock_worker.rb",
      "lib/rturk/requester.rb",
      "lib/rturk/response.rb",
      "lib/rturk/responses/create_hit_response.rb",
@@ -68,19 +70,23 @@ Gem::Specification.new do |s|
      "spec/builders/qualifications_spec.rb",
      "spec/builders/question_spec.rb",
      "spec/fake_responses/approve_assignment.xml",
+     "spec/fake_responses/block_worker.xml",
      "spec/fake_responses/create_hit.xml",
      "spec/fake_responses/disable_hit.xml",
      "spec/fake_responses/dispose_hit.xml",
      "spec/fake_responses/force_expire_hit.xml",
      "spec/fake_responses/get_account_balance.xml",
      "spec/fake_responses/get_assignments.xml",
+     "spec/fake_responses/get_assignments_multiple.xml",
      "spec/fake_responses/get_hit.xml",
      "spec/fake_responses/get_reviewable_hits.xml",
      "spec/fake_responses/grant_bonus.xml",
      "spec/fake_responses/invalid_credentials.xml",
      "spec/fake_responses/reject_assignment.xml",
+     "spec/fake_responses/unblock_worker.xml",
      "spec/mturk.sample.yml",
      "spec/operations/approve_assignment_spec.rb",
+     "spec/operations/block_worker_spec.rb",
      "spec/operations/create_hit_spec.rb",
      "spec/operations/disable_hit_spec.rb",
      "spec/operations/dispose_hit_spec.rb",
@@ -91,6 +97,7 @@ Gem::Specification.new do |s|
      "spec/operations/get_reviewable_hits_spec.rb",
      "spec/operations/grant_bonus_spec.rb",
      "spec/operations/reject_assignment_spec.rb",
+     "spec/operations/unblock_worker_spec.rb",
      "spec/requester_spec.rb",
      "spec/response_spec.rb",
      "spec/rturk_spec.rb",
@@ -111,6 +118,7 @@ Gem::Specification.new do |s|
      "spec/builders/qualifications_spec.rb",
      "spec/builders/question_spec.rb",
      "spec/operations/approve_assignment_spec.rb",
+     "spec/operations/block_worker_spec.rb",
      "spec/operations/create_hit_spec.rb",
      "spec/operations/disable_hit_spec.rb",
      "spec/operations/dispose_hit_spec.rb",
@@ -121,6 +129,7 @@ Gem::Specification.new do |s|
      "spec/operations/get_reviewable_hits_spec.rb",
      "spec/operations/grant_bonus_spec.rb",
      "spec/operations/reject_assignment_spec.rb",
+     "spec/operations/unblock_worker_spec.rb",
      "spec/requester_spec.rb",
      "spec/response_spec.rb",
      "spec/rturk_spec.rb",
