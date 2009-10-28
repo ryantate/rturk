@@ -20,12 +20,10 @@ module RTurk
   
   class GetReviewableHITsResponse < Response
     
-    def hits
-      @hits ||= []
-      @xml.xpath('//HIT').each do |hit_xml|
-        @hits << RTurk::Hit.new(hit_xml.inner_text.strip)
+    def hit_ids
+      @xml.xpath('//HIT').inject([]) do |arr, hit_xml|
+        arr << hit_xml.inner_text.strip; arr
       end
-      @hits
     end
     
   end

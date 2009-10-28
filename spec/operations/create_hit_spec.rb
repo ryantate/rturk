@@ -31,7 +31,7 @@ describe "using mechanical turk with RTurk" do
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
     end
-    response.hit.url.should eql('http://workersandbox.mturk.com/mturk/preview?groupId=YGKZ2W5X6YFZ08ZRXXZZ')
+    response.hit.url.should eql('http://workersandbox.mturk.com/mturk/preview?groupId=NYVZTQ1QVKJZXCYZCZVZ')
   end
 
   it "should let me create a hit with just option arguments" do
@@ -60,7 +60,7 @@ describe "using mechanical turk with RTurk" do
     end
     response.is_a?(RTurk::CreateHITResponse).should be_true
     response.hit_id.should == 'GBHZVQX3EHXZ2AYDY2T0'
-    response.hit_type_id.should == 'NYVZTQ1QVKJZXCYZCZVZ'
+    response.type_id.should == 'NYVZTQ1QVKJZXCYZCZVZ'
   end
 
 end

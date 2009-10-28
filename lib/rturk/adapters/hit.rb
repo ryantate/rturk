@@ -26,7 +26,7 @@ module RTurk
 
       def create(*args, &blk)
         response = RTurk::CreateHIT(*args, &blk)
-        response.hit
+        new(response.hit_id, response)
       end
       
       def find(id)
@@ -34,28 +34,35 @@ module RTurk
       end
       
       def all_reviewable
-        RTurk.GetReviewableHITs.hits
+        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
+          arr << new(hit_id); arr
+        end
       end
       
       def all
-        RTurk.SearchHITs.hits
+        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
+          arr << new(hit.id, hit); arr;
+        end
       end
 
     end
 
-    attr_accessor :id
+    attr_accessor :id, :source
 
-    def initialize(id, type = nil, xml_obj = nil)
-      @id, @type = id, type
-      if xml_obj
+    def initialize(id, source = nil)
+      @id, @source = id, source
     end
 
     def assignments
-      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments
+      a = [] 
+      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments.each do |assignment|
+        a << RTurk::Assignment.new(assignment.id, assignment)
+      end
+      a
     end
     
-    def details
-      @details ||= RTurk::GetHIT(:hit_id => self.id)
+    def source
+      @source ||= RTurk::GetHIT(:hit_id => self.id)
     end
      
     def expire!
@@ -80,8 +87,8 @@ module RTurk
     end
 
     def method_missing(method, *args)
-      if self.details.respond_to?(method)
-        self.details.send(method, *args)
+      if self.source.respond_to?(method)
+        self.source.send(method, *args)
       end
     end
 
