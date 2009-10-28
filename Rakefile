@@ -1,6 +1,14 @@
 require 'rubygems'
 require 'rake'
-require 'yard'
+
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new do |t|
+    t.files   = ['lib/**/*.rb', 'lib/**/*.rb']
+  end
+rescue LoadError
+  puts "YARD is not available. For generating docs, you'll need to sudo gem install yard"
+end
 
 begin
   require 'jeweler'
@@ -48,6 +56,4 @@ Rake::RDocTask.new do |rdoc|
 end
 
 
-YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb', 'lib/**/*.rb']
-end
+
