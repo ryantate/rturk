@@ -4,7 +4,7 @@ module RTurk
 
   class Assignment
 
-    attr_accessor :id, :attributes, :source
+    attr_reader :id, :source
 
     def initialize(id, source = nil)
       @id, @source = id, source

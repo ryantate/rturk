@@ -20,7 +20,7 @@ module RTurk
   
   
   class Hit
-    include RTurk::XmlUtilities
+    include RTurk::XMLUtilities
 
     class << self;
 
@@ -41,7 +41,7 @@ module RTurk
       
       def all
         RTurk.SearchHITs.hits.inject([]) do |arr, hit|
-          arr << new(hit.hit_id, hit); arr;
+          arr << new(hit.id, hit); arr;
         end
       end
 
@@ -54,15 +54,13 @@ module RTurk
     end
 
     def assignments
-      a = [] 
-      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments.each do |assignment|
-        a << RTurk::Assignment.new(assignment.id, assignment)
+      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments.inject([]) do |arr,assignment|
+        arr << RTurk::Assignment.new(assignment.assignment_id, assignment); arr
       end
-      a
     end
     
-    def source
-      @source ||= RTurk::GetHIT(:hit_id => self.id)
+    def details
+      @details ||= RTurk::GetHIT(:hit_id => self.id)
     end
      
     def expire!
@@ -87,8 +85,10 @@ module RTurk
     end
 
     def method_missing(method, *args)
-      if self.source.respond_to?(method)
-        self.source.send(method, *args)
+      if @source.respond_to?(method)
+        @source.send(method, *args)
+      elsif self.details.respond_to?(method)
+        self.details.send(method)
       end
     end
 

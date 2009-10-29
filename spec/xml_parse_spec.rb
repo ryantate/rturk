@@ -1,11 +1,11 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 
-describe RTurk::XmlUtilities do
+describe RTurk::XMLUtilities do
   
   before(:all) do
     class XMLTest
-      include RTurk::XmlUtilities
+      include RTurk::XMLUtilities
       def xml
       <<-XML
       <foo>

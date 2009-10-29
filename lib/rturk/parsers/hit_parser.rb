@@ -21,13 +21,16 @@
 
 module RTurk
   
-  class HITParser
-    include XmlUtilities
+  class HITParser < RTurk::Parser
+    
+    attr_reader :id, :type_id, :status, :title, :created_at, :expires_at, :assignments_duration, 
+                :reward_amount, :max_assignments, :pending_assignments, :available_assignments, 
+                :completed_assignments, :auto_approval_delay
     
     def initialize(hit_xml)
       @xml_obj = hit_xml
       map_content(@xml_obj,
-                  :hit_id => 'HITId',
+                  :id => 'HITId',
                   :type_id => 'HITTypeId',
                   :status => 'HITStatus',
                   :title => 'Title',
@@ -42,18 +45,6 @@ module RTurk
                   :auto_approval_delay => 'AutoApprovalDelayInSeconds')
     end
     
-    def method_missing(method)
-      if @attributes && @attributes.include?(method)
-        @attributes[method]
-      end
-    end
-    
-    def respond_to?(method)
-      if @attributes
-        @attributes.include?(method)
-      end
-    end
-
   end
   
 end

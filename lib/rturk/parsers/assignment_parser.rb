@@ -21,15 +21,15 @@
 
 module RTurk
   
-  class AssignmentParser
-    include RTurk::XmlUtilities
+  class AssignmentParser < RTurk::Parser
     
-    attr_accessor :id, :status, :worker_id
-    
+    attr_reader :assignment_id, :hit_id, :worker_id, :status, :accepted_at, :submitted_at,
+                :approved_at, :auto_approval_time
+
     def initialize(assignment_xml)
       @xml_obj = assignment_xml
       map_content(@xml_obj,
-                  :id => 'AssignmentId',
+                  :assignment_id => 'AssignmentId',
                   :hit_id => 'HITId',
                   :worker_id => 'WorkerId',
                   :status => 'AssignmentStatus',
@@ -42,12 +42,6 @@ module RTurk
     
     def answers
       AnswerParser.parse(@xml_obj.xpath('Answer').children)
-    end
-    
-    def method_missing(method)
-      if @attributes && @attributes.include?(method)
-        @attributes[method]
-      end
     end
     
   end

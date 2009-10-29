@@ -1,4 +1,4 @@
-module RTurk::XmlUtilities
+module RTurk::XMLUtilities
 
   def xml_to_hash(noko_xml)
     hash = {}
@@ -26,8 +26,7 @@ module RTurk::XmlUtilities
       if self.respond_to?("#{k.to_s}=")
         self.send("#{k.to_s}=", val)
       else
-        @attributes ||= {}
-        @attributes[k] = val
+        self.instance_variable_set("@#{k}", val)
       end
     end
   end
