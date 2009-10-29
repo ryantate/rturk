@@ -41,7 +41,7 @@ module RTurk
       
       def all
         RTurk.SearchHITs.hits.inject([]) do |arr, hit|
-          arr << new(hit.id, hit); arr;
+          arr << new(hit.hit_id, hit); arr;
         end
       end
 

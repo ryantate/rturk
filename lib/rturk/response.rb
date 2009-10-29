@@ -54,5 +54,11 @@ module RTurk
       xml_to_hash(@xml)
     end
     
+    def method_missing(method)
+      if @attributes && @attributes.include?(method)
+        @attributes[method]
+      end
+    end
+    
   end
 end

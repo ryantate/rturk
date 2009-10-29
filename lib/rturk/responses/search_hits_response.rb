@@ -56,7 +56,7 @@ module RTurk
       return @hits if @hits
       @hits = []
       @xml.xpath('//HIT').each do |hit_xml|
-        @hits << HitParser.new(hit_xml)
+        @hits << HITParser.new(hit_xml)
       end
       @hits
     end

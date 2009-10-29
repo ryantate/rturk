@@ -65,7 +65,7 @@ module RTurk
         validate
       end
       check_params
-      params = {'Operation' => self.class.to_s.gsub('RTurk::', '')}
+      params = {'Operation' => self.class.to_s.gsub(/^\w+::/,'')}
       params = params.merge(self.default_params)
       params = to_params.merge(params)
       response = RTurk.Request(params)

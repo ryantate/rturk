@@ -67,14 +67,6 @@ module RTurk
       )
     end
     
-    def expires_at=(time)
-      @expires_at = Time.parse(time)
-    end
-    
-    def auto_approval=(seconds)
-      @auto_approval = seconds.to_i
-    end
-    
   end
   
 end

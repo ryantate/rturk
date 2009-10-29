@@ -21,55 +21,39 @@
 
 module RTurk
   
-  class HitParser
+  class HITParser
     include XmlUtilities
-    
-    attr_accessor :id, :type_id, :title, :description, :status
     
     def initialize(hit_xml)
       @xml_obj = hit_xml
       map_content(@xml_obj,
-                  :id => 'HITId',
+                  :hit_id => 'HITId',
                   :type_id => 'HITTypeId',
                   :status => 'HITStatus',
-                  :title => 'Title')
+                  :title => 'Title',
+                  :created_at => 'CreationTime',
+                  :expires_at => 'Expiration',
+                  :assignments_duration => 'AssignmentDurationInSeconds',
+                  :reward_amount => 'Reward/Amount',
+                  :max_assignments => 'MaxAssignments',
+                  :pending_assignments => 'NumberOfAssignmentsPending',
+                  :available_assignments => 'NumberOfAssignmentsAvailable',
+                  :completed_assignments => 'NumberOfAssignmentsCompleted',
+                  :auto_approval_delay => 'AutoApprovalDelayInSeconds')
     end
     
-    def created_at
-      @created_at ||= Time.parse(@xml_obj.xpath('CreationTime').to_s)
+    def method_missing(method)
+      if @attributes && @attributes.include?(method)
+        @attributes[method]
+      end
+    end
+    
+    def respond_to?(method)
+      if @attributes
+        @attributes.include?(method)
+      end
     end
 
-    def expires_at
-      @expires_at ||= Time.parse(@xml_obj.xpath('Expiration').to_s)
-    end
-    
-    def assignments_duration
-      @assignments_duration ||= @xml_obj.xpath('AssignmentDurationInSeconds').inner_text.to_i
-    end
-    
-    def number_of_assignments
-      @number_of_assignments ||= @xml_obj.xpath('MaxAssignments').inner_text.to_i
-    end
-
-    def pending_assignments
-      @pending_assignments ||= @xml_obj.xpath('NumberOfAssignmentsPending').inner_text.to_i
-    end
-    
-    def available_assignments
-      @available_assignments ||= @xml_obj.xpath('NumberOfAssignmentsAvailable').inner_text.to_i
-    end
-    
-    def completed_assignments
-      @completed_assignments ||= @xml_obj.xpath('NumberOfAssignmentsCompleted').inner_text.to_i
-    end
-    
-    def auto_approval_delay
-      @auto_approval_delay ||= @xml_obj.xpath('AutoApprovalDelayInSeconds').inner_text.to_i
-    end
-    
-    def reward_amount
-      @reward_amount ||= @xml_obj.xpath('Reward/Amount').inner_text.to_f
-    end
   end
   
 end

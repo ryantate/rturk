@@ -47,9 +47,10 @@ describe "HIT adapter" do
   it "should return a list of all hits" do
     hits = RTurk::Hit.all
     hits.size.should eql(2)
-    hits.last.id.should eql('ZZRZPTY4ERDZWJ868JCZ')
-    hits.first.completed_assignments.should eql(1)
+    hits.last.type_id.should eql('NYVZTQ1QVKJZXCYZCZVZ')
+    hits.last.status.should eql('Assignable')
     hits.first.reward_amount.should eql(5.00)
+    hits.first.completed_assignments.should eql(1)
   end
 
 end

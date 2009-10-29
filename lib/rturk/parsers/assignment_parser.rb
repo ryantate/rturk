@@ -30,24 +30,24 @@ module RTurk
       @xml_obj = assignment_xml
       map_content(@xml_obj,
                   :id => 'AssignmentId',
+                  :hit_id => 'HITId',
                   :worker_id => 'WorkerId',
-                  :status => 'AssignmentStatus')
-    end
-    
-    def approved_at
-      @approved_at = Time.parse(@xml_obj.xpath('ApprovalTime').to_s)
-    end
-
-    def submitted_at
-      @submitted_at = Time.parse(@xml_obj.xpath('SubmitTime').to_s)
-    end
-
-    def accepted_at
-      @accepted_at = Time.parse(@xml_obj.xpath('AcceptTime').to_s)
+                  :status => 'AssignmentStatus',
+                  :accepted_at => 'AcceptTime',
+                  :submitted_at => 'SubmitTime',
+                  :approved_at => 'ApprovalTime',
+                  :auto_approval_time => 'AutoApprovalTime'
+                  )
     end
     
     def answers
       AnswerParser.parse(@xml_obj.xpath('Answer').children)
+    end
+    
+    def method_missing(method)
+      if @attributes && @attributes.include?(method)
+        @attributes[method]
+      end
     end
     
   end
