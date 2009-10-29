@@ -31,11 +31,11 @@ module RTurk
   class GetAssignmentsForHITResponse < Response
     
     def assignments
-      assignments = []
+      @assignments ||= []
       @xml.xpath('//Assignment').each do |assignment_xml|
-        assignments << RTurk::Assignment.new(assignment_xml)
+        @assignments << AssignmentParser.new(assignment_xml)
       end
-      assignments
+      @assignments
     end
     
   end

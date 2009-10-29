@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 
-describe RTurk::Answers do
+describe RTurk::AnswerParser do
   
   before(:all) do
     @answer =  <<-XML
@@ -20,7 +20,7 @@ XML
   end
   
   it "should parse a answer" do
-    RTurk::Answers.new(@answer).to_hash.should == {"Submit"=>"Submit", "tweet"=>"This is my tweet!"}
+    RTurk::AnswerParser.parse(@answer).to_hash.should == {"Submit"=>"Submit", "tweet"=>"This is my tweet!"}
   end
 
   

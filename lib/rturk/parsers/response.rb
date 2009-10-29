@@ -1,8 +1,7 @@
 require 'nokogiri'
 
 module RTurk
-  class Response
-    include RTurk::XmlUtilities
+  class Response < RTurk::Parser
     
     #
     # In some cases we want more than just a hash parsed from the returned
@@ -52,6 +51,12 @@ module RTurk
     
     def elements
       xml_to_hash(@xml)
+    end
+    
+    def method_missing(method)
+      if @attributes && @attributes.include?(method)
+        @attributes[method]
+      end
     end
     
   end

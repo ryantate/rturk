@@ -20,13 +20,13 @@ module RTurk
   
   
   class Hit
-    include RTurk::XmlUtilities
+    include RTurk::XMLUtilities
 
     class << self;
 
       def create(*args, &blk)
         response = RTurk::CreateHIT(*args, &blk)
-        response.hit
+        new(response.hit_id, response)
       end
       
       def find(id)
@@ -34,19 +34,29 @@ module RTurk
       end
       
       def all_reviewable
-        RTurk.GetReviewableHITs.hits
+        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
+          arr << new(hit_id); arr
+        end
+      end
+      
+      def all
+        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
+          arr << new(hit.id, hit); arr;
+        end
       end
 
     end
 
-    attr_accessor :id
+    attr_accessor :id, :source
 
-    def initialize(id, type = nil)
-      @id, @type = id, type
+    def initialize(id, source = nil)
+      @id, @source = id, source
     end
 
     def assignments
-      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments
+      RTurk::GetAssignmentsForHIT(:hit_id => self.id).assignments.inject([]) do |arr,assignment|
+        arr << RTurk::Assignment.new(assignment.assignment_id, assignment); arr
+      end
     end
     
     def details
@@ -75,8 +85,10 @@ module RTurk
     end
 
     def method_missing(method, *args)
-      if self.details.respond_to?(method)
-        self.details.send(method, *args)
+      if @source.respond_to?(method)
+        @source.send(method, *args)
+      elsif self.details.respond_to?(method)
+        self.details.send(method)
       end
     end
 

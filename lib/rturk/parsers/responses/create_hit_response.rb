@@ -21,12 +21,12 @@ module RTurk
       @xml.xpath('//HITId').inner_text
     end
       
-    def hit_type_id
+    def type_id
       @xml.xpath('//HITTypeId').inner_text
     end
     
     def hit
-      RTurk::Hit.new(self.hit_id, self.hit_type_id)
+      RTurk::Hit.new(self.hit_id, self)
     end
     
   end

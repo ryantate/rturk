@@ -46,33 +46,26 @@ module RTurk
   
   class GetHITResponse < Response
     
-    attr_accessor :id, :type_id, :status, :title, :description, :reward, :assignments
-    attr_accessor :similar_hits, :review_status, :expires_at, :auto_approval
+    attr_reader :hit_id, :type_id, :status, :review_status, :title, :created_at, :expires_at,
+                :assignments_duration, :reward_amount, :max_assignments, :auto_approval_delay
     
     def initialize(response)
       @raw_xml = response
       @xml = Nokogiri::XML(@raw_xml)
       raise_errors
       map_content(@xml.xpath('//HIT'),
-        :id => 'HITId',
+        :hit_id => 'HITId',
         :type_id => 'HITTypeId',
         :status => 'HITStatus',
-        :title => "Title",
-        :description => 'Description',
-        :assignments => 'MaxAssignments',
-        :similar_hits => 'NumberOfSimilarHITs',
         :review_status => 'HITReviewStatus',
+        :title => 'Title',
+        :created_at => 'CreationTime',
         :expires_at => 'Expiration',
-        :auto_approval => 'AutoApprovalDelayInSeconds'
+        :assignments_duration => 'AssignmentDurationInSeconds',
+        :reward_amount => 'Reward/Amount',
+        :max_assignments => 'MaxAssignments',
+        :auto_approval_delay => 'AutoApprovalDelayInSeconds'
       )
-    end
-    
-    def expires_at=(time)
-      @expires_at = Time.parse(time)
-    end
-    
-    def auto_approval=(seconds)
-      @auto_approval = seconds.to_i
     end
     
   end

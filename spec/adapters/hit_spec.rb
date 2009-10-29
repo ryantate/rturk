@@ -11,6 +11,7 @@ describe "HIT adapter" do
     faker('get_assignments', :operation => 'GetAssignments')
     faker('force_expire_hit', :operation => 'ForceExpireHIT')
     faker('dispose_hit', :operation => 'DisposeHIT')
+    faker('search_hits', :operation => 'SearchHITs')
   end
 
   it "should let us create a hit" do
@@ -41,6 +42,15 @@ describe "HIT adapter" do
   it "should dispose of a hit" do
     hits = RTurk::Hit.all_reviewable
     hits.first.dispose!
+  end
+  
+  it "should return a list of all hits" do
+    hits = RTurk::Hit.all
+    hits.size.should eql(2)
+    hits.last.type_id.should eql('NYVZTQ1QVKJZXCYZCZVZ')
+    hits.last.status.should eql('Assignable')
+    hits.first.reward_amount.should eql(5.00)
+    hits.first.completed_assignments.should eql(1)
   end
 
 end
