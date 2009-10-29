@@ -22,6 +22,10 @@ module RTurk
       RTurk::GrantBonus(:assignment_id => self.id, :worker_id => self.worker_id, :amount => amount, :feedback => reason)
     end
     
+    def worker
+      RTurk::Worker.new(self.worker_id)
+    end
+    
     def method_missing(method, *args)
       if self.source.respond_to?(method)
         self.source.send(method, *args)
