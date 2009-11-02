@@ -73,12 +73,14 @@ module RTurk
     end
 
     def check_params
+      missing_parameters = []
       self.class.required_params.each do |param|
         if self.respond_to?(param)
-          raise MissingParameters, "Parameter '#{param.to_s}' cannot be blank" if self.send(param).nil?
+          missing_parameters << param.to_s if self.send(param).nil?
         else
           raise MissingParameters, "The parameter '#{param.to_s}' was required and not available"
         end
+        raise MissingParameters, "Parameters '#{missing_parameters.join(', ')}' cannot be blank" unless missing_parameters.empty?
       end
     end
 

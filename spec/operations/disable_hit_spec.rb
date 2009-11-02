@@ -9,7 +9,7 @@ describe RTurk::DisableHIT do
   end
 
   it "should ensure required params" do
-    lambda{RTurk::DisableHIT()}.should raise_error RTurk::MissingParameters
+    lambda{RTurk::DisableHIT()}.should raise_error(RTurk::MissingParameters)
   end
   
   it "should successfully request the operation" do

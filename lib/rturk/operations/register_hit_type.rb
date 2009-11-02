@@ -41,9 +41,11 @@ module RTurk
     # More complicated validation run before request
     #
     def validate
-      unless  title && reward && question && description
-        raise RTurk::MissingParameters, "You're missing some required parameters"
+      missing_parameters = []
+      [:title, :reward, :question, :description].each do |param|
+        missing_parameters << param.to_s unless self.send(param)
       end
+      raise RTurk::MissingParameters, "Parameters: '#{missing_parameters.join(', ')}'" unless missing_parameters.empty?
     end
 
     private
