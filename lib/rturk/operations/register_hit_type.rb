@@ -1,8 +1,8 @@
 module RTurk
   class RegisterHITType < Operation
 
-    attr_accessor :title, :keywords, :description, :reward, :currency, :assignments
-    attr_accessor :lifetime, :duration, :auto_approval, :note
+    attr_accessor :title, :description, :reward, :currency, :duration, :keywords, :auto_approval
+
 
     # @param [Symbol, Hash] qualification_key opts The unique qualification key
     # @option opts [Hash] :comparator A comparator and value e.g. :gt => 80
@@ -11,18 +11,6 @@ module RTurk
     # @return [RTurk::Qualifications]
     def qualifications
       @qualifications ||= RTurk::Qualifications.new
-    end
-
-    # Gives us access to a question builder attached to this HIT
-    #
-    # @param [String, Hash] URL Params, if none is passed, simply returns the question
-    # @return [RTurk::Question] The question if instantiated or nil
-    def question(*args)
-      unless args.empty?
-        @question ||= RTurk::Question.new(*args)
-      else
-        @question
-      end
     end
 
     # Returns parameters specific to this instance
@@ -42,28 +30,29 @@ module RTurk
     #
     def validate
       missing_parameters = []
-      [:title, :reward, :question, :description].each do |param|
+      required_fields.each do |param|
         missing_parameters << param.to_s unless self.send(param)
       end
       raise RTurk::MissingParameters, "Parameters: '#{missing_parameters.join(', ')}'" unless missing_parameters.empty?
     end
-
-    private
-
+    
+    def required_fields
+      [:title, :description, :reward]
+    end
+    
+    protected
+      
       def map_params
-        {'Title'=>self.title,
-         'MaxAssignments' => (self.assignments || 1),
-         'LifetimeInSeconds'=> (self.lifetime || 3600),
-         'AssignmentDurationInSeconds' => (self.duration || 86400),
-         'Reward.Amount' => self.reward,
-         'Reward.CurrencyCode' => (self.currency || 'USD'),
-         'Keywords' => self.keywords,
-         'Description' => self.description,
-         'Question' => self.question.to_params,
-         'RequesterAnnotation' => note}
+        {'Title'=>title,
+         'Description' => description,
+         'AssignmentDurationInSeconds' => (duration || 86400),
+         'Reward.Amount' => reward,
+         'Reward.CurrencyCode' => (currency || 'USD'),
+         'Keywords' => keywords,
+         'AutoApprovalDelayInSeconds' => auto_approval}
       end
-
   end
+  
   def self.RegisterHITType(*args, &blk)
     RTurk::RegisterHITType.create(*args, &blk)
   end

@@ -11,9 +11,7 @@ describe RTurk::RegisterHITType do
 
   it "should rerturn a CreateHITResponse after the request" do
     response = RTurk::RegisterHITType(:title => "Look at some pictures from 4Chan") do |hit|
-      hit.assignments = 5
       hit.description = "foo"
-      hit.question("http://mpercival.com", :test => 'b')
       hit.reward = 0.05
       hit.qualifications.add(:adult, true)
     end
