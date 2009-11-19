@@ -25,7 +25,8 @@ Let's say you have a form at "http://myapp.com/turkers/add_tags" where Turkers c
     hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
       hit.assignments = 2
       hit.description = 'blah'
-      hit.question("http://myapp.com/turkers/add_tags")
+      hit.question("http://myapp.com/turkers/add_tags",
+                   :frame_height => 1000)  # pixels for iframe
       hit.reward = 0.05
       hit.qualifications.add :approval_rate, { :gt => 80 }
     end
