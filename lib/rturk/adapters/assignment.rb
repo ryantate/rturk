@@ -15,7 +15,7 @@ module RTurk
     end
 
     def reject!(reason)
-      RTurk::ApproveAssignment(:assignment_id => self.id, :feedback => reason)
+      RTurk::RejectAssignment(:assignment_id => self.id, :feedback => reason)
     end
 
     def bonus!(amount, reason)
