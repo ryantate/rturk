@@ -1,3 +1,12 @@
+#########################################################################
+# Operation to send email to a group of workers.                        #
+#                                                                       #
+# Caveats:                                                              #
+#   - A message can only be send to a maximum of 100 workers at a time. #
+#   - The message length must be 4096 characters or less.               #
+#   - The subject length must be 200 characters or less.                #
+#########################################################################
+
 module RTurk
   class NotifyWorkers < Operation
     attr_accessor :worker_ids, :subject, :message_text
