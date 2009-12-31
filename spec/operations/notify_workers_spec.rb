@@ -1,12 +1,14 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 describe RTurk::NotifyWorkers do
-  EVALUATE_ME = lambda do
-    begin
-      RTurk::NotifyWorkers(:worker_ids => [*1..100],
-                           :subject => 'Return of the Mack',
-                           :message_text => 'Mark Morrison, kicking up the jams in 1996')
-    rescue RTurk::InvalidRequest
+  before(:each) do
+    @lambda = lambda do
+      begin
+        RTurk::NotifyWorkers(:worker_ids => [*1..100],
+                             :subject => 'Return of the Mack',
+                             :message_text => 'Mark Morrison, kicking up the jams in 1996')
+      rescue RTurk::InvalidRequest
+      end
     end
   end
 
@@ -26,11 +28,11 @@ describe RTurk::NotifyWorkers do
     RTurk::Requester.should_receive(:request).once.with(
       hash_including('Operation' => 'NotifyWorkers'))
 
-    EVALUATE_ME.call
+    @lambda.call
   end
 
   it 'should parse and return the result' do
-    EVALUATE_ME.call.should be_a_kind_of RTurk::Response
+    @lambda.call.should be_a_kind_of RTurk::Response
   end
 
   it 'should not allow more than 100 worker ids' do
