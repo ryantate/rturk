@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = %q{2009-12-30}
+  s.date = %q{2009-12-31}
   s.email = %q{mark@mpercival.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -114,11 +114,13 @@ Gem::Specification.new do |s|
      "examples/mturk.sample.yml",
      "examples/newtweet.html",
      "examples/review_answer.rb",
+     "init.rb",
      "lib/rturk.rb",
      "lib/rturk/adapter.rb",
      "lib/rturk/adapters/assignment.rb",
      "lib/rturk/adapters/hit.rb",
      "lib/rturk/adapters/worker.rb",
+     "lib/rturk/builders/notification_builder.rb",
      "lib/rturk/builders/qualification_builder.rb",
      "lib/rturk/builders/qualifications_builder.rb",
      "lib/rturk/builders/question_builder.rb",
@@ -141,6 +143,8 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/register_hit_type.rb",
      "lib/rturk/operations/reject_assignment.rb",
      "lib/rturk/operations/search_hits.rb",
+     "lib/rturk/operations/send_test_event_notification.rb",
+     "lib/rturk/operations/set_hit_type_notification.rb",
      "lib/rturk/operations/unblock_worker.rb",
      "lib/rturk/parser.rb",
      "lib/rturk/parsers/answer_parser.rb",
@@ -160,6 +164,7 @@ Gem::Specification.new do |s|
      "rturk.gemspec",
      "spec/adapters/assignment_spec.rb",
      "spec/adapters/hit_spec.rb",
+     "spec/builders/notification_builder_spec.rb",
      "spec/builders/qualification_spec.rb",
      "spec/builders/qualifications_spec.rb",
      "spec/builders/question_spec.rb",
@@ -196,6 +201,8 @@ Gem::Specification.new do |s|
      "spec/operations/notify_workers_spec.rb",
      "spec/operations/register_hit_type_spec.rb",
      "spec/operations/reject_assignment_spec.rb",
+     "spec/operations/send_test_event_notification_spec.rb",
+     "spec/operations/set_hit_type_notification_spec.rb",
      "spec/operations/unblock_worker_spec.rb",
      "spec/parsers/answer_parser_spec.rb",
      "spec/parsers/hit_parser_spec.rb",
@@ -214,6 +221,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/adapters/assignment_spec.rb",
      "spec/adapters/hit_spec.rb",
+     "spec/builders/notification_builder_spec.rb",
      "spec/builders/qualification_spec.rb",
      "spec/builders/qualifications_spec.rb",
      "spec/builders/question_spec.rb",
@@ -231,6 +239,8 @@ Gem::Specification.new do |s|
      "spec/operations/notify_workers_spec.rb",
      "spec/operations/register_hit_type_spec.rb",
      "spec/operations/reject_assignment_spec.rb",
+     "spec/operations/send_test_event_notification_spec.rb",
+     "spec/operations/set_hit_type_notification_spec.rb",
      "spec/operations/unblock_worker_spec.rb",
      "spec/parsers/answer_parser_spec.rb",
      "spec/parsers/hit_parser_spec.rb",

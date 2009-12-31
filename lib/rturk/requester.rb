@@ -23,7 +23,7 @@ module RTurk
           'Service'=>'AWSMechanicalTurkRequester',
           'AWSAccessKeyId' => credentials.access_key,
           'Timestamp' => Time.now.iso8601,
-          'Version' => '2008-08-02'
+          'Version' => RTurk::API_VERSION
         }
 
         params.merge!(base_params)

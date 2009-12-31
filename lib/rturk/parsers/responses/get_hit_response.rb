@@ -15,7 +15,7 @@
 #     <Title>Write a twitter update</Title>
 #     <Description>Simply write a twitter update for me</Description>
 #     <Question>&lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;
-#   &lt;ExternalURL&gt;http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo&lt;/ExternalURL&gt; 
+#   &lt;ExternalURL&gt;http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo&lt;/ExternalURL&gt;
 #   &lt;FrameHeight&gt;400&lt;/FrameHeight&gt;
 # &lt;/ExternalQuestion&gt;
 # </Question>
@@ -43,12 +43,11 @@
 # </GetHITResponse>
 
 module RTurk
-  
   class GetHITResponse < Response
-    
     attr_reader :hit_id, :type_id, :status, :review_status, :title, :created_at, :expires_at,
-                :assignments_duration, :reward_amount, :max_assignments, :auto_approval_delay
-    
+                :assignments_duration, :reward_amount, :max_assignments, :auto_approval_delay,
+                :keywords
+
     def initialize(response)
       @raw_xml = response
       @xml = Nokogiri::XML(@raw_xml)
@@ -56,6 +55,7 @@ module RTurk
       map_content(@xml.xpath('//HIT'),
         :hit_id => 'HITId',
         :type_id => 'HITTypeId',
+        :keywords => 'Keywords',
         :status => 'HITStatus',
         :review_status => 'HITReviewStatus',
         :title => 'Title',
@@ -66,8 +66,8 @@ module RTurk
         :max_assignments => 'MaxAssignments',
         :auto_approval_delay => 'AutoApprovalDelayInSeconds'
       )
+
+      @keywords = @keywords.split(', ') if @keywords
     end
-    
   end
-  
 end

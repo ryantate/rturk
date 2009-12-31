@@ -27,7 +27,7 @@ describe RTurk::Notification do
       @notification.to_param_hash.should ==
         { "Notification.1.Destination" => 'foo',
           "Notification.1.Transport" => 'bar',
-          "Notification.1.Version" => '2006-05-05',
+          "Notification.1.Version" => RTurk::API_VERSION,
           "Notification.1.EventType" => 'mumble' }
     end
   end

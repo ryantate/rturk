@@ -9,7 +9,7 @@ module RTurk
     end
 
     def to_param_hash
-      self.version = '2006-05-05' # enforce this blindly
+      self.version = RTurk::API_VERSION # enforce this blindly
 
       hash = {}
       missing = []

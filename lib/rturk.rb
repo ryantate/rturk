@@ -3,6 +3,8 @@ module RTurk
 
   SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
   PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
+  API_VERSION = '2008-08-02'
+
   class << self
     attr_reader :access_key, :secret_key, :host
 
@@ -11,17 +13,15 @@ module RTurk
       @secret_key = secret_key
       @host = opts[:sandbox] ? SANDBOX : PRODUCTION
     end
-    
+
     def sandbox?
       @host == SANDBOX
     end
-    
+
     def logger
       RTurk::Logger.logger
     end
-
   end
-
 end
 
 require 'rturk/utilities'

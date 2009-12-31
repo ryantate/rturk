@@ -20,13 +20,13 @@
 #   </HIT>
 
 module RTurk
-  
+
   class HITParser < RTurk::Parser
-    
-    attr_reader :id, :type_id, :status, :title, :created_at, :expires_at, :assignments_duration, 
-                :reward_amount, :max_assignments, :pending_assignments, :available_assignments, 
-                :completed_assignments, :auto_approval_delay
-    
+
+    attr_reader :id, :type_id, :status, :title, :created_at, :expires_at, :assignments_duration,
+                :reward_amount, :max_assignments, :pending_assignments, :available_assignments,
+                :completed_assignments, :auto_approval_delay, :keywords
+
     def initialize(hit_xml)
       @xml_obj = hit_xml
       map_content(@xml_obj,
@@ -44,7 +44,7 @@ module RTurk
                   :completed_assignments => 'NumberOfAssignmentsCompleted',
                   :auto_approval_delay => 'AutoApprovalDelayInSeconds')
     end
-    
+
   end
-  
+
 end
