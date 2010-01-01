@@ -4,6 +4,7 @@ module RTurk
   SANDBOX = 'http://mechanicalturk.sandbox.amazonaws.com/'
   PRODUCTION = 'http://mechanicalturk.amazonaws.com/'
   API_VERSION = '2008-08-02'
+  OLD_API_VERSION = '2006-05-05'
 
   class << self
     attr_reader :access_key, :secret_key, :host
