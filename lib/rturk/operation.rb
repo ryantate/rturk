@@ -55,7 +55,7 @@ module RTurk
       # Override this in your operation if you like
       RTurk::Response.new(xml)
     end
-    
+
     def to_params
       {}# Override to include extra params
     end

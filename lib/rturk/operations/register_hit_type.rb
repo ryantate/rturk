@@ -35,24 +35,29 @@ module RTurk
       end
       raise RTurk::MissingParameters, "Parameters: '#{missing_parameters.join(', ')}'" unless missing_parameters.empty?
     end
-    
+
     def required_fields
       [:title, :description, :reward]
     end
-    
+
     protected
-      
       def map_params
-        {'Title'=>title,
-         'Description' => description,
-         'AssignmentDurationInSeconds' => (duration || 86400),
-         'Reward.Amount' => reward,
-         'Reward.CurrencyCode' => (currency || 'USD'),
-         'Keywords' => keywords,
-         'AutoApprovalDelayInSeconds' => auto_approval}
+        begin
+          keyword_string = keywords.join(', ')
+        rescue NoMethodError
+          keyword_string = keywords.to_s
+        end
+
+        { 'Title'=>title,
+          'Description' => description,
+          'AssignmentDurationInSeconds' => (duration || 86400),
+          'Reward.Amount' => reward,
+          'Reward.CurrencyCode' => (currency || 'USD'),
+          'Keywords' => keyword_string,
+          'AutoApprovalDelayInSeconds' => auto_approval }
       end
   end
-  
+
   def self.RegisterHITType(*args, &blk)
     RTurk::RegisterHITType.create(*args, &blk)
   end

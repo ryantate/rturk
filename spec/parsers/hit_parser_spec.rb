@@ -30,12 +30,10 @@ describe RTurk::HITParser do
     @hit = RTurk::HITParser.new(@hit_xml.children)
   end
   
-  it "should parse a answer" do
+  it "should parse an answer" do
     @hit.id.should eql('ZZRZPTY4ERDZWJ868JCZ')
     @hit.type_id.should eql('NYVZTQ1QVKJZXCYZCZVZ')
     @hit.status.should eql('Assignable')
     @hit.reward_amount.should eql(5.00)
   end
-
-  
 end
