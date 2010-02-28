@@ -2,7 +2,7 @@
 
 ## What's it do?!?
 
-RTurk is designed to fire off Mechanical Turk tasks for pages that reside on a external site.
+RTurk is designed to fire off Mechanical Turk tasks for pages that reside on an external site.
 
 The pages could be a part of a rails app, or just a simple javascript enabled form.
 
@@ -11,7 +11,7 @@ You'd be better off with amazon's official library, in all its XML cruftiness.
 
 ## Installation
 
-    sudo gem install rturk --source http://gemcutter.org
+    gem install rturk
     
 ## Use
 
