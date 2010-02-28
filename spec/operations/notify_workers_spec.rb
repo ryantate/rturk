@@ -26,7 +26,8 @@ describe RTurk::NotifyWorkers do
 
   it 'should successfully request the operation' do
     RTurk::Requester.should_receive(:request).once.with(
-      hash_including('Operation' => 'NotifyWorkers'))
+      hash_including('Operation' => 'NotifyWorkers')).and_return(
+      fake_response(''))
 
     @lambda.call
   end

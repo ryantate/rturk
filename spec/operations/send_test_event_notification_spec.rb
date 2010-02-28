@@ -30,7 +30,8 @@ describe RTurk::SendTestEventNotification do
 
   it 'should successfully request the operation' do
     RTurk::Requester.should_receive(:request).once.with(
-      hash_including('Operation' => 'SendTestEventNotification'))
+      hash_including('Operation' => 'SendTestEventNotification')).and_return(
+      fake_response(''))
 
     @lambda.call
   end

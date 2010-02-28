@@ -31,7 +31,8 @@ describe RTurk::SetHITTypeNotification do
 
   it 'should successfully request the operation' do
     RTurk::Requester.should_receive(:request).once.with(
-      hash_including('Operation' => 'SetHITTypeNotification'))
+      hash_including('Operation' => 'SetHITTypeNotification')).and_return(
+      fake_response(''))
 
     @lambda.call
   end

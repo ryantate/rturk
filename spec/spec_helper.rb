@@ -4,6 +4,7 @@ $: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require 'spec'
 require 'fakeweb'
+require 'yaml'
 module FakeWeb
   class Registry
     # Comment out this override if you're using a quantum computer 
@@ -28,6 +29,10 @@ def faker(response_name, opts = {})
   end
   response = File.read(File.join(SPEC_ROOT, 'fake_responses', "#{response_name.to_s}.xml"))
   FakeWeb.register_uri(:get, match, :body => response)
+end
+
+def fake_response(xml)
+  mock('RestClientFakeResponse', :body => xml)
 end
 
 Spec::Runner.configure do |config|

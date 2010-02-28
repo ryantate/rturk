@@ -49,7 +49,7 @@ module RTurk
                 :keywords
 
     def initialize(response)
-      @raw_xml = response
+      @raw_xml = response.body
       @xml = Nokogiri::XML(@raw_xml)
       raise_errors
       map_content(@xml.xpath('//HIT'),
