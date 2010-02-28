@@ -19,6 +19,12 @@ describe RTurk::Question do
     question.frame_height.should == 500
   end
   
+  it "should build a question " do
+    question = RTurk::Question.new('http://mpercival.com?myparam=true&anotherparam=12', :frame_height => 500)
+    question.url.should == 'http://mpercival.com?myparam=true&amp;anotherparam=12'
+    question.frame_height.should == 500
+  end
+  
   it "should build a question with params" do
     params = RTurk::Question.new('http://google.com/', :id => 'foo').to_params
     CGI.unescape(params).should == 

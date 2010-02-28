@@ -19,10 +19,11 @@ module RTurk
     def url
       unless querystring.empty?
         # slam the params onto url, if url already has params, add 'em with a &
-        @url.index('?') ? "#{@url}&#{querystring}" : "#{@url}?#{querystring}" 
+        u = @url.index('?') ? "#{@url}&#{querystring}" : "#{@url}?#{querystring}" 
       else
-        @url
+        u = @url
       end
+      CGI.escapeHTML(u) #URL should be XML/HTML escaped
     end
     
     def params
