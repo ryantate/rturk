@@ -1,5 +1,6 @@
 module RTurk
   Notification = Struct.new(:Destination, :Transport, :Version, :EventType) do
+    # EventType can be a single string or an array of strings
     extend RTurk::Utilities
 
     members.each do |member|
@@ -15,7 +16,13 @@ module RTurk
       missing = []
       each_pair do |k, v|
         raise MissingParameters, "Missing parameter for #{k}" if v.nil?
-        hash["Notification.1.#{k}"] = v
+        if (k == :EventType) && (v.is_a? Array)
+            v.each_index do |i|
+              hash["Notification.1.#{k}.#{i+1}"] = v[i]
+            end
+        else
+          hash["Notification.1.#{k}"] = v
+        end
       end
       hash
     end
