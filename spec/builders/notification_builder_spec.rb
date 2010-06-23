@@ -30,5 +30,17 @@ describe RTurk::Notification do
           "Notification.1.Version" => RTurk::OLD_API_VERSION,
           "Notification.1.EventType" => 'mumble' }
     end
+    
+    it "should allow multiple event types" do
+      @notification.destination = 'foo'
+      @notification.transport = 'bar'
+      @notification.event_type = ['mumble', 'bumble']
+      @notification.to_param_hash.should ==
+        { "Notification.1.Destination" => 'foo',
+          "Notification.1.Transport" => 'bar',
+          "Notification.1.Version" => RTurk::OLD_API_VERSION,
+          "Notification.1.EventType.1" => 'mumble',
+          "Notification.1.EventType.2" => 'bumble' }
+    end
   end
 end
