@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "2.1.0"
+  s.version = "2.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = %q{2010-02-28}
+  s.date = %q{2010-06-26}
   s.email = %q{mark@mpercival.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -134,6 +134,7 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/create_hit.rb",
      "lib/rturk/operations/disable_hit.rb",
      "lib/rturk/operations/dispose_hit.rb",
+     "lib/rturk/operations/extend_hit.rb",
      "lib/rturk/operations/force_expire_hit.rb",
      "lib/rturk/operations/get_account_balance.rb",
      "lib/rturk/operations/get_assignments_for_hit.rb",
@@ -174,6 +175,7 @@ Gem::Specification.new do |s|
      "spec/fake_responses/create_hit.xml",
      "spec/fake_responses/disable_hit.xml",
      "spec/fake_responses/dispose_hit.xml",
+     "spec/fake_responses/extend_hit.xml",
      "spec/fake_responses/force_expire_hit.xml",
      "spec/fake_responses/get_account_balance.xml",
      "spec/fake_responses/get_assignments.xml",
@@ -193,6 +195,7 @@ Gem::Specification.new do |s|
      "spec/operations/create_hit_spec.rb",
      "spec/operations/disable_hit_spec.rb",
      "spec/operations/dispose_hit_spec.rb",
+     "spec/operations/extend_hit_spec.rb",
      "spec/operations/force_expire_hit_spec.rb",
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
@@ -231,6 +234,7 @@ Gem::Specification.new do |s|
      "spec/operations/create_hit_spec.rb",
      "spec/operations/disable_hit_spec.rb",
      "spec/operations/dispose_hit_spec.rb",
+     "spec/operations/extend_hit_spec.rb",
      "spec/operations/force_expire_hit_spec.rb",
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
