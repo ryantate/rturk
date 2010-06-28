@@ -64,6 +64,10 @@ module RTurk
       @details ||= RTurk::GetHIT(:hit_id => self.id)
     end
 
+    def extend!(options = {})
+      RTurk::ExtendHIT(options.merge({:hit_id => self.id}))
+    end
+
     def expire!
       RTurk::ForceExpireHIT(:hit_id => self.id)
     end

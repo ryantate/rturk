@@ -1,17 +1,17 @@
 module RTurk
   class RTurk::ExtendHIT < RTurk::Operation
     
-    attr_accessor :hit_id, :max_assignments_increment, :expiration_increment_in_seconds 
+    attr_accessor :hit_id, :assignments, :seconds
     require_params :hit_id
 
     def to_params
-      if max_assignments_increment.nil? && expiration_increment_in_seconds.nil?
+      if assignments.nil? && seconds.nil?
         raise MissingParameters, 'Must add to either the HIT assignment count or expiration time.'
       end
       
       {'HITId' => self.hit_id,
-       'MaxAssignmentsIncrement' => self.max_assignments_increment,
-       'ExpirationIncrementInSeconds' => self.expiration_increment_in_seconds}
+       'MaxAssignmentsIncrement' => self.assignments,
+       'ExpirationIncrementInSeconds' => self.seconds}
     end
 
   end

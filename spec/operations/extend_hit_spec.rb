@@ -15,11 +15,11 @@ describe RTurk::ExtendHIT do
   it "should successfully request the operation" do
     RTurk::Requester.should_receive(:request).once.with(
       hash_including('Operation' => 'ExtendHIT'))
-    RTurk::ExtendHIT(:hit_id => "123456789", :max_assignments_increment => 1) rescue RTurk::InvalidRequest
+    RTurk::ExtendHIT(:hit_id => "123456789", :assignments=> 1) rescue RTurk::InvalidRequest
   end
   
   it "should parse and return the result" do
-    RTurk::ExtendHIT(:hit_id => "123456789", :expiration_increment_in_seconds => 3600).should
+    RTurk::ExtendHIT(:hit_id => "123456789", :seconds => 3600).should
       be_a_kind_of RTurk::Response
   end
 

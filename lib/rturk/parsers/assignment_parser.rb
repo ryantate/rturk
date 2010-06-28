@@ -39,11 +39,18 @@ module RTurk
                   :auto_approval_time => 'AutoApprovalTime'
                   )
     end
-    
+
     def answers
       AnswerParser.parse(@xml_obj.xpath('Answer').children)
     end
+
+    # Normalizes a hash of answers that include nested params
+    # such as the ones you'll find in Rails
+    # Example 'tweet[text]' => 'Tweet!' becomes
+    # {'tweet' => {'text' => 'Tweet!'}}
+    def normalized_answers
+      normalize_nested_params(answers)
+    end
     
   end
-  
 end

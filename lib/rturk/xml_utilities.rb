@@ -31,4 +31,19 @@ module RTurk::XMLUtilities
     end
   end
 
+  # Takes a Rails-like nested param hash and normalizes it.
+  def normalize_nested_params(hash)
+    new_hash = {}
+    hash.each do |k,v|
+      inner_hash = new_hash
+      keys = k.split(/[\[\]]/).reject{|s| s.nil? || s.empty? }
+      keys[0...keys.size-1].each do |key|
+        inner_hash[key] ||= {}
+        inner_hash = inner_hash[key]
+      end
+      inner_hash[keys.last] = v
+    end
+    new_hash
+  end
+
 end

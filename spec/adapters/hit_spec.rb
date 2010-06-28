@@ -9,6 +9,7 @@ describe "HIT adapter" do
     faker('get_hit', :operation => 'GetHIT')
     faker('get_reviewable_hits', :operation => 'GetReviewableHITs')
     faker('get_assignments', :operation => 'GetAssignments')
+    faker('extend_hit', :operation => 'ExtendHIT')
     faker('force_expire_hit', :operation => 'ForceExpireHIT')
     faker('dispose_hit', :operation => 'DisposeHIT')
     faker('search_hits', :operation => 'SearchHITs')
@@ -32,6 +33,16 @@ describe "HIT adapter" do
   it "should find assignments for a hit" do
     hits = RTurk::Hit.all_reviewable
     hits.first.assignments.first.answers["tweet"].should eql('This is my tweet!')
+  end
+  
+  it "should add time to a hit" do 
+    hits = RTurk::Hit.all_reviewable
+    hits.first.extend! :seconds => 3600
+  end
+  
+  it "should add assignments a hit" do 
+    hits = RTurk::Hit.all_reviewable
+    hits.first.extend! :assignments => 100
   end
   
   it "should expire a hit" do
