@@ -20,11 +20,10 @@
 # </Assignment>
 
 module RTurk
-  
   class AssignmentParser < RTurk::Parser
-    
-    attr_reader :assignment_id, :hit_id, :worker_id, :status, :accepted_at, :submitted_at,
-                :approved_at, :auto_approval_time
+
+    attr_reader :assignment_id, :hit_id, :worker_id, :status, :accepted_at,
+                :submitted_at, :approved_at, :auto_approval_time
 
     def initialize(assignment_xml)
       @xml_obj = assignment_xml
@@ -51,6 +50,5 @@ module RTurk
     def normalized_answers
       normalize_nested_params(answers)
     end
-    
   end
 end
