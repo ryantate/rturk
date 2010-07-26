@@ -11,7 +11,7 @@ module RTurk
 
     class << self
       include RTurk::Utilities
-      
+
       # @param [Hash] params
       # @option [String] 'Operation' The operation - Required
       # @option [String] Any Pass any other params and they will be included in the request
@@ -29,20 +29,31 @@ module RTurk
         params.merge!(base_params)
         signature = sign(credentials.secret_key, params['Service'], params['Operation'], params["Timestamp"])
         params['Signature'] = signature
-        querystring = params.collect { |key, value| [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=') }.join('&') # order doesn't matter for the actual request
+
+        querystring = params.inject([]) do |pairs, (key, value)|
+          if value.respond_to?(:each)
+            value.each do |multi_value|
+              pairs << [CGI.escape(key.to_s), CGI.escape(multi_value.to_s)].join('=')
+            end
+          else
+            pairs << [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=')
+          end
+          pairs
+        end.join('&') # order doesn't matter for the actual request
+
         RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
         RestClient.get("#{credentials.host}?#{querystring}")
       end
-      
-      def sign(secret_key, service,method,time)
-        msg = "#{service}#{method}#{time}"
-        return hmac_sha1(secret_key, msg )
-      end
-      
+
       private
-      
+
         def credentials
           RTurk
+        end
+
+        def sign(secret_key, service,method,time)
+          msg = "#{service}#{method}#{time}"
+          return hmac_sha1(secret_key, msg )
         end
 
         def hmac_sha1(key, s)
@@ -64,7 +75,7 @@ module RTurk
         end
     end
   end
-  
+
   def self.Request(*args)
     RTurk::Requester.request(*args)
   end
