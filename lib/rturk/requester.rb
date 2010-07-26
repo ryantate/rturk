@@ -8,7 +8,6 @@ require 'restclient'
 
 module RTurk
   class Requester
-
     class << self
       include RTurk::Utilities
 
@@ -31,7 +30,7 @@ module RTurk
         params['Signature'] = signature
 
         querystring = params.inject([]) do |pairs, (key, value)|
-          if value.respond_to?(:each)
+          if value.is_a?(Array)
             value.each do |multi_value|
               pairs << [CGI.escape(key.to_s), CGI.escape(multi_value.to_s)].join('=')
             end
@@ -79,5 +78,4 @@ module RTurk
   def self.Request(*args)
     RTurk::Requester.request(*args)
   end
-
 end

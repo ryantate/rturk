@@ -2,14 +2,11 @@
 
 module RTurk
   class DisposeQualificationType < Operation
-    attr_accessor :name, :description, :keywords, :status
-    require_params :name
+    attr_accessor :qualification_type_id
+    require_params :qualification_type_id
 
     def to_params
-      {'Name' => name,
-       'Description' => description,
-       'Keywords' => keywords,
-       'QualificationTypeStatus' => (status || "Active")}
+      {'QualificationTypeId' => qualification_type_id}
     end
   end
 
