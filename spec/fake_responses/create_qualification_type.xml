@@ -1,0 +1,16 @@
+<CreateQualificationTypeResponse>
+  <OperationRequest>
+    <RequestId>5218189c-1d7e-49a3-abbf-672fb5e77c66</RequestId>
+  </OperationRequest>
+  <QualificationType>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <QualificationTypeId>ZSPJXD4F1SFZP7YNJWR0</QualificationTypeId>
+    <CreationTime>2009-07-13T17:26:33Z</CreationTime>
+    <Name>SampleQualificationTest</Name>
+    <Description>Description of my qualification test.</Description>
+    <QualificationTypeStatus>Active</QualificationTypeStatus>
+    <AutoGranted>0</AutoGranted>
+  </QualificationType>
+</CreateQualificationTypeResponse>
