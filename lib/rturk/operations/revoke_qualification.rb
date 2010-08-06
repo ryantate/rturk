@@ -10,7 +10,7 @@ module RTurk
         'QualificationTypeId' => qualification_type_id,
         'SubjectId' => subject_id
       }
-      params['Reason'] = reason if reason
+      params['Reason'] = reason unless reason.nil?
       params
     end
   end
