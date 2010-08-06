@@ -14,12 +14,11 @@ describe RTurk::CreateQualificationType do
   it "should successfully request the operation" do
     RTurk::Requester.should_receive(:request).once.with(
       hash_including('Operation' => 'CreateQualificationType'))
-    RTurk::CreateQualificationType(:name => "bogus") rescue RTurk::InvalidRequest
+    RTurk::CreateQualificationType(:name => "bogus", :description => 'really bogus') rescue RTurk::InvalidRequest
   end
 
   it "should parse and return the result" do
-    response = RTurk::CreateQualificationType(:name => "bogus")
-    response['CreateQualificationTypeResponse']['QualificationType']['QualificationTypeId'].should == "ZSPJXD4F1SFZP7YNJWR0"
+    response = RTurk::CreateQualificationType(:name => "bogus", :description => 'really bogus')
     response.qualification_type_id.should == "ZSPJXD4F1SFZP7YNJWR0"
   end
 end
