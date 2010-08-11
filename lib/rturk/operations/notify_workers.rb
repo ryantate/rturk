@@ -13,6 +13,8 @@ module RTurk
     require_params :worker_ids, :subject, :message_text
 
     def to_params
+      message_text.strip!
+
       if worker_ids.length > 100
         raise ArgumentError, 'Cannot send a message to more than 100 workers at a time.'
       elsif message_text.length > 4096
