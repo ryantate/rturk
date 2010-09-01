@@ -1,0 +1,18 @@
+<GetQualificationTypeResponse>
+  <OperationRequest>
+    <RequestId>49341251-fcbd-45c3-ab98-8fbe2e4d8060</RequestId>
+  </OperationRequest>
+  <QualificationType>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <QualificationTypeId>789RVWYBAZW00EXAMPLE</QualificationTypeId>
+    <CreationTime>2005-01-31T23:59:59Z</CreationTime>
+    <Name>EnglishWritingAbility</Name>
+    <Description>The ability to write and edit text...</Description>
+    <Keywords>English, text, write, edit, language</Keywords>
+    <QualificationTypeStatus>Active</QualificationTypeStatus>
+    <RetryDelayInSeconds>86400</RetryDelayInSeconds>
+    <IsRequestable>true</IsRequestable>
+  </QualificationType>
+</GetQualificationTypeResponse>

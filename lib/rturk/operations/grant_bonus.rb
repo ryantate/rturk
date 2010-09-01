@@ -12,9 +12,10 @@ module RTurk
     
     def to_params
       {'AssignmentId' => self.assignment_id,
-        'BonusAmount.1.Amount' => self.amount,
-        'BonusAmount.1.CurrencyCode' => (self.currency || 'USD'),
-        'RequesterFeedback' => self.feedback}
+       'BonusAmount.1.Amount' => self.amount,
+       'BonusAmount.1.CurrencyCode' => (self.currency || 'USD'),
+       'Reason' => self.feedback,
+       'WorkerId' => worker_id}
     end
     
   end

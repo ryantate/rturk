@@ -1,0 +1,15 @@
+<UpdateQualificationTypeResult>
+  <Request>
+    <IsValid>True</IsValid>
+  </Request>
+  <QualificationType>
+    <QualificationTypeId>789RVWYBAZW00EXAMPLE</QualificationTypeId>
+    <CreationTime>2009-06-15T12:00:01Z</CreationTime>
+    <Name>EnglishWritingAbility</Name>
+    <Description>The ability to write and edit text...</Description>
+    <Keywords>English, text, write, edit, language</Keywords>
+    <QualificationTypeStatus>Active</QualificationTypeStatus>
+    <RetryDelayInSeconds>86400</RetryDelayInSeconds>
+    <IsRequestable>true</IsRequestable>
+  </QualificationType>
+</UpdateQualificationTypeResult>

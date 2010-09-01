@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<GetQualificationsForQualificationTypeResponse>
+  <OperationRequest>
+    <RequestId>49341251-fcbd-45c3-ab98-8fbe2e4d8060</RequestId>
+  </OperationRequest>
+  <GetQualificationsForQualificationTypeResult>
+    <Request>
+      <IsValid>True</IsValid>
+    </Request>
+    <NumResults>2</NumResults>
+    <TotalNumResults>2</TotalNumResults>
+    <PageNumber>1</PageNumber>
+    <Qualification>
+      <QualificationTypeId>ZSPJXD4F1SFZP7YNJWR0</QualificationTypeId>
+      <SubjectId>AZ3456EXAMPLE</SubjectId>
+      <GrantTime>2009-07-15T01:21:28.296Z</GrantTime>
+      <IntegerValue>1</IntegerValue>
+      <Status>Granted</Status>
+    </Qualification>
+    <Qualification>
+      <QualificationTypeId>ZSPJXD4F1SFZP7YNJWR0</QualificationTypeId>
+      <SubjectId>AZ4567EXAMPLE</SubjectId>
+      <GrantTime>2009-07-15T01:21:28.296Z</GrantTime>
+      <IntegerValue>1</IntegerValue>
+      <Status>Granted</Status>
+    </Qualification>
+  </GetQualificationsForQualificationTypeResult>
+</GetQualificationsForQualificationTypeResponse>
