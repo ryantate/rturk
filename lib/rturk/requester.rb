@@ -41,7 +41,7 @@ module RTurk
         end.join('&') # order doesn't matter for the actual request
 
         RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
-        RestClient.post("#{credentials.host}", querystring)
+        RestClient.post(credentials.host, querystring)
       end
 
       private
