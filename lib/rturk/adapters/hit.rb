@@ -33,14 +33,40 @@ module RTurk
       end
 
       def all_reviewable
-        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
-          arr << new(hit_id); arr
+        to_enum(:each_reviewable).to_a
+      end
+
+      def each_reviewable
+        each_reviewable_hit_id do |hit_id|
+          yield new(hit_id, RTurk.GetHIT(:hit_id => hit_id))
+        end
+      end
+
+      def each_reviewable_hit_id
+        page_number = 1
+        while true
+          hit_ids = RTurk::GetReviewableHITs.create(:page_number => page_number).hit_ids
+          break if hit_ids.empty?
+          hit_ids.each do |hit_id|
+            yield hit_id
+          end
+          page_number += 1
         end
       end
 
       def all
-        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
-          arr << new(hit.id, hit); arr;
+        to_enum(:each_hit).to_a
+      end
+
+      def each_hit
+        page_number = 1
+        while true
+          hits = RTurk::SearchHITs.create(:page_number => page_number).hits
+          break if hits.empty?
+          hits.each do |hit|
+            yield new(hit.id, hit)
+          end
+          page_number += 1
         end
       end
 
