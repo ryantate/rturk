@@ -3,3 +3,4 @@ mturk.yml
 examples/last_hit
 pkg
 *.sw?
+.rvmrc
