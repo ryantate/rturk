@@ -28,8 +28,15 @@ module RTurk
         new(response.hit_id, response)
       end
 
+      # Find all the details for a HIT
+      # You could do this manually with new(id), and only call for the details
+      # you need, or simply call this and get them all, and immediately see
+      # any errors
       def find(id)
-
+        h = new(id)
+        h.details
+        h.assignments
+        h
       end
 
       def all_reviewable

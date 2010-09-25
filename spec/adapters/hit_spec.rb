@@ -19,6 +19,14 @@ describe "HIT adapter" do
     RTurk::Hit.create(:title => 'foo', :description => 'do foo', :question => 'http://mpercival.com', :reward => 0.05)
   end
   
+  it "should retrieve all the details of a HIT with find" do
+    proxy_hit = RTurk::Hit.new(12345)
+    proxy_hit.should_receive(:details)
+    proxy_hit.should_receive(:assignments)
+    RTurk::Hit.should_receive(:new).and_return(proxy_hit)
+    hit = RTurk::Hit.find(12345)
+  end
+  
   it "should automagically request additional information on an existing hit" do
     hit = RTurk::Hit.new(12345)
     hit.type_id.should eql("YGKZ2W5X6YFZ08ZRXXZZ")
