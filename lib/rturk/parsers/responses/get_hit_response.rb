@@ -64,7 +64,15 @@ module RTurk
         :assignments_duration => 'AssignmentDurationInSeconds',
         :reward_amount => 'Reward/Amount',
         :max_assignments => 'MaxAssignments',
-        :auto_approval_delay => 'AutoApprovalDelayInSeconds'
+        :auto_approval_delay => 'AutoApprovalDelayInSeconds',
+        :description => 'Description',
+        :reward => 'Reward',
+        :lifetime => 'LifetimeInSeconds',
+        :annotation => 'RequesterAnnotation',
+        :similar_hits_count => 'NumberOfSimilarHITs',
+        :assignments_pending_count => 'NumberofAssignmentsPending',
+        :assignments_available_count => 'NumberofAssignmentsAvailable',
+        :assignments_completed_count => 'NumberofAssignmentsCompleted'
       )
 
       @keywords = @keywords.split(', ') if @keywords
