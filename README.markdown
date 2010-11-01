@@ -6,8 +6,7 @@ RTurk is designed to fire off Mechanical Turk tasks for pages that reside on an 
 
 The pages could be a part of a rails app, or just a simple javascript enabled form.
 
-If you want to build forms that are hosted on Mechanical Turk, this is not the library you need.
-You'd be better off with amazon's official library, in all its XML cruftiness.
+If your integrating RTurk with a Rails app, do yourself a favor and check out [Turkee](http://github.com/aantix/turkee) by Jim Jones. It integrates your Rails forms with mechanical turk, and includes rake tasks to pull and process submissions. Definitely a time saver.
 
 ## Installation
 
