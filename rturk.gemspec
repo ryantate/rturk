@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "2.3.0"
+  s.version = "2.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = %q{2010-07-27}
+  s.date = %q{2010-09-25}
   s.email = %q{mark@mpercival.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -142,6 +142,8 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/get_account_balance.rb",
      "lib/rturk/operations/get_assignments_for_hit.rb",
      "lib/rturk/operations/get_hit.rb",
+     "lib/rturk/operations/get_qualification_type.rb",
+     "lib/rturk/operations/get_qualifications_for_qualification_type.rb",
      "lib/rturk/operations/get_reviewable_hits.rb",
      "lib/rturk/operations/grant_bonus.rb",
      "lib/rturk/operations/notify_workers.rb",
@@ -152,16 +154,19 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/send_test_event_notification.rb",
      "lib/rturk/operations/set_hit_type_notification.rb",
      "lib/rturk/operations/unblock_worker.rb",
+     "lib/rturk/operations/update_qualification_type.rb",
      "lib/rturk/parser.rb",
      "lib/rturk/parsers/answer_parser.rb",
      "lib/rturk/parsers/assignment_parser.rb",
      "lib/rturk/parsers/hit_parser.rb",
+     "lib/rturk/parsers/qualification_parser.rb",
      "lib/rturk/parsers/response.rb",
      "lib/rturk/parsers/responses/create_hit_response.rb",
-     "lib/rturk/parsers/responses/create_qualification_type_response.rb",
      "lib/rturk/parsers/responses/get_account_balance_response.rb",
      "lib/rturk/parsers/responses/get_assignments_for_hit_response.rb",
      "lib/rturk/parsers/responses/get_hit_response.rb",
+     "lib/rturk/parsers/responses/get_qualification_type_response.rb",
+     "lib/rturk/parsers/responses/get_qualifications_for_qualification_type_response.rb",
      "lib/rturk/parsers/responses/get_reviewable_hits_response.rb",
      "lib/rturk/parsers/responses/register_hit_type_response.rb",
      "lib/rturk/parsers/responses/search_hits_response.rb",
@@ -189,6 +194,8 @@ Gem::Specification.new do |s|
      "spec/fake_responses/get_assignments.xml",
      "spec/fake_responses/get_assignments_multiple.xml",
      "spec/fake_responses/get_hit.xml",
+     "spec/fake_responses/get_qualification_type.xml",
+     "spec/fake_responses/get_qualifications_for_qualification_type.xml",
      "spec/fake_responses/get_reviewable_hits.xml",
      "spec/fake_responses/grant_bonus.xml",
      "spec/fake_responses/invalid_credentials.xml",
@@ -198,6 +205,7 @@ Gem::Specification.new do |s|
      "spec/fake_responses/revoke_qualification.xml",
      "spec/fake_responses/search_hits.xml",
      "spec/fake_responses/unblock_worker.xml",
+     "spec/fake_responses/update_qualification_type.xml",
      "spec/mturk.sample.yml",
      "spec/operations/approve_assignment_spec.rb",
      "spec/operations/assign_qualification_spec.rb",
@@ -212,6 +220,8 @@ Gem::Specification.new do |s|
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
      "spec/operations/get_hit_spec.rb",
+     "spec/operations/get_qualification_type_spec.rb",
+     "spec/operations/get_qualifications_for_qualification_type_spec.rb",
      "spec/operations/get_reviewable_hits_spec.rb",
      "spec/operations/grant_bonus_spec.rb",
      "spec/operations/notify_workers_spec.rb",
@@ -221,6 +231,7 @@ Gem::Specification.new do |s|
      "spec/operations/send_test_event_notification_spec.rb",
      "spec/operations/set_hit_type_notification_spec.rb",
      "spec/operations/unblock_worker_spec.rb",
+     "spec/operations/update_qualification_type_spec.rb",
      "spec/parsers/answer_parser_spec.rb",
      "spec/parsers/hit_parser_spec.rb",
      "spec/requester_spec.rb",
@@ -255,6 +266,8 @@ Gem::Specification.new do |s|
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
      "spec/operations/get_hit_spec.rb",
+     "spec/operations/get_qualification_type_spec.rb",
+     "spec/operations/get_qualifications_for_qualification_type_spec.rb",
      "spec/operations/get_reviewable_hits_spec.rb",
      "spec/operations/grant_bonus_spec.rb",
      "spec/operations/notify_workers_spec.rb",
@@ -264,6 +277,7 @@ Gem::Specification.new do |s|
      "spec/operations/send_test_event_notification_spec.rb",
      "spec/operations/set_hit_type_notification_spec.rb",
      "spec/operations/unblock_worker_spec.rb",
+     "spec/operations/update_qualification_type_spec.rb",
      "spec/parsers/answer_parser_spec.rb",
      "spec/parsers/hit_parser_spec.rb",
      "spec/requester_spec.rb",
