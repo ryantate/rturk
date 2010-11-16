@@ -24,7 +24,7 @@ describe RTurk::Requester do
     RTurk::Requester.request(params)
   end
 
-  it "Should build a correct querystring with two values per key" do
+  it "should build a correct querystring with two values per key" do
     params = {
       :Operation => 'GetHIT',
       'Param1' => 'test1',
@@ -32,6 +32,17 @@ describe RTurk::Requester do
     }
     RestClient.should_receive(:get).with(
       /(?=.*Operation=GetHIT)(?=.*Param1=test1)(?=.*Param2=test2a)(?=.*Param2=test2b)/)
+    RTurk::Requester.request(params)
+  end
+
+  it "should build a correct querystring with a hash of values" do
+    params = {
+      :Operation => 'GetHIT',
+      'Param1' => 'test1',
+      'Param2' => {0 => 'test2a', 1 => 'test2b'}
+    }
+    RestClient.should_receive(:get).with(
+      /(?=.*Operation=GetHIT)(?=.*Param1=test1)(?=.*Param2.0=test2a)(?=.*Param2.1=test2b)/)
     RTurk::Requester.request(params)
   end
 end

@@ -34,6 +34,10 @@ module RTurk
             value.each do |multi_value|
               pairs << [CGI.escape(key.to_s), CGI.escape(multi_value.to_s)].join('=')
             end
+          elsif value.is_a?(Hash)
+            value.each do |multi_key, multi_value|
+              pairs << [CGI.escape("#{key}.#{multi_key}"), CGI.escape(multi_value.to_s)].join('=')
+            end
           else
             pairs << [CGI.escape(key.to_s), CGI.escape(value.to_s)].join('=')
           end
