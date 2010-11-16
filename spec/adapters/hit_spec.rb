@@ -72,4 +72,17 @@ describe "HIT adapter" do
     hits.first.completed_assignments.should eql(1)
   end
 
+  it "should get normal details without specifying" do
+    hit = RTurk::Hit.new(12345)
+    RTurk.should_receive(:GetHIT).with(:hit_id => 12345,
+                                       :include_assignment_summary => false)
+    hit.details
+  end
+
+  it "should include assignment summary attributes in details if specified in initialize" do
+    hit = RTurk::Hit.new(12345, nil, :include_assignment_summary => true)
+    RTurk.should_receive(:GetHIT).with(:hit_id => 12345,
+                                       :include_assignment_summary => true)
+    hit.details
+  end
 end

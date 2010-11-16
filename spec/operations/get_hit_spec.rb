@@ -1,6 +1,5 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
-
 describe RTurk::GetHIT do
 
   before(:all) do
@@ -14,5 +13,19 @@ describe RTurk::GetHIT do
     response.status.should eql('Reviewable')
   end
 
+  it "should not specify the ResponseGroup by default" do
+    request = RTurk::GetHIT.new(:hit_id => '1234abcd')
+    request.to_params["ResponseGroup"].should be_nil
+  end
+
+  it "should include the assignment summary in the response group if specified" do
+    request = RTurk::GetHIT.new(:hit_id => '1234abcd', :include_assignment_summary => true)
+    request.to_params["ResponseGroup"].should == {
+      0 => "HITDetail", # default
+      1 => "HITQuestion", # default
+      2 => "Minimal", # default
+      3 => "HITAssignmentSummary" # added
+    }
+  end
 
 end

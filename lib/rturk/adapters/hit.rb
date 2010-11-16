@@ -55,8 +55,9 @@ module RTurk
 
     attr_accessor :id, :source
 
-    def initialize(id, source = nil)
+    def initialize(id, source = nil, options={})
       @id, @source = id, source
+      @include_assignment_summary = options[:include_assignment_summary]
     end
 
     # memoing
@@ -68,7 +69,8 @@ module RTurk
     end
 
     def details
-      @details ||= RTurk::GetHIT(:hit_id => self.id)
+      @details ||= RTurk::GetHIT(:hit_id => self.id,
+                                 :include_assignment_summary => !!@include_assignment_summary)
     end
 
     def extend!(options = {})
