@@ -44,9 +44,11 @@
 
 module RTurk
   class GetHITResponse < Response
-    attr_reader :hit_id, :type_id, :status, :review_status, :title, :created_at, :expires_at,
-                :assignments_duration, :reward_amount, :max_assignments, :auto_approval_delay,
-                :keywords
+    attr_reader :hit_id, :type_id, :keywords, :status, :review_status, :title, :created_at,
+                :expires_at, :assignments_duration, :reward_amount, :max_assignments,
+                :auto_approval_delay, :description, :reward, :lifetime, :annotation,
+                :similar_hits_count, :assignments_pending_count, :assignments_available_count,
+                :assignments_completed_count
 
     def initialize(response)
       @raw_xml = response.body
@@ -70,9 +72,9 @@ module RTurk
         :lifetime => 'LifetimeInSeconds',
         :annotation => 'RequesterAnnotation',
         :similar_hits_count => 'NumberOfSimilarHITs',
-        :assignments_pending_count => 'NumberofAssignmentsPending',
-        :assignments_available_count => 'NumberofAssignmentsAvailable',
-        :assignments_completed_count => 'NumberofAssignmentsCompleted'
+        :assignments_pending_count => 'NumberOfAssignmentsPending',
+        :assignments_available_count => 'NumberOfAssignmentsAvailable',
+        :assignments_completed_count => 'NumberOfAssignmentsCompleted'
       )
 
       @keywords = @keywords.split(', ') if @keywords
