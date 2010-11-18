@@ -81,6 +81,10 @@ module RTurk
       RTurk::ForceExpireHIT(:hit_id => self.id)
     end
 
+    def bonus_payments
+      RTurk::GetBonusPayments(:hit_id => id).payments
+    end
+
     def dispose!
       RTurk::DisposeHIT(:hit_id => self.id)
     end
@@ -105,8 +109,5 @@ module RTurk
         self.details.send(method)
       end
     end
-
-
   end
-
 end

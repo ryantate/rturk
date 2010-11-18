@@ -1,7 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 describe RTurk::GetAssignmentsForHIT do
-  
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
@@ -18,7 +17,6 @@ describe RTurk::GetAssignmentsForHIT do
   end
 
   context "an HIT with one assignment" do
-    
     before(:all) do
       FakeWeb.clean_registry
       faker('get_assignments', :operation => 'GetAssignmentsForHIT')
@@ -28,9 +26,8 @@ describe RTurk::GetAssignmentsForHIT do
       assignments = RTurk::GetAssignmentsForHIT(:hit_id => "abcd").assignments
       assignments.first.answers['tweet'].should eql("This is my tweet!")
     end
-
   end
-  
+
   context "an HIT with multiple assignment" do
 
     before(:all) do
@@ -42,7 +39,5 @@ describe RTurk::GetAssignmentsForHIT do
       assignments = RTurk::GetAssignmentsForHIT(:hit_id => "abcd").assignments
       assignments.first.answers['tweet'].should eql("This is my tweet!")
     end
-
   end
-
 end

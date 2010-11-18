@@ -5,13 +5,13 @@ require 'rubygems'
 require 'spec'
 require 'fakeweb'
 require 'yaml'
+
 module FakeWeb
   class Registry
     # Comment out this override if you're using a quantum computer 
     def variations_of_uri_as_strings(uri)
       [uri.to_s]
-    end
-    
+    end    
   end
 end
 

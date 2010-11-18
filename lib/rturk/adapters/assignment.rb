@@ -8,6 +8,10 @@ module RTurk
       @id, @source = id, source
     end
 
+    def bonus_payments
+      RTurk::GetBonusPayments(:assignment_id => id).payments
+    end
+
     def approve!(feedback = nil)
       RTurk::ApproveAssignment(:assignment_id => self.id, :feedback => feedback)
     end

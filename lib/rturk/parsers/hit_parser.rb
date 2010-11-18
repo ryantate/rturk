@@ -44,7 +44,5 @@ module RTurk
                   :completed_assignments => 'NumberOfAssignmentsCompleted',
                   :auto_approval_delay => 'AutoApprovalDelayInSeconds')
     end
-
   end
-
 end

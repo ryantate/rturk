@@ -18,6 +18,16 @@ describe "HIT adapter" do
   it "should let us create a hit" do
     RTurk::Hit.create(:title => 'foo', :description => 'do foo', :question => 'http://mpercival.com', :reward => 0.05)
   end
+
+  describe "#bonus_payments" do
+    it "should call GetBonusPayments with the hit_id" do
+      result = mock('result', :payments => [1, 2, 3])
+      hit = RTurk::Hit.new(12345)
+      RTurk.should_receive(:GetBonusPayments).
+        with(:hit_id => 12345).and_return(result)
+      hit.bonus_payments.should == result.payments
+    end
+  end
   
   it "should retrieve all the details of a HIT with find" do
     proxy_hit = RTurk::Hit.new(12345)
