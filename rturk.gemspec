@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rturk}
-  s.version = "2.3.3"
+  s.version = "2.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Percival"]
-  s.date = %q{2010-11-17}
+  s.date = %q{2010-11-18}
   s.email = %q{mark@mpercival.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
     ".gitignore",
      ".gitmodules",
      ".yardoc",
+     "CHANGELOG.markdown",
      "Gemfile",
      "LICENSE",
      "README.markdown",
@@ -141,6 +142,7 @@ Gem::Specification.new do |s|
      "lib/rturk/operations/force_expire_hit.rb",
      "lib/rturk/operations/get_account_balance.rb",
      "lib/rturk/operations/get_assignments_for_hit.rb",
+     "lib/rturk/operations/get_bonus_payments.rb",
      "lib/rturk/operations/get_hit.rb",
      "lib/rturk/operations/get_qualification_type.rb",
      "lib/rturk/operations/get_qualifications_for_qualification_type.rb",
@@ -158,12 +160,14 @@ Gem::Specification.new do |s|
      "lib/rturk/parser.rb",
      "lib/rturk/parsers/answer_parser.rb",
      "lib/rturk/parsers/assignment_parser.rb",
+     "lib/rturk/parsers/bonus_payment_parser.rb",
      "lib/rturk/parsers/hit_parser.rb",
      "lib/rturk/parsers/qualification_parser.rb",
      "lib/rturk/parsers/response.rb",
      "lib/rturk/parsers/responses/create_hit_response.rb",
      "lib/rturk/parsers/responses/get_account_balance_response.rb",
      "lib/rturk/parsers/responses/get_assignments_for_hit_response.rb",
+     "lib/rturk/parsers/responses/get_bonus_payments_response.rb",
      "lib/rturk/parsers/responses/get_hit_response.rb",
      "lib/rturk/parsers/responses/get_qualification_type_response.rb",
      "lib/rturk/parsers/responses/get_qualifications_for_qualification_type_response.rb",
@@ -193,6 +197,7 @@ Gem::Specification.new do |s|
      "spec/fake_responses/get_account_balance.xml",
      "spec/fake_responses/get_assignments.xml",
      "spec/fake_responses/get_assignments_multiple.xml",
+     "spec/fake_responses/get_bonus_payments.xml",
      "spec/fake_responses/get_hit.xml",
      "spec/fake_responses/get_qualification_type.xml",
      "spec/fake_responses/get_qualifications_for_qualification_type.xml",
@@ -219,6 +224,7 @@ Gem::Specification.new do |s|
      "spec/operations/force_expire_hit_spec.rb",
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
+     "spec/operations/get_bonus_payments_spec.rb",
      "spec/operations/get_hit_spec.rb",
      "spec/operations/get_qualification_type_spec.rb",
      "spec/operations/get_qualifications_for_qualification_type_spec.rb",
@@ -265,6 +271,7 @@ Gem::Specification.new do |s|
      "spec/operations/force_expire_hit_spec.rb",
      "spec/operations/get_account_balance_spec.rb",
      "spec/operations/get_assignments_spec.rb",
+     "spec/operations/get_bonus_payments_spec.rb",
      "spec/operations/get_hit_spec.rb",
      "spec/operations/get_qualification_type_spec.rb",
      "spec/operations/get_qualifications_for_qualification_type_spec.rb",
