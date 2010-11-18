@@ -16,8 +16,8 @@ begin
     gem.name = "rturk"
     gem.summary = %Q{Mechanical Turk API Wrapper}
     gem.email = "mark@mpercival.com"
-    gem.homepage = "http://github.com/markpercival/rturk"
-    gem.authors = ["Mark Percival"]
+    gem.homepage = "http://github.com/mdp/rturk"
+    gem.authors = ["Mark Percival", "Zach Hale", "David Balatero", "Rob Hanlon"]
     gem.add_dependency('rest-client', '>= 1.4.0')
     gem.add_dependency('nokogiri', '>= 1.4.1')
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
