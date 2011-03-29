@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<GetQualificationRequestsResponse>
+  <OperationRequest>
+    <RequestId>49341251-fcbd-45c3-ab98-8fbe2e4d8060</RequestId>
+  </OperationRequest>
+	<GetQualificationRequestsResult>
+	  <Request>
+	    <IsValid>True</IsValid>
+	  </Request>
+	  <NumResults>1</NumResults>
+	  <TotalNumResults>1</TotalNumResults>
+	  <PageNumber>1</PageNumber>
+	  <QualificationRequest>
+	    <QualificationRequestId>789RVWYBAZW00EXAMPLE951RVWYBAZW00EXAMPLE</QualificationRequestId>
+	    <QualificationTypeId>789RVWYBAZW00EXAMPLE</QualificationTypeId>
+	    <SubjectId>AZ3456EXAMPLE</SubjectId>
+	    <Test>
+	      &lt;QuestionForm&gt;
+	      [XML-encoded question data]
+	      &lt;/QuestionForm&gt;
+	    </Test>
+	    <Answer>
+	      &lt;QuestionFormAnswers&gt;
+	      [XML-encoded answer data]
+	      &lt;/QuestionFormAnswers&gt;
+	    </Answer>
+	    <SubmitTime>2005-12-01T23:59:59Z</SubmitTime>
+	  </QualificationRequest>
+	</GetQualificationRequestsResult>
+</GetQualificationRequestsResponse>
