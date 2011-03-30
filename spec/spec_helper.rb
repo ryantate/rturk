@@ -2,7 +2,7 @@ SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
 $: << SPEC_ROOT
 $: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
-require 'spec'
+require 'rspec'
 require 'fakeweb'
 require 'yaml'
 
@@ -32,9 +32,7 @@ def faker(response_name, opts = {})
 end
 
 def fake_response(xml)
-  mock('RestClientFakeResponse', :body => xml)
-end
-
-Spec::Runner.configure do |config|
-  
+  r = RSpec::Mocks::Mock.new
+  r.stub(:body){xml}
+  r
 end
