@@ -96,10 +96,11 @@ Anything submitted in this form will be sent to Amazon and saved for your review
 Take a look at the [Amazon MTurk developer docs](http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/) for more information. They have a complete list of API operations, all of which can be called with this library.
 
 ## Contributors
-[Zach Hale](http://github.com/zachhale)
-[David Balatero](http://github.com/dbalatero)
-[Rob Hanlon](http://github.com/ohwillie)
-[Haris Amin](http://github.com/hamin)
-[Tyler](http://github.com/tkieft)
-[David Dai](http://github.com/newtonsapple)
+
+[Zach Hale](http://github.com/zachhale)  
+[David Balatero](http://github.com/dbalatero)  
+[Rob Hanlon](http://github.com/ohwillie)  
+[Haris Amin](http://github.com/hamin)  
+[Tyler](http://github.com/tkieft)  
+[David Dai](http://github.com/newtonsapple)  
 
