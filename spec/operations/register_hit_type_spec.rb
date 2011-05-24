@@ -5,7 +5,7 @@ describe RTurk::RegisterHITType do
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
-    FakeWeb.clean_registry
+    WebMock.reset!
     faker('register_hit_type', :operation => "RegisterHITType")
 
     @lambda = lambda do

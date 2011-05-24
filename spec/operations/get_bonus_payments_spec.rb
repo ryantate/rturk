@@ -8,7 +8,7 @@ describe RTurk::GetBonusPayments do
 
   context "a HIT with multiple payments" do
     before(:all) do
-      FakeWeb.clean_registry
+      WebMock.reset!
       faker('get_bonus_payments', :operation => 'GetBonusPayments')
 
       @response = RTurk::GetBonusPayments(:hit_id => 'fdsa')

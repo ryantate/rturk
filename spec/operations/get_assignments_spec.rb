@@ -18,7 +18,7 @@ describe RTurk::GetAssignmentsForHIT do
 
   context "an HIT with one assignment" do
     before(:all) do
-      FakeWeb.clean_registry
+      WebMock.reset!
       faker('get_assignments', :operation => 'GetAssignmentsForHIT')
     end
 
@@ -31,7 +31,7 @@ describe RTurk::GetAssignmentsForHIT do
   context "an HIT with multiple assignment" do
 
     before(:all) do
-      FakeWeb.clean_registry
+      WebMock.reset!
       faker('get_assignments_multiple', :operation => 'GetAssignmentsForHIT')
     end
 

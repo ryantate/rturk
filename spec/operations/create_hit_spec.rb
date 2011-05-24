@@ -5,7 +5,7 @@ describe "using mechanical turk with RTurk" do
   before(:all) do
     aws = YAML.load(File.open(File.join(SPEC_ROOT, 'mturk.yml')))
     RTurk.setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'], :sandbox => true)
-    FakeWeb.clean_registry
+    WebMock.reset!
     faker('create_hit', :operation => "CreateHIT")
     faker('get_hit', :operation => "GetHIT")
   end
