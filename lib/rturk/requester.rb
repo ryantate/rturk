@@ -45,13 +45,20 @@ module RTurk
         end.join('&') # order doesn't matter for the actual request
 
         RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
-        RestClient.get("#{credentials.host}?#{querystring}")
+        RestClient.post(credentials.host, querystring)
       end
 
       private
 
         def credentials
           RTurk
+        end
+
+        def stubbed_response
+          @stubbed_responses ||= []
+          @stubbed_responses.each do |sr|
+            return sr.response if sr.matches(params)
+          end
         end
 
         def sign(secret_key, service,method,time)
