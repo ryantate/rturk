@@ -93,6 +93,13 @@ module RTurk
       RTurk::DisableHIT(:hit_id => self.id)
     end
 
+    def set_as_reviewing!
+      RTurk::SetHITAsReviewing(:hit_id => self.id)
+    end
+
+    def set_as_reviewable!
+      RTurk::SetHITAsReviewing(:hit_id => self.id, :revert => true)
+    end
 
     def url
       if RTurk.sandbox?
