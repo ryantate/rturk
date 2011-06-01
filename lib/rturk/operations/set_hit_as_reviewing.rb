@@ -1,4 +1,4 @@
-# http://docs.amazonwebservices.com/AWSMturkAPI/2008-08-02/ApiReference_DisposeHITOperation.html
+# http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_SetHITAsReviewingOperation.html
 module RTurk
   class SetHITAsReviewing < Operation
     
