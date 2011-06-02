@@ -12,6 +12,7 @@ describe "HIT adapter" do
     faker('extend_hit', :operation => 'ExtendHIT')
     faker('force_expire_hit', :operation => 'ForceExpireHIT')
     faker('dispose_hit', :operation => 'DisposeHIT')
+    faker('set_hit_as_reviewing', :operation => 'SetHITAsReviewing')
     faker('search_hits', :operation => 'SearchHITs')
   end
 
@@ -72,7 +73,15 @@ describe "HIT adapter" do
     hits = RTurk::Hit.all_reviewable
     hits.first.dispose!
   end
-  
+
+  it "should set a hit as Reviewing and Reviewable" do
+    hit = RTurk::Hit.all_reviewable.first
+    RTurk.should_receive(:SetHITAsReviewing).once.with(:hit_id => hit.id)
+    hit.set_as_reviewing!
+    RTurk.should_receive(:SetHITAsReviewing).once.with(:hit_id => hit.id, :revert => true)
+    hit.set_as_reviewable!
+  end
+
   it "should return a list of all hits" do
     hits = RTurk::Hit.all
     hits.size.should eql(2)
