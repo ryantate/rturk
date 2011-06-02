@@ -34,7 +34,7 @@ module RTurk
         qualifier[:QualificationTypeId] = types[type]
       end
       if opts.is_a?(Hash)
-        qualifier[:RequiredToPreview] = opts['RequiredToPreview'] || 'true'
+        qualifier[:RequiredToPreview] = opts['RequiredToPreview'].to_s if opts['RequiredToPreview']
         qualifier.merge!(comparator(opts))
       elsif opts == true || opts == false
          qualifier[:IntegerValue] = opts == true ? 1 : 0
