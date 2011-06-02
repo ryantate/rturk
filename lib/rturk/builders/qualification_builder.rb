@@ -34,13 +34,8 @@ module RTurk
         qualifier[:QualificationTypeId] = types[type]
       end
       if opts.is_a?(Hash)
-        qualifier[:Comparator] = COMPARATORS[opts.keys.first]
-        value = opts.values.first
-        if value.to_s.match(/[A-Z]./)
-          qualifier[:Country] = value
-        else
-          qualifier[:IntegerValue] = value
-        end
+        qualifier[:RequiredToPreview] = opts['RequiredToPreview'] || 'true'
+        qualifier.merge!(comparator(opts))
       elsif opts == true || opts == false
          qualifier[:IntegerValue] = opts == true ? 1 : 0
          qualifier[:Comparator] = COMPARATORS[:eql]
@@ -61,6 +56,23 @@ module RTurk
     def types
       # Could use this later to add other TYPES programatically
       TYPES
+    end
+
+    private
+
+    def comparator(opts)
+      qualifier = {}
+      opts.each do |k,v|
+        if COMPARATORS.has_key?(k)
+          qualifier[:Comparator] = COMPARATORS[k]
+          if v.to_s.match(/[A-Z]./)
+            qualifier[:Country] = v
+          else
+            qualifier[:IntegerValue] = v
+          end
+        end
+      end
+      qualifier
     end
 
   end

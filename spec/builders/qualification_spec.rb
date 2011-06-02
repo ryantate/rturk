@@ -15,6 +15,12 @@ describe RTurk::Qualifications do
     @qualification.to_params.should eql({"QualificationTypeId" => '000000000000000000L0',"Comparator" => 'GreaterThan',
                                          "IntegerValue" => 90, "RequiredToPreview" => "true"})
   end
+
+  it "should build a qualification for Approval rate which does not require preview" do
+    @qualification = RTurk::Qualification.new('000000000000000000L0', :gt => 90, "RequiredToPreview" => 'false')
+    @qualification.to_params.should eql({"QualificationTypeId" => '000000000000000000L0',"Comparator" => 'GreaterThan',
+                                         "IntegerValue" => 90, "RequiredToPreview" => "false"})
+  end
   
   it "should build a qualification for boolean qualification" do
     @qualification = RTurk::Qualification.new('00000000000000000060', true)
