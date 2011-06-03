@@ -34,8 +34,8 @@ module RTurk
         qualifier[:QualificationTypeId] = types[type]
       end
       if opts.is_a?(Hash)
-        qualifier[:RequiredToPreview] = opts['RequiredToPreview'].to_s if opts['RequiredToPreview']
-        qualifier.merge!(comparator(opts))
+        qualifier[:RequiredToPreview] = opts['RequiredToPreview'].to_s unless opts['RequiredToPreview'].nil?
+        qualifier.merge!(build_comparator(opts))
       elsif opts == true || opts == false
          qualifier[:IntegerValue] = opts == true ? 1 : 0
          qualifier[:Comparator] = COMPARATORS[:eql]
@@ -60,7 +60,7 @@ module RTurk
 
     private
 
-    def comparator(opts)
+    def build_comparator(opts)
       qualifier = {}
       opts.each do |k,v|
         if COMPARATORS.has_key?(k)
