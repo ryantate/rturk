@@ -1,7 +1,4 @@
-$: << File.join(File.dirname(__FILE__), '..', 'lib')
-require 'rubygems'
-require '../lib/rturk'
-require 'yaml'
+require File.expand_path('../example_helper', __FILE__)
 
 aws = YAML.load(File.open(File.join(File.dirname(__FILE__), 'mturk.yml')))
 RTurk::setup(aws['AWSAccessKeyId'], aws['AWSAccessKey'])
