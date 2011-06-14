@@ -27,6 +27,6 @@ def fake_response(xml)
   mock('RestClientFakeResponse', :body => xml)
 end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
 
 end

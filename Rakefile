@@ -2,15 +2,6 @@ require 'rubygems'
 require 'rake'
 
 begin
-  require 'yard'
-  YARD::Rake::YardocTask.new do |t|
-    t.files   = ['lib/**/*.rb', 'lib/**/*.rb']
-  end
-rescue LoadError
-#  puts "YARD is not available. For generating docs, you'll need to sudo gem install yard"
-end
-
-begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rturk"
@@ -40,8 +31,8 @@ end
 
 task :default => :spec
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
+require 'rdoc/task'
+RDoc::Task.new do |rdoc|
   if File.exist?('VERSION.yml')
     config = YAML.load(File.read('VERSION.yml'))
     version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
@@ -54,6 +45,3 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-
-
-
