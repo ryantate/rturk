@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), 'register_hit_type')
 module RTurk
   class CreateHIT < RegisterHITType
     attr_accessor :hit_type_id, :assignments, :lifetime, :note
-    
+
     def parse(response)
       RTurk::CreateHITResponse.new(response)
     end
@@ -20,9 +20,13 @@ module RTurk
       end
     end
 
+    def question_form(text)
+      @question = RTurk::QuestionForm.new(text)
+    end
+
     def to_params
       super.merge(
-        'HITTypeId'           => hit_type_id, 
+        'HITTypeId'           => hit_type_id,
         'MaxAssignments'      => (assignments || 1),
         'Question'            => question.to_params,
         'LifetimeInSeconds'   => (lifetime || 3600),
@@ -41,7 +45,7 @@ module RTurk
         super # validate as RegisterHitType
       end
     end
-    
+
     def required_fields
       super << :question
     end
