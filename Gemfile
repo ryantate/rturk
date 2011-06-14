@@ -3,4 +3,5 @@ gem 'nokogiri'
 gem 'jeweler'
 gem 'webmock'
 gem 'rest-client'
-gem 'rspec', '~> 1.3.1'
+gem 'rspec', "~>2"
+gem 'fakeweb'

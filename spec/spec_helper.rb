@@ -2,7 +2,7 @@ SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
 $: << SPEC_ROOT
 $: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
-require 'spec'
+require 'rspec'
 require 'fakeweb'
 require 'yaml'
 require 'webmock'
