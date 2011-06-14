@@ -30,9 +30,11 @@ describe "using mechanical turk with RTurk" do
     end.should raise_error "Parameters: 'description, reward, question'"  # Rspec is being too clever here
   end
 
-
   it "should let me build and send a hit with mostly default values" do
     hit = RTurk::CreateHIT.new(:title => "Look at some pictures from 4Chan") do |hit|
+      hit.description = 'blah'
+      hit.question("http://mpercival.com", :frame_height => 600)
+      hit.reward = 0.05
     end
     response = hit.request
     response.hit_id.should_not be_nil
@@ -76,6 +78,16 @@ describe "using mechanical turk with RTurk" do
     response.is_a?(RTurk::CreateHITResponse).should be_true
     response.hit_id.should == 'GBHZVQX3EHXZ2AYDY2T0'
     response.type_id.should == 'NYVZTQ1QVKJZXCYZCZVZ'
+  end
+
+  it "should let me build and send a hit with an internal question" do
+    hit = RTurk::CreateHIT.new(:title => "Who is your favorite Beatle?") do |hit|
+      hit.description = 'blah'
+      hit.reward = 0.05
+      hit.question("http://mpercival.com", :frame_height => 600)
+    end
+    response = hit.request
+    response.hit_id.should_not be_nil
   end
 
 end

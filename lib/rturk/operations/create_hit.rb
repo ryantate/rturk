@@ -11,10 +11,10 @@ module RTurk
     # Gives us access to a question builder attached to this HIT
     #
     # @param [String, Hash] URL Params, if none is passed, simply returns the question
-    # @return [RTurk::Question] The question if instantiated or nil
+    # @return [RTurk::ExternalQuestion] The question if instantiated or nil
     def question(*args)
       unless args.empty?
-        @question ||= RTurk::Question.new(*args)
+        @question ||= RTurk::ExternalQuestion.new(*args)
       else
         @question
       end
