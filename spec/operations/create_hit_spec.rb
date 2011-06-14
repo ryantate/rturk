@@ -23,6 +23,21 @@ describe "using mechanical turk with RTurk" do
     response.hit_id.should_not be_nil
   end
 
+  it "should fail if I don't provide required params" do
+    lambda do
+      hit = RTurk::CreateHIT.new(:title => "Look at some pictures from 4Chan")
+      hit.request
+    end.should raise_error "Parameters: 'description, reward, question'"  # Rspec is being too clever here
+  end
+
+
+  it "should let me build and send a hit with mostly default values" do
+    hit = RTurk::CreateHIT.new(:title => "Look at some pictures from 4Chan") do |hit|
+    end
+    response = hit.request
+    response.hit_id.should_not be_nil
+  end
+
   it "should let me create a hit" do
     response = RTurk::CreateHIT(:title => "Look at some pictures from 4Chan") do |hit|
       hit.assignments = 5
