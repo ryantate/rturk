@@ -13,6 +13,14 @@ describe RTurk::Requester do
     RTurk::Requester.request(:Operation => 'GetHIT', 'HITId' => 'test')
   end
 
+  it "should use UTC and ISO8601 format for the timestamp" do
+    now = Time.now
+    utc = now.utc
+    Time.should_receive(:now).and_return(now)  # freeze time for a moment
+    RestClient.should_receive(:post).with(/amazonaws/, /Timestamp=#{CGI.escape(utc.iso8601)}/)
+    RTurk::Requester.request(:Operation => 'GetHIT', 'HITId' => 'test')
+  end
+
   it "should build a correct querystring with one value per key" do
     params = {
       :Operation => 'GetHIT',
