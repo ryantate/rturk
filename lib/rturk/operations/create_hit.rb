@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), 'register_hit_type')
 
 module RTurk
   class CreateHIT < RegisterHITType
-    attr_accessor :hit_type_id, :assignments, :lifetime, :annotation
+    attr_accessor :hit_type_id, :max_assignments, :lifetime, :annotation
 
     def parse(response)
       RTurk::CreateHITResponse.new(response)
@@ -27,7 +27,7 @@ module RTurk
     def to_params
       super.merge(
         'HITTypeId'           => hit_type_id,
-        'MaxAssignments'      => (assignments || 1),
+        'MaxAssignments'      => (max_assignments || 1),
         'Question'            => question.to_params,
         'LifetimeInSeconds'   => (lifetime || 3600),
         'RequesterAnnotation' => annotation

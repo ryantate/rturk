@@ -10,7 +10,7 @@ module RTurk
   #
   #     RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
   #     hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
-  #       hit.assignments = 2
+  #       hit.max_assignments = 2
   #       hit.question("http://myapp.com/turkers/add_tags")
   #       hit.reward = 0.05
   #       hit.qualifications.approval_rate, {:gt => 80}
