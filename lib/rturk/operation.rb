@@ -31,8 +31,6 @@ module RTurk
     ### Instance Methods ###
     ########################
 
-    attr_accessor :response # RestClient response, for debugging
-
     def initialize(opts = {})
       opts.each_pair do |k,v|
         if self.respond_to?("#{k.to_sym}=")
@@ -70,8 +68,8 @@ module RTurk
       params = {'Operation' => self.class.to_s.gsub(/^\w+::/,'')}
       params = params.merge(self.default_params)
       params = to_params.merge(params)
-      @response = RTurk.Request(params)
-      parse(@response)
+      response = RTurk.Request(params)
+      parse(response)
     end
 
     def check_params
