@@ -66,7 +66,7 @@ module RTurk
           end
         end
 
-        def sign(secret_key, service,method,time)
+        def sign(secret_key, service, method, time)
           msg = "#{service}#{method}#{time}"
           return hmac_sha1(secret_key, msg )
         end
