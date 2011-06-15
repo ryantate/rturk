@@ -79,6 +79,10 @@ Here's a quick peak at what happens on the Mechanical Turk side.
 
 A worker takes a look at your hit. The page will contain an iframe with your question URL loaded inside of it.
 
+If you want to use an Amazon-hosted [QuestionForm](http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html), do
+
+    hit.question_form "<Question>What color is the sky?</Question>" # not the real format
+
 Amazon will append the AssignmentID parameter to the URL for your own information. In preview mode this will look like
 
     http://myapp.com/turkers/add_tags?item_id=1234&AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE
@@ -97,10 +101,11 @@ Take a look at the [Amazon MTurk developer docs](http://docs.amazonwebservices.c
 
 ## Contributors
 
-[Zach Hale](http://github.com/zachhale)  
-[David Balatero](http://github.com/dbalatero)  
-[Rob Hanlon](http://github.com/ohwillie)  
-[Haris Amin](http://github.com/hamin)  
-[Tyler](http://github.com/tkieft)  
-[David Dai](http://github.com/newtonsapple)  
+[Zach Hale](http://github.com/zachhale)
+[David Balatero](http://github.com/dbalatero)
+[Rob Hanlon](http://github.com/ohwillie)
+[Haris Amin](http://github.com/hamin)
+[Tyler](http://github.com/tkieft)
+[David Dai](http://github.com/newtonsapple)
+[Alex Chaffee](http://github.com/alexch)
 
