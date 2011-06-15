@@ -123,6 +123,8 @@ module RTurk
         @source.send(method, *args)
       elsif self.details.respond_to?(method)
         self.details.send(method)
+      else
+        super
       end
     end
   end
