@@ -40,14 +40,18 @@ module RTurk
       end
 
       def all_reviewable
-        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
-          arr << new(hit_id); arr
+        [].tap do |hits|
+          RTurk.GetReviewableHITs.hit_ids.each do |hit_id|
+            hits << new(hit_id)
+          end
         end
       end
 
       def all
-        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
-          arr << new(hit.id, hit); arr;
+        [].tap do |hits|
+          RTurk.SearchHITs.hits.each do |hit|
+            hits << new(hit.id, hit)
+          end
         end
       end
 
