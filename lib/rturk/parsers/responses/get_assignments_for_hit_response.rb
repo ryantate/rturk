@@ -27,9 +27,9 @@
 # </GetAssignmentsForHITResult>
 
 module RTurk
-  
+
   class GetAssignmentsForHITResponse < Response
-    
+
     def assignments
       @assignments ||= []
       @xml.xpath('//Assignment').each do |assignment_xml|
@@ -37,7 +37,23 @@ module RTurk
       end
       @assignments
     end
-    
+
+    # todo: test
+    def total_num_results
+      @xml.xpath('//TotalNumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def num_results
+      @xml.xpath('//NumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def page_number
+      @xml.xpath('//PageNumber').inner_text.to_i
+    end
+
+
   end
-  
+
 end
