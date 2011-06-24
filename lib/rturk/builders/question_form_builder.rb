@@ -16,11 +16,15 @@ module RTurk
     end
 
     def to_params
-      <<-XML
+      if text =~ /^<QuestionForm/
+        text
+      else
+        <<-XML
 <QuestionForm xmlns="#{XMLNS}">
 #{text}
 </QuestionForm>
-      XML
+        XML
+      end
     end
 
   end
