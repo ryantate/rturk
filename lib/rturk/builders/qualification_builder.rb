@@ -51,13 +51,15 @@ module RTurk
       elsif type.is_a?(Symbol)
         qualifier[:QualificationTypeId] = Qualification.types[type]
       end
+
       if opts.is_a?(Hash)
         qualifier[:RequiredToPreview] = opts['RequiredToPreview'].to_s unless opts['RequiredToPreview'].nil?
         qualifier.merge!(build_comparator(opts))
       elsif opts == true || opts == false
-         qualifier[:IntegerValue] = opts == true ? 1 : 0
-         qualifier[:Comparator] = COMPARATORS[:eql]
+        qualifier[:IntegerValue] = opts == true ? 1 : 0
+        qualifier[:Comparator] = COMPARATORS[:eql]
       end
+
       qualifier
     end
 
@@ -78,6 +80,7 @@ module RTurk
       opts.each do |k,v|
         if COMPARATORS.has_key?(k)
           qualifier[:Comparator] = COMPARATORS[k]
+          next if v.nil?  # to allow :exists => nil
           if v.to_s.match(/[A-Z]./)
             qualifier[:Country] = v
           else
