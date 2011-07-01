@@ -12,7 +12,11 @@ module RTurk
     TYPES = {:approval_rate => '000000000000000000L0', :submission_rate => '00000000000000000000',
              :abandoned_rate => '0000000000000000007', :return_rate => '000000000000000000E0',
              :rejection_rate => '000000000000000000S0', :hits_approved => '00000000000000000040',
-             :adult => '00000000000000000060', :country => '00000000000000000071'}
+             :adult => '00000000000000000060', :country => '00000000000000000071',
+             :categorization_masters => '2NDP2L92HECWY8NS8H3CK0CP5L9GHO',
+             :photo_moderation_masters => '21VZU98JHSTLZ5BPP4A9NOBJEK3DPG',
+
+             }
 
     attr_accessor :qualifier
 
