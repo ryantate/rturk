@@ -13,9 +13,6 @@ module RTurk
              :abandoned_rate => '00000000000000000070', :return_rate => '000000000000000000E0',
              :rejection_rate => '000000000000000000S0', :hits_approved => '00000000000000000040',
              :adult => '00000000000000000060', :country => '00000000000000000071',
-             :categorization_masters => '2NDP2L92HECWY8NS8H3CK0CP5L9GHO',
-             :photo_moderation_masters => '21VZU98JHSTLZ5BPP4A9NOBJEK3DPG',
-
              }
 
     attr_accessor :qualifier
@@ -58,8 +55,18 @@ module RTurk
     end
 
     def types
-      # Could use this later to add other TYPES programatically
-      TYPES
+      # Amazon Master qualification ids vary between sandbox and real environments - see https://forums.aws.amazon.com/thread.jspa?threadID=70812
+      TYPES.dup.merge(if RTurk.sandbox?
+        {
+          :categorization_masters - '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
+          :photo_moderation_masters - '2TGBB6BFMFFOM08IBMAFGGESC1UWJX'
+        }
+      else
+        {
+          :categorization_masters => '2NDP2L92HECWY8NS8H3CK0CP5L9GHO',
+          :photo_moderation_masters => '21VZU98JHSTLZ5BPP4A9NOBJEK3DPG',
+        }
+      end)
     end
 
     private
