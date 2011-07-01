@@ -58,8 +58,8 @@ module RTurk
       # Amazon Master qualification ids vary between sandbox and real environments - see https://forums.aws.amazon.com/thread.jspa?threadID=70812
       TYPES.dup.merge(if RTurk.sandbox?
         {
-          :categorization_masters - '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
-          :photo_moderation_masters - '2TGBB6BFMFFOM08IBMAFGGESC1UWJX'
+          :categorization_masters => '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
+          :photo_moderation_masters => '2TGBB6BFMFFOM08IBMAFGGESC1UWJX'
         }
       else
         {
