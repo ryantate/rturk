@@ -9,11 +9,28 @@ module RTurk
     COMPARATORS = {:gt => 'GreaterThan', :lt => 'LessThan', :gte => 'GreaterThanOrEqualTo',
                    :lte => 'LessThanOrEqualTo', :eql => 'EqualTo', :not => 'NotEqualTo', :exists => 'Exists'}
 
-    TYPES = {:approval_rate => '000000000000000000L0', :submission_rate => '00000000000000000000',
-             :abandoned_rate => '0000000000000000007', :return_rate => '000000000000000000E0',
-             :rejection_rate => '000000000000000000S0', :hits_approved => '00000000000000000040',
-             :adult => '00000000000000000060', :country => '00000000000000000071',
-             }
+    def self.types
+      system_qualification_types ||= {
+        :approval_rate => '000000000000000000L0', :submission_rate => '00000000000000000000',
+        :abandoned_rate => '0000000000000000007', :return_rate => '000000000000000000E0',
+        :rejection_rate => '000000000000000000S0', :hits_approved => '00000000000000000040',
+        :adult => '00000000000000000060', :country => '00000000000000000071',
+      }
+
+      # Amazon Master qualification ids vary between sandbox and real environments - see https://forums.aws.amazon.com/thread.jspa?threadID=70812
+      system_qualification_types.merge(if RTurk.sandbox?
+        {
+          :categorization_masters => '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
+          :photo_moderation_masters => '2TGBB6BFMFFOM08IBMAFGGESC1UWJX',
+        }
+      else
+        {
+          :categorization_masters => '2NDP2L92HECWY8NS8H3CK0CP5L9GHO',
+          :photo_moderation_masters => '21VZU98JHSTLZ5BPP4A9NOBJEK3DPG',
+        }
+      end)
+    end
+
 
     attr_accessor :qualifier
 
@@ -32,7 +49,7 @@ module RTurk
       if type.is_a?(String)
         qualifier[:QualificationTypeId] = type
       elsif type.is_a?(Symbol)
-        qualifier[:QualificationTypeId] = types[type]
+        qualifier[:QualificationTypeId] = Qualification.types[type]
       end
       if opts.is_a?(Hash)
         qualifier[:RequiredToPreview] = opts['RequiredToPreview'].to_s unless opts['RequiredToPreview'].nil?
@@ -52,21 +69,6 @@ module RTurk
       params["LocaleValue.Country"] = qualifier[:Country] if qualifier[:Country]
       params["RequiredToPreview"] = qualifier[:RequiredToPreview] || 'true'
       params
-    end
-
-    def types
-      # Amazon Master qualification ids vary between sandbox and real environments - see https://forums.aws.amazon.com/thread.jspa?threadID=70812
-      TYPES.dup.merge(if RTurk.sandbox?
-        {
-          :categorization_masters => '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
-          :photo_moderation_masters => '2TGBB6BFMFFOM08IBMAFGGESC1UWJX',
-        }
-      else
-        {
-          :categorization_masters => '2NDP2L92HECWY8NS8H3CK0CP5L9GHO',
-          :photo_moderation_masters => '21VZU98JHSTLZ5BPP4A9NOBJEK3DPG',
-        }
-      end)
     end
 
     private
