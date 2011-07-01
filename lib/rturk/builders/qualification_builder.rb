@@ -59,7 +59,7 @@ module RTurk
       TYPES.dup.merge(if RTurk.sandbox?
         {
           :categorization_masters => '2F1KVCNHMVHV8E9PBUB2A4J79LU20F',
-          :photo_moderation_masters => '2TGBB6BFMFFOM08IBMAFGGESC1UWJX'
+          :photo_moderation_masters => '2TGBB6BFMFFOM08IBMAFGGESC1UWJX',
         }
       else
         {
