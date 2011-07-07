@@ -97,7 +97,7 @@ Anything submitted in this form will be sent to Amazon and saved for your review
 
 ## More information
 
-Take a look at the [Amazon MTurk developer docs](http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/) for more information. They have a complete list of API operations, all of which can be called with this library.
+Take a look at the [Amazon MTurk developer docs](http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/) for more information. They have a complete list of API operations, many of which can be called with this library.
 
 Mark gave a [presentation about RTurk at the Atlanta Ruby User Group](http://www.atlruby.org/markpercival/posts/109-Mechanical-Turk-Ruby-Gem) that got recorded as a 20-minute screencast video.
 
