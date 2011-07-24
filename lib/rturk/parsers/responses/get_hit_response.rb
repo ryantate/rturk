@@ -48,7 +48,7 @@ module RTurk
                 :expires_at, :assignments_duration, :reward_amount, :max_assignments,
                 :auto_approval_delay, :description, :reward, :lifetime, :annotation,
                 :similar_hits_count, :assignments_pending_count, :assignments_available_count,
-                :assignments_completed_count
+                :assignments_completed_count, :question
 
     def initialize(response)
       @raw_xml = response.body
@@ -74,7 +74,8 @@ module RTurk
         :similar_hits_count => 'NumberOfSimilarHITs',
         :assignments_pending_count => 'NumberOfAssignmentsPending',
         :assignments_available_count => 'NumberOfAssignmentsAvailable',
-        :assignments_completed_count => 'NumberOfAssignmentsCompleted'
+        :assignments_completed_count => 'NumberOfAssignmentsCompleted',
+        :question => 'Question'
       )
 
       @keywords = @keywords.split(', ') if @keywords

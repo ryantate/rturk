@@ -26,7 +26,7 @@ describe RTurk::Response do
   
   context "given a valid response" do
   
-    before(:all) do
+    before(:each) do
       @response = RTurk::Response.new(fake_response(File.read(File.join(SPEC_ROOT,'fake_responses','create_hit.xml'))))
     end
     

@@ -2,8 +2,8 @@ require File.join(File.dirname(__FILE__), 'register_hit_type')
 
 module RTurk
   class CreateHIT < RegisterHITType
-    attr_accessor :hit_type_id, :assignments, :lifetime, :note
-    
+    attr_accessor :hit_type_id, :max_assignments, :lifetime, :annotation
+
     def parse(response)
       RTurk::CreateHITResponse.new(response)
     end
@@ -11,22 +11,30 @@ module RTurk
     # Gives us access to a question builder attached to this HIT
     #
     # @param [String, Hash] URL Params, if none is passed, simply returns the question
-    # @return [RTurk::Question] The question if instantiated or nil
+    # @return [RTurk::ExternalQuestion] The question if instantiated or nil
     def question(*args)
       unless args.empty?
-        @question ||= RTurk::Question.new(*args)
+        @question ||= RTurk::ExternalQuestion.new(*args)
       else
         @question
       end
     end
 
+    def question_form(text_or_widget)
+      if text_or_widget.is_a? Erector::XMLWidget
+        @question = text_or_widget
+      else
+        @question = RTurk::QuestionForm.new(:xml => text)
+      end
+    end
+
     def to_params
       super.merge(
-        'HITTypeId'           => hit_type_id, 
-        'MaxAssignments'      => (assignments || 1),
+        'HITTypeId'           => hit_type_id,
+        'MaxAssignments'      => (max_assignments || 1),
         'Question'            => question.to_params,
         'LifetimeInSeconds'   => (lifetime || 3600),
-        'RequesterAnnotation' => note
+        'RequesterAnnotation' => annotation
       )
     end
 
@@ -41,7 +49,7 @@ module RTurk
         super # validate as RegisterHitType
       end
     end
-    
+
     def required_fields
       super << :question
     end

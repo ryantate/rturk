@@ -1,12 +1,15 @@
 SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
 $: << SPEC_ROOT
-$: << File.join(File.dirname(__FILE__), '..', 'lib')
+$: << File.join(SPEC_ROOT, '..', 'lib')
+
 require 'rubygems'
-require 'spec'
+require 'rspec'
 require 'fakeweb'
 require 'yaml'
 require 'webmock'
 include WebMock::API
+require 'wrong'
+include Wrong::D
 
 require 'rturk'
 # RTurk.log.level = Logger::DEBUG
@@ -27,6 +30,8 @@ def fake_response(xml)
   mock('RestClientFakeResponse', :body => xml)
 end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
 
 end
+
+require 'example_question_form'

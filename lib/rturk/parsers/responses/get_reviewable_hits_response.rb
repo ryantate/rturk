@@ -17,15 +17,30 @@
 # </GetReviewableHITsResult>
 
 module RTurk
-  
+
   class GetReviewableHITsResponse < Response
-    
+
     def hit_ids
       @xml.xpath('//HIT').inject([]) do |arr, hit_xml|
         arr << hit_xml.inner_text.strip; arr
       end
     end
-    
+
+    # todo: test
+    def total_num_results
+      @xml.xpath('//TotalNumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def num_results
+      @xml.xpath('//NumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def page_number
+      @xml.xpath('//PageNumber').inner_text.to_i
+    end
+
   end
-  
+
 end
