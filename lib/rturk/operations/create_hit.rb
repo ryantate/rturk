@@ -20,8 +20,12 @@ module RTurk
       end
     end
 
-    def question_form(text)
-      @question = RTurk::QuestionForm.new(text)
+    def question_form(text_or_widget)
+      if text_or_widget.is_a? Erector::XMLWidget
+        @question = text_or_widget
+      else
+        @question = RTurk::QuestionForm.new(:xml => text)
+      end
     end
 
     def to_params
