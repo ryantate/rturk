@@ -84,7 +84,7 @@ describe "using mechanical turk with RTurk" do
     hit = RTurk::CreateHIT.new(:title => "Who is your favorite Beatle?") do |hit|
       hit.description = 'blah'
       hit.reward = 0.05
-      hit.question_form example_question_form
+      hit.question_form ExampleQuestionForm.new
     end
     response = hit.request
     response.hit_id.should_not be_nil

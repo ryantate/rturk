@@ -1,12 +1,15 @@
 SPEC_ROOT = File.expand_path(File.dirname(__FILE__)) unless defined? SPEC_ROOT
 $: << SPEC_ROOT
-$: << File.join(File.dirname(__FILE__), '..', 'lib')
+$: << File.join(SPEC_ROOT, '..', 'lib')
+
 require 'rubygems'
 require 'rspec'
 require 'fakeweb'
 require 'yaml'
 require 'webmock'
 include WebMock::API
+require 'wrong'
+include Wrong::D
 
 require 'rturk'
 # RTurk.log.level = Logger::DEBUG
@@ -31,73 +34,4 @@ RSpec.configure do |config|
 
 end
 
-# The QuestionForm data structure is hella complicated, so we're just treating it as a string for now. This is
-# from http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html#d0e18794
-def example_question_form
-  <<-XML
-  <Overview>
-    <Title>Game 01523, "X" to play</Title>
-    <Text>
-      You are helping to decide the next move in a game of Tic-Tac-Toe.  The board looks like this:
-    </Text>
-    <Binary>
-      <MimeType>
-        <Type>image</Type>
-        <SubType>gif</SubType>
-      </MimeType>
-      <DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
-      <AltText>The game board, with "X" to move.</AltText>
-    </Binary>
-    <Text>
-      Player "X" has the next move.
-    </Text>
-  </Overview>
-  <Question>
-    <QuestionIdentifier>nextmove</QuestionIdentifier>
-    <DisplayName>The Next Move</DisplayName>
-    <IsRequired>true</IsRequired>
-    <QuestionContent>
-      <Text>
-        What are the coordinates of the best move for player "X" in this game?
-      </Text>
-    </QuestionContent>
-    <AnswerSpecification>
-      <FreeTextAnswer>
-        <Constraints>
-          <Length minLength="2" maxLength="2" />
-        </Constraints>
-        <DefaultText>C1</DefaultText>
-      </FreeTextAnswer>
-    </AnswerSpecification>
-  </Question>
-  <Question>
-    <QuestionIdentifier>likelytowin</QuestionIdentifier>
-    <DisplayName>The Next Move</DisplayName>
-    <IsRequired>true</IsRequired>
-    <QuestionContent>
-      <Text>
-        How likely is it that player "X" will win this game?
-      </Text>
-    </QuestionContent>
-    <AnswerSpecification>
-      <SelectionAnswer>
-        <StyleSuggestion>radiobutton</StyleSuggestion>
-        <Selections>
-          <Selection>
-            <SelectionIdentifier>notlikely</SelectionIdentifier>
-            <Text>Not likely</Text>
-          </Selection>
-          <Selection>
-            <SelectionIdentifier>unsure</SelectionIdentifier>
-            <Text>It could go either way</Text>
-          </Selection>
-          <Selection>
-            <SelectionIdentifier>likely</SelectionIdentifier>
-            <Text>Likely</Text>
-          </Selection>
-        </Selections>
-      </SelectionAnswer>
-    </AnswerSpecification>
-  </Question>
-  XML
-end
+require 'example_question_form'
