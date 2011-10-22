@@ -6,7 +6,7 @@ RTurk is designed to fire off Mechanical Turk tasks for pages that reside on an 
 
 The pages could be a part of a rails app, or just a simple javascript enabled form.
 
-If your integrating RTurk with a Rails app, do yourself a favor and check out [Turkee](http://github.com/aantix/turkee) by Jim Jones. It integrates your Rails forms with mechanical turk, and includes rake tasks to pull and process submissions. Definitely a time saver.
+If you're integrating RTurk with a Rails app, do yourself a favor and check out [Turkee](http://github.com/aantix/turkee) by Jim Jones. It integrates your Rails forms with Mechanical Turk, and includes rake tasks to pull and process submissions. Definitely a time saver.
 
 ## Installation
 
