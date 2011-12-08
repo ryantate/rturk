@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary = "Mechanical Turk API Wrapper"
 
   s.authors = ["Mark Percival", "Zach Hale", "David Balatero", "Rob Hanlon"]
-  s.date = "2011-06-03"
+  s.date = "2011-11-20"
   s.email = "mark@mpercival.com"
   s.extra_rdoc_files = [
     "LICENSE",

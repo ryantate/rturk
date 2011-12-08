@@ -1,3 +1,7 @@
+2.5.2
+-----
+* Update to 2.5.2 with correct publish date. Sorry about the mixup here.
+
 2.5.0
 -----
 * Updated endpoints to HTTPS. This change could break some installations behind firewalls, so
