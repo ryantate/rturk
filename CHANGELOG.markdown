@@ -1,3 +1,6 @@
+2.5.1
+* Seems there was an errant checkin of 2.5.0 from June 2011, this bumps the version correctly to add in HTTPS
+
 2.5.0
 -----
 * Updated endpoints to HTTPS. This change could break some installations behind firewalls, so
