@@ -13,14 +13,16 @@ describe RTurk::AssignQualification do
 
   it "should successfully request the operation" do
     RTurk::Requester.should_receive(:request).once.with(
-      hash_including('Operation' => 'AssignQualification'))
+      hash_including('Operation' => 'AssignQualification', 'IntegerValue' => 80))
     RTurk::AssignQualification(:qualification_type_id => "123456789",
-                               :worker_id => "ABCDEF1234") rescue RTurk::InvalidRequest
+                               :worker_id => "ABCDEF1234",
+                               :integer_value => 80) rescue RTurk::InvalidRequest
   end
 
   it "should parse and return the result" do
     RTurk::AssignQualification(:qualification_type_id => "123456789",
-                               :worker_id => "ABCDEF1234").elements.should eql(
+                               :worker_id => "ABCDEF1234",
+                               :integer_value => 80).elements.should eql(
       {"AssignQualificationResult"=>{"Request"=>{"IsValid"=>"True"}}}
     )
   end
