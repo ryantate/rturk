@@ -1,3 +1,8 @@
+2.6.0
+-----
+* Adding IntegerValue attribute to AssignQualification from Ross
+  Hale [rosshale]
+
 2.5.2
 -----
 * Update to 2.5.2 with correct publish date. Sorry about the mixup here.
