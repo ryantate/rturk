@@ -10,4 +10,5 @@ hit = RTurk::Hit.create(:title => 'Write a tweet for me') do |hit|
   hit.question("http://mpercival.com.s3.amazonaws.com/newtweet.html")
 end
 
+p hit.hit_id
 p hit.url
