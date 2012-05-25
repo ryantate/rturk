@@ -45,7 +45,12 @@ module RTurk
         end.join('&') # order doesn't matter for the actual request
 
         RTurk.logger.debug "Sending request:\n\t #{credentials.host}?#{querystring}"
-        RestClient.post(credentials.host, querystring)
+        begin
+          RestClient.post(credentials.host, querystring)
+        rescue RestClient::Exception => e
+          raise ServiceUnavailable if e.http_code == 503
+          raise
+        end
       end
 
       private

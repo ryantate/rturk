@@ -29,6 +29,17 @@ module RTurk::Utilities
       tr("-", "_").
       downcase
   end
+  
+  # Executes the passed in block, retrying in cases of HTTP 503 Status Unvailable Errors
+  def self.retry_on_unavailable(delay=1)
+    begin
+      yield
+    rescue RTurk::ServiceUnavailable => e
+      RTurk.logger.debug "HTTP Error 503: Service Unavailable.  Retrying in #{delay} seconds."
+      sleep delay
+      retry
+    end
+  end
 
 end
 
