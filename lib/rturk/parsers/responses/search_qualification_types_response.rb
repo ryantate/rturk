@@ -75,7 +75,7 @@ module RTurk
     def qualification_types
       @qualification_types ||= []
       @xml.xpath('//QualificationType').each do |qualification_type_xml|
-        @qualification_types << QualificationParser.new(qualification_type_xml)
+        @qualification_types << QualificationTypeParser.new(qualification_type_xml)
       end
       @qualification_types
     end

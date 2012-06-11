@@ -23,5 +23,7 @@ describe RTurk::SearchQualificationTypes do
     qualification_types = response.qualification_types
     qualification_types.size.should eql(1)
     qualification_types.first.qualification_type_id.should eql('WKAZMYZDCYCZP412TZEZ')
+    qualification_types.first.name.should eql('WebReviews Qualification Master Test')
+    qualification_types.first.keywords.should eql('WebReviews, webreviews, web reviews')
   end
 end
