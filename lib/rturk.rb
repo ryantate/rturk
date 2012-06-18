@@ -3,7 +3,7 @@ module RTurk
 
   SANDBOX = 'https://mechanicalturk.sandbox.amazonaws.com/'
   PRODUCTION = 'https://mechanicalturk.amazonaws.com/'
-  API_VERSION = '2008-08-02'
+  API_VERSION = '2012-03-25' # '2008-08-02'
   OLD_API_VERSION = '2006-05-05'
 
   class << self
