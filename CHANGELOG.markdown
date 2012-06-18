@@ -1,3 +1,12 @@
+2.8.0
+----
+* Adding support for operation SearchQualificationTypes [hampei]
+* Bumped to API version 2012-03-25
+2.7.0
+----
+* Adding support for operation SearchQualificationTypes [denniskuczynski]
+* Added ServiceUnavailable error type for detecting/handling HTTP
+  Service Unavailable errors [denniskuczynski]
 2.6.0
 -----
 * Adding IntegerValue attribute to AssignQualification from Ross
