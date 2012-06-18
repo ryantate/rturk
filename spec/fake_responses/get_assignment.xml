@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<GetAssignmentResult>
+  <Request>
+    <IsValid>True</IsValid>
+  </Request>
+  <Assignment>
+    <AssignmentId>GYFTRHZ5J3DZREY48WNZE38ZR9RR1ZPMXGWE7WE0</AssignmentId>
+    <WorkerId>AD20WXZZP9XXK</WorkerId>
+    <HITId>GYFTRHZ5J3DZREY48WNZ</HITId>
+    <AssignmentStatus>Approved</AssignmentStatus>
+    <AutoApprovalTime>2012-08-12T19:21:54Z</AutoApprovalTime>
+    <AcceptTime>2012-07-13T19:21:40Z</AcceptTime>
+    <SubmitTime>2012-07-13T19:21:54Z</SubmitTime>
+    <ApprovalTime>2012-07-13T19:27:54Z</ApprovalTime>
+    <Answer>
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+      &lt;QuestionFormAnswers xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd"&gt;
+        &lt;Answer&gt;
+          &lt;QuestionIdentifier&gt;Question100&lt;/QuestionIdentifier&gt;
+          &lt;FreeText&gt;Move to X.&lt;/FreeText&gt;
+        &lt;/Answer&gt;
+      &lt;/QuestionFormAnswers&gt;
+    </Answer>
+  </Assignment>
+  <HIT>
+    <HITId>GYFTRHZ5J3DZREY48WNZ</HITId>
+    <HITTypeId>NYVZTQ1QVKJZXCYZCZVZ</HITTypeId>
+    <CreationTime>2012-07-07T00:56:40Z</CreationTime>
+    <Title>Location</Title>
+    <Description>Answer this Question</Description>
+    <Question>
+      <QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+        <Question>
+          <QuestionIdentifier>Question100</QuestionIdentifier>
+          <DisplayName>My Question</DisplayName>
+          <IsRequired>true</IsRequired>
+          <QuestionContent>
+            <Binary>
+              <MimeType>
+                <Type>image</Type>
+                <SubType>gif</SubType>
+              </MimeType>
+              <DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
+              <AltText>The game board, with "X" to move.</AltText>
+            </Binary>
+          </QuestionContent>
+          <AnswerSpecification><FreeTextAnswer/></AnswerSpecification>
+        </Question> 
+      </QuestionForm>
+    </Question>
+    <HITStatus>Assignable</HITStatus>
+    <MaxAssignments>1</MaxAssignments>
+    <Reward>
+      <Amount>5.00</Amount>
+      <CurrencyCode>USD</CurrencyCode>
+      <FormattedPrice>$5.00</FormattedPrice>
+    </Reward>
+    <AutoApprovalDelayInSeconds>2592000</AutoApprovalDelayInSeconds>
+    <Expiration>2012-07-14T00:56:40Z</Expiration>
+    <AssignmentDurationInSeconds>30</AssignmentDurationInSeconds>
+    <NumberOfSimilarHITs>1</NumberOfSimilarHITs>
+    <HITReviewStatus>NotReviewed</HITReviewStatus>
+  </HIT>
+</GetAssignment>
