@@ -48,4 +48,42 @@ describe RTurk::Requester do
       /(?=.*Operation=GetHIT)(?=.*Param1=test1)(?=.*Param2.0=test2a)(?=.*Param2.1=test2b)/)
     RTurk::Requester.request(params)
   end
+  
+  it "should raise RTurk::ServiceUnavaile on HTTP 503 Errors" do
+    error_503 = RestClient::Exception.new(nil, 503)
+    params = {
+      :Operation => 'GetHIT',
+      'Param1' => 'test1',
+      'Param2' => {0 => 'test2a', 1 => 'test2b'}
+    }
+    RestClient.stub(:post).and_raise(error_503)
+    lambda {
+      RTurk::Requester.request(params)
+    }.should raise_error RTurk::ServiceUnavailable
+  end
+  
+  it "should be able to leverage retry_on_unavailable to simplify AWS ServiceUnavailable Errors " do
+    error_503 = RestClient::Exception.new(nil, 503) #ServiceUnavailable
+    error_408 = RestClient::Exception.new(nil, 408) #Timeout
+    params = {
+      :Operation => 'GetHIT',
+      'Param1' => 'test1',
+      'Param2' => {0 => 'test2a', 1 => 'test2b'}
+    }
+    attempts = 0
+    lambda { 
+      # Wrap in retry block with delay of 0 seconds
+      RTurk::Utilities.retry_on_unavailable(0) do
+        # Ensure the first request triggers a retry with 503, subsequently raise 408 Timeout
+        if attempts == 0
+          RestClient.stub(:post).and_raise(error_503)
+        else
+          RestClient.stub(:post).and_raise(error_408)
+        end
+        attempts = attempts + 1
+        RTurk::Requester.request(params)
+      end
+    }.should raise_error RestClient::Exception
+    attempts.should eql(2)
+  end
 end
