@@ -39,14 +39,14 @@ module RTurk
         h
       end
 
-      def all_reviewable
-        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
+      def all_reviewable(*args)
+        RTurk.GetReviewableHITs(*args).hit_ids.inject([]) do |arr, hit_id|
           arr << new(hit_id); arr
         end
       end
 
-      def all
-        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
+      def all(*args)
+        RTurk.SearchHITs(*args).hits.inject([]) do |arr, hit|
           arr << new(hit.id, hit); arr;
         end
       end

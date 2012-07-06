@@ -37,8 +37,8 @@ module RTurk
     end
     
   end
-  def self.SearchHITs
-    RTurk::SearchHITs.create
+  def self.SearchHITs(*args)
+    RTurk::SearchHITs.create(*args)
   end
 
 end
