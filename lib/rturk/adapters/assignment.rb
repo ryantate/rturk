@@ -16,7 +16,7 @@ module RTurk
       RTurk::ApproveAssignment(:assignment_id => self.id, :feedback => feedback)
     end
     
-    def approverejected!(feedback = nil)
+    def approve_rejected!(feedback = nil)
       RTurk::ApproveRejectedAssignment(:assignment_id => self.id, :feedback => feedback)
     end
 
