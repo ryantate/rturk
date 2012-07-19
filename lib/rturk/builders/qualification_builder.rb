@@ -20,9 +20,9 @@ module RTurk
     # needs at the minimum
     #  type_id, :comparator => :value
     #  or
-    #  type_id, true
+    #  type_id, :exists => true
     #  or
-    #  type_id, :exists
+    #  type_id, true
     #
     def initialize(type, opts)
       # If the value is a string, we can assume it's the country since,
@@ -39,7 +39,7 @@ module RTurk
       elsif opts == true || opts == false
          qualifier[:IntegerValue] = opts == true ? 1 : 0
          qualifier[:Comparator] = COMPARATORS[:eql]
-       end
+      end
       qualifier
     end
 
@@ -68,7 +68,7 @@ module RTurk
           if v.to_s.match(/[A-Z]./)
             qualifier[:Country] = v
           else
-            qualifier[:IntegerValue] = v
+            qualifier[:IntegerValue] = v unless k == :exists
           end
         end
       end
