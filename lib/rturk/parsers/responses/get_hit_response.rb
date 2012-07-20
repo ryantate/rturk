@@ -53,7 +53,7 @@ module RTurk
 
     def initialize(response)
       @raw_xml = response.body
-      @xml = Nokogiri::XML(@raw_xml)
+      @xml = Nokogiri::XML(CGI.unescapeHTML(@raw_xml))
       raise_errors
       map_content(@xml.xpath('//HIT'),
         :hit_id => 'HITId',

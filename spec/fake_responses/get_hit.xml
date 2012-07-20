@@ -12,10 +12,10 @@
     <CreationTime>2009-06-25T04:21:17Z</CreationTime>
     <Title>Write a twitter update</Title>
     <Description>Simply write a twitter update for me</Description>
-    <Question><ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-	<ExternalURL>http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo</ExternalURL>
-	<FrameHeight>400</FrameHeight>
-</ExternalQuestion>
+    <Question>&lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;
+	&lt;ExternalURL&gt;http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo&lt;/ExternalURL&gt;	
+	&lt;FrameHeight&gt;400&lt;/FrameHeight&gt;
+&lt;/ExternalQuestion&gt;
 </Question>
     <Keywords>twitter, blogging, writing, english</Keywords>
     <HITStatus>Reviewable</HITStatus>
