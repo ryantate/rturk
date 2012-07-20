@@ -48,11 +48,12 @@ module RTurk
                 :expires_at, :assignments_duration, :reward_amount, :max_assignments,
                 :auto_approval_delay, :description, :reward, :lifetime, :annotation,
                 :similar_hits_count, :assignments_pending_count, :assignments_available_count,
-                :assignments_completed_count
+                :assignments_completed_count, :question_external_url, :qualification_requirement_comparator,
+                :qualification_requirement_value
 
     def initialize(response)
       @raw_xml = response.body
-      @xml = Nokogiri::XML(@raw_xml)
+      @xml = Nokogiri::XML(CGI.unescapeHTML(@raw_xml))
       raise_errors
       map_content(@xml.xpath('//HIT'),
         :hit_id => 'HITId',
@@ -74,7 +75,10 @@ module RTurk
         :similar_hits_count => 'NumberOfSimilarHITs',
         :assignments_pending_count => 'NumberOfAssignmentsPending',
         :assignments_available_count => 'NumberOfAssignmentsAvailable',
-        :assignments_completed_count => 'NumberOfAssignmentsCompleted'
+        :assignments_completed_count => 'NumberOfAssignmentsCompleted',
+        :question_external_url => 'Question/*/*[1]',
+        :qualification_requirement_comparator => 'QualificationRequirement/Comparator',
+        :qualification_requirement_value => 'QualificationRequirement/IntegerValue'
       )
 
       @keywords = @keywords.split(', ') if @keywords
