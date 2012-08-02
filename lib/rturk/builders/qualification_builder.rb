@@ -10,7 +10,7 @@ module RTurk
                    :lte => 'LessThanOrEqualTo', :eql => 'EqualTo', :not => 'NotEqualTo', :exists => 'Exists'}
 
     TYPES = {:approval_rate => '000000000000000000L0', :submission_rate => '00000000000000000000',
-             :abandoned_rate => '0000000000000000007', :return_rate => '000000000000000000E0',
+             :abandoned_rate => '00000000000000000070', :return_rate => '000000000000000000E0',
              :rejection_rate => '000000000000000000S0', :hits_approved => '00000000000000000040',
              :adult => '00000000000000000060', :country => '00000000000000000071'}
 
