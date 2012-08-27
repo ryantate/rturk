@@ -1,3 +1,10 @@
+2.9.0
+---
+* Added 'approve_rejected' [chrisconley]
+* Add additional attributes to HIT's [seeingidog]
+* Fixed constant value bug [karimn]
+* Fix unescaped HTML in raw XML [seeingidog]
+
 2.8.0
 ----
 * Adding support for operation SearchQualificationTypes [hampei]
