@@ -62,7 +62,9 @@ module RTurk
 
     # memoing
     def assignments(options={})
-      @assignments ||= begin
+      @assignments ||= {}
+
+      @assignments[options] ||= begin
         assignments_options = options.update(:hit_id => self.id)
         
         RTurk::GetAssignmentsForHIT(assignments_options).assignments.inject([]) do |arr, assignment|
