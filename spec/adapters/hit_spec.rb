@@ -8,7 +8,19 @@ describe "HIT adapter" do
     faker('create_hit', :operation => 'CreateHIT')
     faker('get_hit', :operation => 'GetHIT')
     faker('get_reviewable_hits', :operation => 'GetReviewableHITs')
+
     faker('get_assignments', :operation => 'GetAssignments')
+
+    faker('get_rejected_assignments', 
+      :params => {"AssignmentStatus" => "Rejected"}
+    )
+    faker('get_submitted_assignments', 
+      :params => {"AssignmentStatus" => "Submitted"}
+    )
+    faker('get_approved_assignments', 
+      :params => {"AssignmentStatus" => "Approved"}
+    )
+
     faker('extend_hit', :operation => 'ExtendHIT')
     faker('force_expire_hit', :operation => 'ForceExpireHIT')
     faker('dispose_hit', :operation => 'DisposeHIT')
@@ -52,6 +64,23 @@ describe "HIT adapter" do
   it "should find assignments for a hit" do
     hits = RTurk::Hit.all_reviewable
     hits.first.assignments.first.answers["tweet"].should eql('This is my tweet!')
+  end
+
+  context "assignment state" do
+    it "finds approved", :focus => true do
+      hits = RTurk::Hit.all_reviewable
+      hits.first.assignments(:status => "Approved").first.answers["tweet"].should eql("I Was approved!")
+    end
+
+    it "finds rejected" do
+      hits = RTurk::Hit.all_reviewable
+      hits.first.assignments(:status => "Rejected").first.answers["tweet"].should eql("I was rejected!")
+    end
+
+    it "finds submitted" do
+      hits = RTurk::Hit.all_reviewable
+      hits.first.assignments(:status => "Submitted").first.answers["tweet"].should eql("I was submitted!")
+    end
   end
   
   it "should add time to a hit" do 
