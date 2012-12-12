@@ -3,7 +3,7 @@ module RTurk
 
     require_params :hit_id
     
-    attr_accessor :hit_id, :page_size, :page_number
+    attr_accessor :hit_id, :page_size, :page_number, :status
     
     def parse(xml)
       GetAssignmentsForHITResponse.new(xml)
@@ -12,7 +12,8 @@ module RTurk
     def to_params
       {'HITId' => hit_id,
        'PageSize' => (page_size || 100),
-       'PageNumber' => page_number}
+       'PageNumber' => page_number,
+       'AssignmentStatus' => status}
     end
 
   end
