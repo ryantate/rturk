@@ -21,7 +21,7 @@ module RTurk
         base_params = {
           'Service'=>'AWSMechanicalTurkRequester',
           'AWSAccessKeyId' => credentials.access_key,
-          'Timestamp' => Time.now.iso8601,
+          'Timestamp' => Time.now.utc.iso8601,
           'Version' => RTurk::API_VERSION
         }
 
