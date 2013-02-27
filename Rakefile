@@ -15,8 +15,10 @@ end
 
 task :default => :spec
 
+gem 'rdoc'
 require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
+
+RDoc::Task.new do |rdoc|
   if File.exist?('VERSION.yml')
     config = YAML.load(File.read('VERSION.yml'))
     version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
