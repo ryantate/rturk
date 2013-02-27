@@ -1,3 +1,15 @@
+2.10.2
+---
+* Fix UTC timestamps - [#32] [ags]
+
+2.10.1
+---
+* Fix Memoization - [#31] [bobbytables]
+
+2.10.0
+---
+* Add Assignment type - [#30] [bobbytables]
+
 2.9.0
 ---
 * Added 'approve_rejected' [chrisconley]
