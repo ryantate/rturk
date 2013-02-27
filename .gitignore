@@ -1,5 +1,5 @@
-mturk.yml
 Gemfile.lock
+/examples/mturk.yml
 *.gem
 examples/last_hit
 pkg
