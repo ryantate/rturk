@@ -6,7 +6,7 @@ module RTurk
   #   <NumResults>2</NumResults>
   #   <TotalNumResults>2</TotalNumResults>
   #   <PageNumber>1</PageNumber>
-  # 
+  #
   #   <HIT>
   #     <HITId>GBHZVQX3EHXZ2AYDY2T0</HITId>
   #     <HITTypeId>NYVZTQ1QVKJZXCYZCZVZ</HITTypeId>
@@ -27,7 +27,7 @@ module RTurk
   #     <NumberOfAssignmentsAvailable>0</NumberOfAssignmentsAvailable>
   #     <NumberOfAssignmentsCompleted>1</NumberOfAssignmentsCompleted>
   #   </HIT>
-  # 
+  #
   #   <HIT>
   #     <HITId>ZZRZPTY4ERDZWJ868JCZ</HITId>
   #     <HITTypeId>NYVZTQ1QVKJZXCYZCZVZ</HITTypeId>
@@ -49,9 +49,9 @@ module RTurk
   #     <NumberOfAssignmentsCompleted>0</NumberOfAssignmentsCompleted>
   #   </HIT>
   # </SearchHITsResult>
-  
+
   class SearchHITsResponse < Response
-    
+
     def hits
       @hits ||= begin
         @xml.xpath('//HIT').inject([]) do |arr, hit_xml|
@@ -59,7 +59,23 @@ module RTurk
         end
       end
     end
-    
+
+    # todo: merge with GetReviewableHITsResponse and GetAssignmentsForHITResponse
+    # todo: test
+    def total_num_results
+      @xml.xpath('//TotalNumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def num_results
+      @xml.xpath('//NumResults').inner_text.to_i
+    end
+
+    # todo: test
+    def page_number
+      @xml.xpath('//PageNumber').inner_text.to_i
+    end
+
   end
-  
+
 end

@@ -10,7 +10,7 @@ module RTurk
   #
   #     RTurk.setup(YourAWSAccessKeyId, YourAWSAccessKey, :sandbox => true)
   #     hit = RTurk::Hit.create(:title => "Add some tags to a photo") do |hit|
-  #       hit.assignments = 2
+  #       hit.max_assignments = 2
   #       hit.question("http://myapp.com/turkers/add_tags")
   #       hit.reward = 0.05
   #       hit.qualifications.approval_rate, {:gt => 80}
@@ -40,14 +40,18 @@ module RTurk
       end
 
       def all_reviewable
-        RTurk.GetReviewableHITs.hit_ids.inject([]) do |arr, hit_id|
-          arr << new(hit_id); arr
+        [].tap do |hits|
+          RTurk.GetReviewableHITs.hit_ids.each do |hit_id|
+            hits << new(hit_id)
+          end
         end
       end
 
       def all
-        RTurk.SearchHITs.hits.inject([]) do |arr, hit|
-          arr << new(hit.id, hit); arr;
+        [].tap do |hits|
+          RTurk.SearchHITs.hits.each do |hit|
+            hits << new(hit.id, hit)
+          end
         end
       end
 
@@ -119,6 +123,8 @@ module RTurk
         @source.send(method, *args)
       elsif self.details.respond_to?(method)
         self.details.send(method)
+      else
+        super
       end
     end
   end

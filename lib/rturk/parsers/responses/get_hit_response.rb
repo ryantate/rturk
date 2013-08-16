@@ -49,7 +49,7 @@ module RTurk
                 :auto_approval_delay, :description, :reward, :lifetime, :annotation,
                 :similar_hits_count, :assignments_pending_count, :assignments_available_count,
                 :assignments_completed_count, :question_external_url, :qualification_requirement_comparator,
-                :qualification_requirement_value
+                :qualification_requirement_value, :question
 
     def initialize(response)
       @raw_xml = response.body
@@ -78,7 +78,8 @@ module RTurk
         :assignments_completed_count => 'NumberOfAssignmentsCompleted',
         :question_external_url => 'Question/*/*[1]',
         :qualification_requirement_comparator => 'QualificationRequirement/Comparator',
-        :qualification_requirement_value => 'QualificationRequirement/IntegerValue'
+        :qualification_requirement_value => 'QualificationRequirement/IntegerValue',
+        :question => 'Question'
       )
 
       @keywords = @keywords.split(', ') if @keywords
