@@ -1,3 +1,7 @@
+2.10.3
+---
+* Lock in last dependencies that work with Ruby 1.8.7 - This is the last release to support Ruby 1.8.7
+
 2.10.2
 ---
 * Fix UTC timestamps - [#32] [ags]
