@@ -1,3 +1,8 @@
+2.11.0
+---
+* adding QuestionForm support to rturk #34 alexch#11, cantino#34
+  * Note, this changes Question to ExternalQuestion for clarity
+
 2.10.3
 ---
 * Lock in last dependencies that work with Ruby 1.8.7 - This is the last release to support Ruby 1.8.7
