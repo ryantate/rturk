@@ -1,5 +1,6 @@
 # RTurk - A ridiculously simple Mechanical Turk library in Ruby
-![Travis](https://secure.travis-ci.org/mdp/rturk.png)
+[![Build
+Status](https://secure.travis-ci.org/mdp/rturk.png)](http://travis-ci.org/mdp/rturk)
 
 ## What's it do?!?
 
@@ -11,6 +12,7 @@ If you're integrating RTurk with a Rails app, do yourself a favor and check out 
 
 ## Installation
 
+    # Requires Ruby >1.9.2
     gem install rturk
 
 ## Use
@@ -95,6 +97,11 @@ If the Turker accepts the HIT, the page will reload and the iframe URL will rese
 The form in your page MUST CONTAIN the AssignmentID in a hidden input element. You could do this on the server side with a rails app, or on the client side with javascript(check the examples)
 
 Anything submitted in this form will be sent to Amazon and saved for your review later.
+
+## Testing
+
+    bundle install
+    rake
 
 ## More information
 
