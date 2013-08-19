@@ -32,8 +32,10 @@ module RTurk
 
 
     def method_missing(method, *args)
-      if RTurk::Qualification::TYPES.include?(method)
+      if RTurk::Qualification.types.include?(method)
         self.add(method, *args)
+      else
+        super
       end
     end
 

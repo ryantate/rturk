@@ -47,6 +47,8 @@ module RTurk
     def method_missing(method, *args)
       if self.source.respond_to?(method)
         self.source.send(method, *args)
+      else
+        super
       end
     end
   end
