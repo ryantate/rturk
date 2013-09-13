@@ -24,7 +24,7 @@ module RTurk
       if text_or_widget.is_a? Erector::XMLWidget
         @question = text_or_widget
       else
-        @question = RTurk::QuestionForm.new(:xml => text)
+        @question = RTurk::QuestionForm.new(:xml => text_or_widget)
       end
     end
 
