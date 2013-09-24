@@ -1,3 +1,7 @@
+2.11.1
+---
+* Fix some API breaking changes on CreateHit and RegisterHit
+
 2.11.0
 ---
 * adding QuestionForm support to rturk #34 alexch#11, cantino#34
