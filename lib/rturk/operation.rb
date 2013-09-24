@@ -22,7 +22,14 @@ module RTurk
 
       def create(opts = {}, &blk)
         hit = self.new(opts, &blk)
-        response = hit.request
+        hit.request
+      end
+
+      def alias_attr(new_attr, original)
+        alias_method(new_attr, original) if method_defined? original
+        new_writer = "#{new_attr}="
+        original_writer = "#{original}="
+        alias_method(new_writer, original_writer) if method_defined? original_writer
       end
 
     end
@@ -83,7 +90,6 @@ module RTurk
         raise MissingParameters, "Parameters '#{missing_parameters.join(', ')}' cannot be blank" unless missing_parameters.empty?
       end
     end
-
 
   end
 end

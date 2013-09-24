@@ -2,6 +2,7 @@ module RTurk
   class RegisterHITType < Operation
 
     attr_accessor :title, :description, :reward, :currency, :duration, :keywords, :auto_approval_delay
+    alias_attr :auto_approval, :auto_approval_delay
 
 
     # @param [Symbol, Hash] qualification_key opts The unique qualification key

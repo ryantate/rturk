@@ -3,6 +3,8 @@ require File.join(File.dirname(__FILE__), 'register_hit_type')
 module RTurk
   class CreateHIT < RegisterHITType
     attr_accessor :hit_type_id, :max_assignments, :lifetime, :annotation
+    alias_attr :note, :annotation
+    alias_attr :assignments, :max_assignments
 
     def parse(response)
       RTurk::CreateHITResponse.new(response)
