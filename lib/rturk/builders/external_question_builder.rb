@@ -48,5 +48,7 @@ module RTurk
 
   end
 
-
+  # TODO: Temporary alias for 2.11.x
+  # Remove in next major version in favor of ExternalQuestion
+  Question = ExternalQuestion
 end

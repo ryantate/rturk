@@ -1,6 +1,13 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 require 'cgi'
 
+# Prevent breaking change from Question to ExternalQuestion
+describe RTurk::Question do
+  it "should alias to ExternalQuestion" do
+    RTurk::Question.should == RTurk::ExternalQuestion
+  end
+end
+
 describe RTurk::ExternalQuestion do
 
   before(:all) do
