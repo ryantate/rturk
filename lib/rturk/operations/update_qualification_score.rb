@@ -11,8 +11,8 @@ module RTurk
 
     def to_params
       params = {
-        'QualificationTypeId' => qualification_type_id
-        'SubjectId' => subject_idid
+        'QualificationTypeId' => qualification_type_id,
+        'SubjectId' => subject_id
       }
       params['IntegerValue'] = integer_value unless integer_value.nil?
       params
