@@ -1,3 +1,7 @@
+2.11.3
+---
+* Fix erroneous variable [#32] [george-xing]
+
 2.11.2
 ---
 * Alias Question to ExternalQuestion to prevent public API breakage
