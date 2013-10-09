@@ -1,3 +1,7 @@
+2.11.2
+---
+* Alias Question to ExternalQuestion to prevent public API breakage
+
 2.11.1
 ---
 * Fix some API breaking changes on CreateHit and RegisterHit
