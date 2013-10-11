@@ -26,3 +26,4 @@ describe RTurk::UpdateQualificationScore do
       {"UpdateQualificationScoreResult"=>{"Request"=>{"IsValid"=>"True"}}})
   end
 end
+

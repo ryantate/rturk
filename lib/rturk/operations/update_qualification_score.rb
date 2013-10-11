@@ -18,3 +18,4 @@ module RTurk
     RTurk::UpdateQualificationScore.create(*args)
   end
 end
+
