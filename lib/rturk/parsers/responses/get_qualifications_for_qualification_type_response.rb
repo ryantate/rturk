@@ -16,7 +16,7 @@ module RTurk
     end
 
     def qualifications
-      @qualifications ||= []
+      @qualifications = []
       @xml.xpath('//Qualification').each do |qualification_xml|
         @qualifications << QualificationParser.new(qualification_xml)
       end
