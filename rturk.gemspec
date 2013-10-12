@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
 
   s.authors = ["Mark Percival", "Zach Hale", "David Balatero", "Rob Hanlon"]
   s.date = "2013-08-19"
-  s.email = "mk@mdp.im"
+  s.email = "m@mdp.im"
+  s.license = 'MIT'
   s.extra_rdoc_files = [
     "LICENSE",
     "README.markdown"

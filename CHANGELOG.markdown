@@ -1,3 +1,7 @@
+2.12.1
+---
+* Add License to gemspec for correct RubyGems reporting
+
 2.12.0
 ---
 * Add UpdateQualificationsScore [#41] [eggie5]
