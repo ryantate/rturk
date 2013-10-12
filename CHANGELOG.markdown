@@ -1,3 +1,9 @@
+2.12.0
+---
+* Add UpdateQualificationsScore [#41] [eggie5]
+* Add GetQualificationScore [#42] [c0r0nel]
+* Add AnswerKey Builder [#42] [c0r0nel]
+
 2.11.3
 ---
 * Fix erroneous variable [#32] [george-xing]
