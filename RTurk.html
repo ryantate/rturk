@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module RTurk - rturk-gem </title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/rturk.rb
+    <li>lib/rturk/adapter.rb
+    <li>lib/rturk/adapters/assignment.rb
+    <li>lib/rturk/adapters/hit.rb
+    <li>lib/rturk/adapters/worker.rb
+    <li>lib/rturk/builders/answer_key_builder.rb
+    <li>lib/rturk/builders/external_question_builder.rb
+    <li>lib/rturk/builders/notification_builder.rb
+    <li>lib/rturk/builders/qualification_builder.rb
+    <li>lib/rturk/builders/qualifications_builder.rb
+    <li>lib/rturk/builders/question_form_builder.rb
+    <li>lib/rturk/errors.rb
+    <li>lib/rturk/logger.rb
+    <li>lib/rturk/macros.rb
+    <li>lib/rturk/operation.rb
+    <li>lib/rturk/operations/approve_assignment.rb
+    <li>lib/rturk/operations/approve_rejected_assignment.rb
+    <li>lib/rturk/operations/assign_qualification.rb
+    <li>lib/rturk/operations/block_worker.rb
+    <li>lib/rturk/operations/create_hit.rb
+    <li>lib/rturk/operations/create_qualification_type.rb
+    <li>lib/rturk/operations/disable_hit.rb
+    <li>lib/rturk/operations/dispose_hit.rb
+    <li>lib/rturk/operations/dispose_qualification_type.rb
+    <li>lib/rturk/operations/extend_hit.rb
+    <li>lib/rturk/operations/force_expire_hit.rb
+    <li>lib/rturk/operations/get_account_balance.rb
+    <li>lib/rturk/operations/get_assignment.rb
+    <li>lib/rturk/operations/get_assignments_for_hit.rb
+    <li>lib/rturk/operations/get_bonus_payments.rb
+    <li>lib/rturk/operations/get_hit.rb
+    <li>lib/rturk/operations/get_qualification_requests.rb
+    <li>lib/rturk/operations/get_qualification_score.rb
+    <li>lib/rturk/operations/get_qualification_type.rb
+    <li>lib/rturk/operations/get_qualifications_for_qualification_type.rb
+    <li>lib/rturk/operations/get_reviewable_hits.rb
+    <li>lib/rturk/operations/grant_bonus.rb
+    <li>lib/rturk/operations/grant_qualification.rb
+    <li>lib/rturk/operations/notify_workers.rb
+    <li>lib/rturk/operations/register_hit_type.rb
+    <li>lib/rturk/operations/reject_assignment.rb
+    <li>lib/rturk/operations/reject_qualification_request.rb
+    <li>lib/rturk/operations/revoke_qualification.rb
+    <li>lib/rturk/operations/search_hits.rb
+    <li>lib/rturk/operations/search_qualification_types.rb
+    <li>lib/rturk/operations/send_test_event_notification.rb
+    <li>lib/rturk/operations/set_hit_as_reviewing.rb
+    <li>lib/rturk/operations/set_hit_type_notification.rb
+    <li>lib/rturk/operations/unblock_worker.rb
+    <li>lib/rturk/operations/update_qualification_score.rb
+    <li>lib/rturk/operations/update_qualification_type.rb
+    <li>lib/rturk/parser.rb
+    <li>lib/rturk/parsers/answer_parser.rb
+    <li>lib/rturk/parsers/assignment_parser.rb
+    <li>lib/rturk/parsers/bonus_payment_parser.rb
+    <li>lib/rturk/parsers/hit_parser.rb
+    <li>lib/rturk/parsers/qualification_parser.rb
+    <li>lib/rturk/parsers/qualification_request_parser.rb
+    <li>lib/rturk/parsers/qualification_type_parser.rb
+    <li>lib/rturk/parsers/response.rb
+    <li>lib/rturk/parsers/responses/create_hit_response.rb
+    <li>lib/rturk/parsers/responses/get_account_balance_response.rb
+    <li>lib/rturk/parsers/responses/get_assignment_response.rb
+    <li>lib/rturk/parsers/responses/get_assignments_for_hit_response.rb
+    <li>lib/rturk/parsers/responses/get_bonus_payments_response.rb
+    <li>lib/rturk/parsers/responses/get_hit_response.rb
+    <li>lib/rturk/parsers/responses/get_qualification_requests_response.rb
+    <li>lib/rturk/parsers/responses/get_qualification_score_response.rb
+    <li>lib/rturk/parsers/responses/get_qualification_type_response.rb
+    <li>lib/rturk/parsers/responses/get_qualifications_for_qualification_type_response.rb
+    <li>lib/rturk/parsers/responses/get_reviewable_hits_response.rb
+    <li>lib/rturk/parsers/responses/register_hit_type_response.rb
+    <li>lib/rturk/parsers/responses/search_hits_response.rb
+    <li>lib/rturk/parsers/responses/search_qualification_types_response.rb
+    <li>lib/rturk/parsers/responses/update_qualification_score_response.rb
+    <li>lib/rturk/requester.rb
+    <li>lib/rturk/utilities.rb
+    <li>lib/rturk/version.rb
+    <li>lib/rturk/xml_utilities.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-ApproveAssignment">::ApproveAssignment</a>
+    
+    <li ><a href="#method-c-ApproveRejectedAssignment">::ApproveRejectedAssignment</a>
+    
+    <li ><a href="#method-c-AssignQualification">::AssignQualification</a>
+    
+    <li ><a href="#method-c-BlockWorker">::BlockWorker</a>
+    
+    <li ><a href="#method-c-CreateHIT">::CreateHIT</a>
+    
+    <li ><a href="#method-c-CreateQualificationType">::CreateQualificationType</a>
+    
+    <li ><a href="#method-c-DisableHIT">::DisableHIT</a>
+    
+    <li ><a href="#method-c-DisposeHIT">::DisposeHIT</a>
+    
+    <li ><a href="#method-c-DisposeQualificationType">::DisposeQualificationType</a>
+    
+    <li ><a href="#method-c-ExtendHIT">::ExtendHIT</a>
+    
+    <li ><a href="#method-c-ForceExpireHIT">::ForceExpireHIT</a>
+    
+    <li ><a href="#method-c-GetAccountBalance">::GetAccountBalance</a>
+    
+    <li ><a href="#method-c-GetAssignment">::GetAssignment</a>
+    
+    <li ><a href="#method-c-GetAssignmentsForHIT">::GetAssignmentsForHIT</a>
+    
+    <li ><a href="#method-c-GetBonusPayments">::GetBonusPayments</a>
+    
+    <li ><a href="#method-c-GetHIT">::GetHIT</a>
+    
+    <li ><a href="#method-c-GetQualificationRequests">::GetQualificationRequests</a>
+    
+    <li ><a href="#method-c-GetQualificationScore">::GetQualificationScore</a>
+    
+    <li ><a href="#method-c-GetQualificationType">::GetQualificationType</a>
+    
+    <li ><a href="#method-c-GetQualificationsForQualificationType">::GetQualificationsForQualificationType</a>
+    
+    <li ><a href="#method-c-GetReviewableHITs">::GetReviewableHITs</a>
+    
+    <li ><a href="#method-c-GrantBonus">::GrantBonus</a>
+    
+    <li ><a href="#method-c-GrantQualification">::GrantQualification</a>
+    
+    <li ><a href="#method-c-Logger">::Logger</a>
+    
+    <li ><a href="#method-c-NotifyWorkers">::NotifyWorkers</a>
+    
+    <li ><a href="#method-c-RegisterHITType">::RegisterHITType</a>
+    
+    <li ><a href="#method-c-RejectAssignment">::RejectAssignment</a>
+    
+    <li ><a href="#method-c-RejectQualificationRequest">::RejectQualificationRequest</a>
+    
+    <li ><a href="#method-c-Request">::Request</a>
+    
+    <li ><a href="#method-c-RevokeQualification">::RevokeQualification</a>
+    
+    <li ><a href="#method-c-SearchHITs">::SearchHITs</a>
+    
+    <li ><a href="#method-c-SearchQualificationTypes">::SearchQualificationTypes</a>
+    
+    <li ><a href="#method-c-SendTestEventNotification">::SendTestEventNotification</a>
+    
+    <li ><a href="#method-c-SetHITAsReviewing">::SetHITAsReviewing</a>
+    
+    <li ><a href="#method-c-SetHITTypeNotification">::SetHITTypeNotification</a>
+    
+    <li ><a href="#method-c-UnblockWorker">::UnblockWorker</a>
+    
+    <li ><a href="#method-c-UpdateQualificationScore">::UpdateQualificationScore</a>
+    
+    <li ><a href="#method-c-UpdateQualificationType">::UpdateQualificationType</a>
+    
+    <li ><a href="#method-c-logger">::logger</a>
+    
+    <li ><a href="#method-c-sandbox-3F">::sandbox?</a>
+    
+    <li ><a href="#method-c-setup">::setup</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_markdown.html">README.markdown</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./RTurk.html">RTurk</a>
+  
+    <li><a href="./RTurk/Adapter.html">RTurk::Adapter</a>
+  
+    <li><a href="./RTurk/AnswerKey.html">RTurk::AnswerKey</a>
+  
+    <li><a href="./RTurk/AnswerParser.html">RTurk::AnswerParser</a>
+  
+    <li><a href="./RTurk/ApproveAssignment.html">RTurk::ApproveAssignment</a>
+  
+    <li><a href="./RTurk/ApproveRejectedAssignment.html">RTurk::ApproveRejectedAssignment</a>
+  
+    <li><a href="./RTurk/AssignQualification.html">RTurk::AssignQualification</a>
+  
+    <li><a href="./RTurk/Assignment.html">RTurk::Assignment</a>
+  
+    <li><a href="./RTurk/AssignmentParser.html">RTurk::AssignmentParser</a>
+  
+    <li><a href="./RTurk/BlockWorker.html">RTurk::BlockWorker</a>
+  
+    <li><a href="./RTurk/BonusPaymentParser.html">RTurk::BonusPaymentParser</a>
+  
+    <li><a href="./RTurk/CreateHIT.html">RTurk::CreateHIT</a>
+  
+    <li><a href="./RTurk/CreateHITResponse.html">RTurk::CreateHITResponse</a>
+  
+    <li><a href="./RTurk/CreateQualificationType.html">RTurk::CreateQualificationType</a>
+  
+    <li><a href="./RTurk/DisableHIT.html">RTurk::DisableHIT</a>
+  
+    <li><a href="./RTurk/DisposeHIT.html">RTurk::DisposeHIT</a>
+  
+    <li><a href="./RTurk/DisposeQualificationType.html">RTurk::DisposeQualificationType</a>
+  
+    <li><a href="./RTurk/ExternalQuestion.html">RTurk::ExternalQuestion</a>
+  
+    <li><a href="./RTurk/ForceExpireHIT.html">RTurk::ForceExpireHIT</a>
+  
+    <li><a href="./RTurk/GetAccountBalance.html">RTurk::GetAccountBalance</a>
+  
+    <li><a href="./RTurk/GetAccountBalanceResponse.html">RTurk::GetAccountBalanceResponse</a>
+  
+    <li><a href="./RTurk/GetAssignment.html">RTurk::GetAssignment</a>
+  
+    <li><a href="./RTurk/GetAssignmentResponse.html">RTurk::GetAssignmentResponse</a>
+  
+    <li><a href="./RTurk/GetAssignmentsForHIT.html">RTurk::GetAssignmentsForHIT</a>
+  
+    <li><a href="./RTurk/GetAssignmentsForHITResponse.html">RTurk::GetAssignmentsForHITResponse</a>
+  
+    <li><a href="./RTurk/GetBonusPayments.html">RTurk::GetBonusPayments</a>
+  
+    <li><a href="./RTurk/GetBonusPaymentsResponse.html">RTurk::GetBonusPaymentsResponse</a>
+  
+    <li><a href="./RTurk/GetHIT.html">RTurk::GetHIT</a>
+  
+    <li><a href="./RTurk/GetHITResponse.html">RTurk::GetHITResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationRequests.html">RTurk::GetQualificationRequests</a>
+  
+    <li><a href="./RTurk/GetQualificationRequestsResponse.html">RTurk::GetQualificationRequestsResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationScore.html">RTurk::GetQualificationScore</a>
+  
+    <li><a href="./RTurk/GetQualificationScoreResponse.html">RTurk::GetQualificationScoreResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationType.html">RTurk::GetQualificationType</a>
+  
+    <li><a href="./RTurk/GetQualificationTypeResponse.html">RTurk::GetQualificationTypeResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationsForQualificationType.html">RTurk::GetQualificationsForQualificationType</a>
+  
+    <li><a href="./RTurk/GetQualificationsForQualificationTypeResponse.html">RTurk::GetQualificationsForQualificationTypeResponse</a>
+  
+    <li><a href="./RTurk/GetReviewableHITs.html">RTurk::GetReviewableHITs</a>
+  
+    <li><a href="./RTurk/GetReviewableHITsResponse.html">RTurk::GetReviewableHITsResponse</a>
+  
+    <li><a href="./RTurk/GrantBonus.html">RTurk::GrantBonus</a>
+  
+    <li><a href="./RTurk/GrantQualification.html">RTurk::GrantQualification</a>
+  
+    <li><a href="./RTurk/HITParser.html">RTurk::HITParser</a>
+  
+    <li><a href="./RTurk/Hit.html">RTurk::Hit</a>
+  
+    <li><a href="./RTurk/InvalidRequest.html">RTurk::InvalidRequest</a>
+  
+    <li><a href="./RTurk/Logger.html">RTurk::Logger</a>
+  
+    <li><a href="./RTurk/Macros.html">RTurk::Macros</a>
+  
+    <li><a href="./RTurk/MissingParameters.html">RTurk::MissingParameters</a>
+  
+    <li><a href="./RTurk/NotifyWorkers.html">RTurk::NotifyWorkers</a>
+  
+    <li><a href="./RTurk/Operation.html">RTurk::Operation</a>
+  
+    <li><a href="./RTurk/Parser.html">RTurk::Parser</a>
+  
+    <li><a href="./RTurk/Qualification.html">RTurk::Qualification</a>
+  
+    <li><a href="./RTurk/QualificationParser.html">RTurk::QualificationParser</a>
+  
+    <li><a href="./RTurk/QualificationRequestParser.html">RTurk::QualificationRequestParser</a>
+  
+    <li><a href="./RTurk/QualificationTypeParser.html">RTurk::QualificationTypeParser</a>
+  
+    <li><a href="./RTurk/Qualifications.html">RTurk::Qualifications</a>
+  
+    <li><a href="./RTurk/ExternalQuestion.html">RTurk::Question</a>
+  
+    <li><a href="./RTurk/QuestionForm.html">RTurk::QuestionForm</a>
+  
+    <li><a href="./RTurk/RTurk.html">RTurk::RTurk</a>
+  
+    <li><a href="./RTurk/RTurk/RTurk.html">RTurk::RTurk::RTurk</a>
+  
+    <li><a href="./RTurk/RTurk/RTurk/ExtendHIT.html">RTurk::RTurk::RTurk::ExtendHIT</a>
+  
+    <li><a href="./RTurk/RTurkError.html">RTurk::RTurkError</a>
+  
+    <li><a href="./RTurk/RegisterHITType.html">RTurk::RegisterHITType</a>
+  
+    <li><a href="./RTurk/RegisterHITTypeResponse.html">RTurk::RegisterHITTypeResponse</a>
+  
+    <li><a href="./RTurk/RejectAssignment.html">RTurk::RejectAssignment</a>
+  
+    <li><a href="./RTurk/RejectQualificationRequest.html">RTurk::RejectQualificationRequest</a>
+  
+    <li><a href="./RTurk/Requester.html">RTurk::Requester</a>
+  
+    <li><a href="./RTurk/Response.html">RTurk::Response</a>
+  
+    <li><a href="./RTurk/RevokeQualification.html">RTurk::RevokeQualification</a>
+  
+    <li><a href="./RTurk/SearchHITs.html">RTurk::SearchHITs</a>
+  
+    <li><a href="./RTurk/SearchHITsResponse.html">RTurk::SearchHITsResponse</a>
+  
+    <li><a href="./RTurk/SearchQualificationTypes.html">RTurk::SearchQualificationTypes</a>
+  
+    <li><a href="./RTurk/SearchQualificationTypesResponse.html">RTurk::SearchQualificationTypesResponse</a>
+  
+    <li><a href="./RTurk/SendTestEventNotification.html">RTurk::SendTestEventNotification</a>
+  
+    <li><a href="./RTurk/ServiceUnavailable.html">RTurk::ServiceUnavailable</a>
+  
+    <li><a href="./RTurk/SetHITAsReviewing.html">RTurk::SetHITAsReviewing</a>
+  
+    <li><a href="./RTurk/SetHITTypeNotification.html">RTurk::SetHITTypeNotification</a>
+  
+    <li><a href="./RTurk/UnblockWorker.html">RTurk::UnblockWorker</a>
+  
+    <li><a href="./RTurk/UpdateQualificationScore.html">RTurk::UpdateQualificationScore</a>
+  
+    <li><a href="./RTurk/UpdateQualificationScoreResponse.html">RTurk::UpdateQualificationScoreResponse</a>
+  
+    <li><a href="./RTurk/UpdateQualificationType.html">RTurk::UpdateQualificationType</a>
+  
+    <li><a href="./RTurk/Utilities.html">RTurk::Utilities</a>
+  
+    <li><a href="./RTurk/Worker.html">RTurk::Worker</a>
+  
+    <li><a href="./RTurk/XMLUtilities.html">RTurk::XMLUtilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module RTurk</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="RTurk/Operation.html">Operation</a> to approve an assignment</p>
+
+<p><a
+href="http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester">mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester</a>
+&amp;AWSAccessKeyId=[the Requester&#39;s Access Key ID]
+&amp;Version=2008-08-02 &amp;Operation=ApproveAssignment
+&amp;Signature=[signature for this request] &amp;Timestamp=[your
+system&#39;s local time]
+&amp;AssignmentId=123RVWYBAZW00EXAMPLE456RVWYBAZW00EXAMPLE</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to assign a qualification to a
+worker</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to block a worker</p>
+
+<p>The worker does not see the reason you gave. It&#39;s for your records
+only.</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to create a qualification type</p>
+
+<p><a
+href="http://docs.amazonwebservices.com/AWSMturkAPI/2008-08-02/ApiReference_DisposeHITOperation.html">docs.amazonwebservices.com/AWSMturkAPI/2008-08-02/ApiReference_DisposeHITOperation.html</a></p>
+
+<p><a
+href="http://docs.amazonwebservices.com/AWSMturkAPI/2008-08-02/ApiReference_DisposeHITOperation.html">docs.amazonwebservices.com/AWSMturkAPI/2008-08-02/ApiReference_DisposeHITOperation.html</a></p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to despose a qualification
+type</p>
+
+<p>operation retrieves requests for <a
+href="RTurk/Qualifications.html">Qualifications</a> of a particular <a
+href="RTurk/Qualification.html">Qualification</a> type</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to get info about
+qualification score</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to get info about
+qualification type</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to get qualifications for a
+qualification type</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> grants a Worker&#39;s request
+for a <a href="RTurk/Qualification.html">Qualification</a>.</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to send email to a group of
+workers.                        #</p>
+
+<pre>#</pre>
+
+<p>Caveats:                                                              #</p>
+
+<pre>- A message can only be send to a maximum of 100 workers at a time. #
+- The message length must be 4096 characters or less.               #
+- The subject length must be 200 characters or less.                #</pre>
+
+<p><a href="RTurk/Operation.html">Operation</a> rejects a user&#39;s request
+for a <a href="RTurk/Qualification.html">Qualification</a></p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to revoke a qualification from
+a worker</p>
+
+<p><a
+href="http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_SetHITAsReviewingOperation.html">docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_SetHITAsReviewingOperation.html</a></p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to block a worker</p>
+
+<p>The worker does not see the reason you gave. It&#39;s for your records
+only.</p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to update a qualification
+score <a
+href="http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_UpdateQualificationScoreOperation.html">docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_UpdateQualificationScoreOperation.html</a></p>
+
+<p><a href="RTurk/Operation.html">Operation</a> to update a qualification type</p>
+
+<p>Parses: &lt;Assignment&gt;</p>
+
+<pre>&lt;AssignmentId&gt;GYFTRHZ5J3DZREY48WNZE38ZR9RR1ZPMXGWE7WE0&lt;/AssignmentId&gt;
+&lt;WorkerId&gt;AD20WXZZP9XXK&lt;/WorkerId&gt;
+&lt;HITId&gt;GYFTRHZ5J3DZREY48WNZ&lt;/HITId&gt;
+&lt;AssignmentStatus&gt;Approved&lt;/AssignmentStatus&gt;
+&lt;AutoApprovalTime&gt;2009-08-12T19:21:54Z&lt;/AutoApprovalTime&gt;
+&lt;AcceptTime&gt;2009-07-13T19:21:40Z&lt;/AcceptTime&gt;
+&lt;SubmitTime&gt;2009-07-13T19:21:54Z&lt;/SubmitTime&gt;
+&lt;ApprovalTime&gt;2009-07-13T19:27:54Z&lt;/ApprovalTime&gt;
+&lt;Answer&gt;
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;QuestionFormAnswers xmlns=&quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd&quot;&gt;
+    &lt;Answer&gt;
+      &lt;QuestionIdentifier&gt;Question100&lt;/QuestionIdentifier&gt;
+      &lt;FreeText&gt;Move to X.&lt;/FreeText&gt;
+    &lt;/Answer&gt;
+  &lt;/QuestionFormAnswers&gt;
+&lt;/Answer&gt;</pre>
+
+<p>&lt;/Assignment&gt;</p>
+
+<p>&lt;HIT&gt;</p>
+
+<pre>&lt;HITId&gt;ZZRZPTY4ERDZWJ868JCZ&lt;/HITId&gt;
+&lt;HITTypeId&gt;NYVZTQ1QVKJZXCYZCZVZ&lt;/HITTypeId&gt;
+&lt;CreationTime&gt;2009-07-07T00:56:40Z&lt;/CreationTime&gt;
+&lt;Title&gt;Location&lt;/Title&gt;
+&lt;Description&gt;Select the image that best represents&lt;/Description&gt;
+&lt;HITStatus&gt;Assignable&lt;/HITStatus&gt;
+&lt;MaxAssignments&gt;1&lt;/MaxAssignments&gt;
+&lt;Reward&gt;
+  &lt;Amount&gt;5.00&lt;/Amount&gt;
+  &lt;CurrencyCode&gt;USD&lt;/CurrencyCode&gt;
+  &lt;FormattedPrice&gt;$5.00&lt;/FormattedPrice&gt;
+&lt;/Reward&gt;
+&lt;AutoApprovalDelayInSeconds&gt;2592000&lt;/AutoApprovalDelayInSeconds&gt;
+&lt;Expiration&gt;2009-07-14T00:56:40Z&lt;/Expiration&gt;
+&lt;AssignmentDurationInSeconds&gt;30&lt;/AssignmentDurationInSeconds&gt;
+&lt;NumberOfAssignmentsPending&gt;0&lt;/NumberOfAssignmentsPending&gt;
+&lt;NumberOfAssignmentsAvailable&gt;1&lt;/NumberOfAssignmentsAvailable&gt;
+&lt;NumberOfAssignmentsCompleted&gt;0&lt;/NumberOfAssignmentsCompleted&gt;</pre>
+
+<p>&lt;/HIT&gt;</p>
+
+<p>Parses a <a href="RTurk/Qualification.html">Qualification</a> object</p>
+
+<p>Parses a QualificationRequest object</p>
+
+<p>Parses a QualificationType object</p>
+
+<p>Parses out the <a href="RTurk/CreateHIT.html">CreateHIT</a> response</p>
+
+<p>Example response: &lt;CreateHITResponse&gt;</p>
+
+<pre>&lt;OperationRequest&gt;
+  &lt;RequestId&gt;ece2785b-6292-4b12-a60e-4c34847a7916&lt;/RequestId&gt;
+&lt;/OperationRequest&gt;
+&lt;HIT&gt;
+  &lt;Request&gt;
+    &lt;IsValid&gt;True&lt;/IsValid&gt;
+  &lt;/Request&gt;
+  &lt;HITId&gt;GBHZVQX3EHXZ2AYDY2T0&lt;/HITId&gt;
+  &lt;HITTypeId&gt;NYVZTQ1QVKJZXCYZCZVZ&lt;/HITTypeId&gt;
+&lt;/HIT&gt;</pre>
+
+<p>&lt;/CreateHITResponse&gt;</p>
+
+<p>&lt;GetAssignmentsForHITResult&gt;</p>
+
+<pre>&lt;Request&gt;
+  &lt;IsValid&gt;True&lt;/IsValid&gt;
+&lt;/Request&gt;
+&lt;NumResults&gt;1&lt;/NumResults&gt;
+&lt;TotalNumResults&gt;1&lt;/TotalNumResults&gt;
+&lt;PageNumber&gt;1&lt;/PageNumber&gt;
+&lt;Assignment&gt;
+  &lt;AssignmentId&gt;GYFTRHZ5J3DZREY48WNZE38ZR9RR1ZPMXGWE7WE0&lt;/AssignmentId&gt;
+  &lt;WorkerId&gt;AD20WXZZP9XXK&lt;/WorkerId&gt;
+  &lt;HITId&gt;GYFTRHZ5J3DZREY48WNZ&lt;/HITId&gt;
+  &lt;AssignmentStatus&gt;Approved&lt;/AssignmentStatus&gt;
+  &lt;AutoApprovalTime&gt;2009-08-12T19:21:54Z&lt;/AutoApprovalTime&gt;
+  &lt;AcceptTime&gt;2009-07-13T19:21:40Z&lt;/AcceptTime&gt;
+  &lt;SubmitTime&gt;2009-07-13T19:21:54Z&lt;/SubmitTime&gt;
+  &lt;ApprovalTime&gt;2009-07-13T19:27:54Z&lt;/ApprovalTime&gt;
+  &lt;Answer&gt;
+    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;QuestionFormAnswers xmlns=&quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionFormAnswers.xsd&quot;&gt;
+      &lt;Answer&gt;
+        &lt;QuestionIdentifier&gt;Question100&lt;/QuestionIdentifier&gt;
+        &lt;FreeText&gt;Move to X.&lt;/FreeText&gt;
+      &lt;/Answer&gt;
+    &lt;/QuestionFormAnswers&gt;
+  &lt;/Answer&gt;
+&lt;/Assignment&gt;</pre>
+
+<p>&lt;/GetAssignmentsForHITResult&gt;</p>
+
+<p>Parses the <a href="RTurk/GetHIT.html">GetHIT</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+<p>&lt;?xml version=“1.0”?&gt; &lt;GetHITResponse&gt;</p>
+
+<pre>&lt;OperationRequest&gt;
+  &lt;RequestId&gt;49341251-fcbd-45c3-ab98-8fbe2e4d8060&lt;/RequestId&gt;
+&lt;/OperationRequest&gt;
+&lt;HIT&gt;
+  &lt;Request&gt;
+    &lt;IsValid&gt;True&lt;/IsValid&gt;
+  &lt;/Request&gt;
+  &lt;HITId&gt;GR4R3HY3YGBZXDCAPJWZ&lt;/HITId&gt;
+  &lt;HITTypeId&gt;YGKZ2W5X6YFZ08ZRXXZZ&lt;/HITTypeId&gt;
+  &lt;CreationTime&gt;2009-06-25T04:21:17Z&lt;/CreationTime&gt;
+  &lt;Title&gt;Write a twitter update&lt;/Title&gt;
+  &lt;Description&gt;Simply write a twitter update for me&lt;/Description&gt;
+  &lt;Question&gt;&amp;lt;ExternalQuestion xmlns=&quot;http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd&quot;&amp;gt;
+&amp;lt;ExternalURL&amp;gt;http://s3.amazonaws.com/mpercival.com/newtweet.html?id=foo&amp;lt;/ExternalURL&amp;gt;
+&amp;lt;FrameHeight&amp;gt;400&amp;lt;/FrameHeight&amp;gt;</pre>
+
+<p>&amp;lt;/ExternalQuestion&amp;gt; &lt;/Question&gt;</p>
+
+<pre>  &lt;Keywords&gt;twitter, blogging, writing, english&lt;/Keywords&gt;
+  &lt;HITStatus&gt;Reviewable&lt;/HITStatus&gt;
+  &lt;MaxAssignments&gt;1&lt;/MaxAssignments&gt;
+  &lt;Reward&gt;
+    &lt;Amount&gt;0.10&lt;/Amount&gt;
+    &lt;CurrencyCode&gt;USD&lt;/CurrencyCode&gt;
+    &lt;FormattedPrice&gt;$0.10&lt;/FormattedPrice&gt;
+  &lt;/Reward&gt;
+  &lt;AutoApprovalDelayInSeconds&gt;3600&lt;/AutoApprovalDelayInSeconds&gt;
+  &lt;Expiration&gt;2009-06-25T05:21:17Z&lt;/Expiration&gt;
+  &lt;AssignmentDurationInSeconds&gt;3600&lt;/AssignmentDurationInSeconds&gt;
+  &lt;NumberOfSimilarHITs&gt;0&lt;/NumberOfSimilarHITs&gt;
+  &lt;RequesterAnnotation&gt;OptionalNote&lt;/RequesterAnnotation&gt;
+  &lt;QualificationRequirement&gt;
+    &lt;QualificationTypeId&gt;000000000000000000L0&lt;/QualificationTypeId&gt;
+    &lt;Comparator&gt;GreaterThan&lt;/Comparator&gt;
+    &lt;IntegerValue&gt;90&lt;/IntegerValue&gt;
+    &lt;RequiredToPreview&gt;0&lt;/RequiredToPreview&gt;
+  &lt;/QualificationRequirement&gt;
+  &lt;HITReviewStatus&gt;NotReviewed&lt;/HITReviewStatus&gt;
+&lt;/HIT&gt;</pre>
+
+<p>&lt;/GetHITResponse&gt;</p>
+
+<p>Parses the <a
+href="RTurk/GetQualificationRequests.html">GetQualificationRequests</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+<p>Parses the <a
+href="RTurk/GetQualificationType.html">GetQualificationType</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+<pre>&lt;GetQualificationScoreResult&gt;
+  &lt;Qualification&gt;
+    &lt;QualificationTypeId&gt;789RVWYBAZW00EXAMPLE&lt;/QualificationTypeId&gt;
+    &lt;SubjectId&gt;AZ3456EXAMPLE&lt;/SubjectId&gt;
+    &lt;GrantTime&gt;2005-01-31T23:59:59Z&lt;/GrantTime&gt;
+    &lt;IntegerValue&gt;95&lt;/IntegerValue&gt;
+  &lt;/Qualification&gt;
+&lt;/GetQualificationScoreResult&gt;</pre>
+
+<p>Parses the <a
+href="RTurk/GetQualificationType.html">GetQualificationType</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+<p>Parses the <a
+href="RTurk/GetQualificationType.html">GetQualificationType</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+<p>&lt;GetReviewableHITsResult&gt;</p>
+
+<pre>&lt;Request&gt;
+  &lt;IsValid&gt;True&lt;/IsValid&gt;
+&lt;/Request&gt;
+&lt;NumResults&gt;3&lt;/NumResults&gt;
+&lt;TotalNumResults&gt;3&lt;/TotalNumResults&gt;
+&lt;PageNumber&gt;1&lt;/PageNumber&gt;
+&lt;HIT&gt;
+  &lt;HITId&gt;GBHZVQX3EHXZ2AYDY2T0&lt;/HITId&gt;
+&lt;/HIT&gt;
+&lt;HIT&gt;
+  &lt;HITId&gt;GBHZVQX3EHXZ2AYDY2T1&lt;/HITId&gt;
+&lt;/HIT&gt;
+&lt;HIT&gt;
+  &lt;HITId&gt;GBHZVQX3EHXZ2AYDY2T2&lt;/HITId&gt;
+&lt;/HIT&gt;</pre>
+
+<p>&lt;/GetReviewableHITsResult&gt;</p>
+
+<p>Parses out the <a href="RTurk/RegisterHITType.html">RegisterHITType</a>
+response</p>
+
+<p>Example response: &lt;RegisterHITTypeResult&gt;</p>
+
+<pre>&lt;Request&gt;
+  &lt;IsValid&gt;True&lt;/IsValid&gt;
+&lt;/Request&gt;
+&lt;HITTypeId&gt;KZ3GKTRXBWGYX8WXBW60&lt;/HITTypeId&gt;</pre>
+
+<p>&lt;/RegisterHITTypeResult&gt;</p>
+
+<p>Parses the <a
+href="RTurk/GetQualificationType.html">GetQualificationType</a> <a
+href="RTurk/Response.html">Response</a></p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="API_VERSION">API_VERSION
+        
+        <dd class="description">
+        
+      
+        <dt id="Notification">Notification
+        
+        <dd class="description">
+        
+      
+        <dt id="OLD_API_VERSION">OLD_API_VERSION
+        
+        <dd class="description">
+        
+      
+        <dt id="PRODUCTION">PRODUCTION
+        
+        <dd class="description">
+        
+      
+        <dt id="Question">Question
+        
+        <dd class="description"><p>TODO: Temporary alias for 2.11.x Remove in next major version in favor of
+<a href="RTurk/ExternalQuestion.html">ExternalQuestion</a></p>
+        
+      
+        <dt id="SANDBOX">SANDBOX
+        
+        <dd class="description">
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-c-access_key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">access_key</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-c-host" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">host</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-c-secret_key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">secret_key</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-ApproveAssignment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ApproveAssignment</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ApproveAssignment-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/approve_assignment.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">ApproveAssignment</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ApproveAssignment</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ApproveAssignment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ApproveAssignment-method -->
+
+    
+      <div id="method-c-ApproveRejectedAssignment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ApproveRejectedAssignment</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ApproveRejectedAssignment-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/approve_rejected_assignment.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">ApproveRejectedAssignment</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ApproveRejectedAssignment</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ApproveRejectedAssignment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ApproveRejectedAssignment-method -->
+
+    
+      <div id="method-c-AssignQualification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">AssignQualification</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="AssignQualification-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/assign_qualification.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">AssignQualification</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">AssignQualification</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- AssignQualification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- AssignQualification-method -->
+
+    
+      <div id="method-c-BlockWorker" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">BlockWorker</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="BlockWorker-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/block_worker.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">BlockWorker</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">BlockWorker</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- BlockWorker-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- BlockWorker-method -->
+
+    
+      <div id="method-c-CreateHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">CreateHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="CreateHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/create_hit.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">CreateHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">CreateHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- CreateHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- CreateHIT-method -->
+
+    
+      <div id="method-c-CreateQualificationType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">CreateQualificationType</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="CreateQualificationType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/create_qualification_type.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">CreateQualificationType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">CreateQualificationType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- CreateQualificationType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- CreateQualificationType-method -->
+
+    
+      <div id="method-c-DisableHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">DisableHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="DisableHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/disable_hit.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">DisableHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">DisableHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- DisableHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- DisableHIT-method -->
+
+    
+      <div id="method-c-DisposeHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">DisposeHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="DisposeHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/dispose_hit.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">DisposeHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">DisposeHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- DisposeHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- DisposeHIT-method -->
+
+    
+      <div id="method-c-DisposeQualificationType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">DisposeQualificationType</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="DisposeQualificationType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/dispose_qualification_type.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">DisposeQualificationType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">DisposeQualificationType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- DisposeQualificationType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- DisposeQualificationType-method -->
+
+    
+      <div id="method-c-ExtendHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ExtendHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ExtendHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/extend_hit.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">ExtendHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ExtendHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ExtendHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ExtendHIT-method -->
+
+    
+      <div id="method-c-ForceExpireHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ForceExpireHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ForceExpireHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/force_expire_hit.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">ForceExpireHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ForceExpireHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ForceExpireHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ForceExpireHIT-method -->
+
+    
+      <div id="method-c-GetAccountBalance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetAccountBalance</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetAccountBalance-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_account_balance.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetAccountBalance</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetAccountBalance</span>.<span class="ruby-identifier">create</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetAccountBalance-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetAccountBalance-method -->
+
+    
+      <div id="method-c-GetAssignment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetAssignment</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetAssignment-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_assignment.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetAssignment</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetAssignment</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetAssignment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetAssignment-method -->
+
+    
+      <div id="method-c-GetAssignmentsForHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetAssignmentsForHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetAssignmentsForHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_assignments_for_hit.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetAssignmentsForHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetAssignmentsForHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetAssignmentsForHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetAssignmentsForHIT-method -->
+
+    
+      <div id="method-c-GetBonusPayments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetBonusPayments</span><span
+            class="method-args">(*args, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetBonusPayments-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_bonus_payments.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetBonusPayments</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetBonusPayments</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetBonusPayments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetBonusPayments-method -->
+
+    
+      <div id="method-c-GetHIT" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetHIT</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetHIT-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_hit.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetHIT</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetHIT-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetHIT-method -->
+
+    
+      <div id="method-c-GetQualificationRequests" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetQualificationRequests</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetQualificationRequests-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualification_requests.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetQualificationRequests</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetQualificationRequests</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetQualificationRequests-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetQualificationRequests-method -->
+
+    
+      <div id="method-c-GetQualificationScore" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetQualificationScore</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetQualificationScore-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualification_score.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetQualificationScore</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetQualificationScore</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetQualificationScore-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetQualificationScore-method -->
+
+    
+      <div id="method-c-GetQualificationType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetQualificationType</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetQualificationType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualification_type.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetQualificationType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetQualificationType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetQualificationType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetQualificationType-method -->
+
+    
+      <div id="method-c-GetQualificationsForQualificationType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetQualificationsForQualificationType</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetQualificationsForQualificationType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualifications_for_qualification_type.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetQualificationsForQualificationType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetQualificationsForQualificationType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetQualificationsForQualificationType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetQualificationsForQualificationType-method -->
+
+    
+      <div id="method-c-GetReviewableHITs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GetReviewableHITs</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GetReviewableHITs-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_reviewable_hits.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GetReviewableHITs</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetReviewableHITs</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GetReviewableHITs-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GetReviewableHITs-method -->
+
+    
+      <div id="method-c-GrantBonus" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GrantBonus</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GrantBonus-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/grant_bonus.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GrantBonus</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GrantBonus</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GrantBonus-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GrantBonus-method -->
+
+    
+      <div id="method-c-GrantQualification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">GrantQualification</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="GrantQualification-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/grant_qualification.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">GrantQualification</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GrantQualification</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- GrantQualification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- GrantQualification-method -->
+
+    
+      <div id="method-c-Logger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">Logger</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="Logger-source">
+            <pre><span class="ruby-comment"># File lib/rturk/logger.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">Logger</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Logger</span>.<span class="ruby-identifier">logger</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- Logger-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- Logger-method -->
+
+    
+      <div id="method-c-NotifyWorkers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">NotifyWorkers</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="NotifyWorkers-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/notify_workers.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">NotifyWorkers</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">NotifyWorkers</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- NotifyWorkers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- NotifyWorkers-method -->
+
+    
+      <div id="method-c-RegisterHITType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">RegisterHITType</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="RegisterHITType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/register_hit_type.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">RegisterHITType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">RegisterHITType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- RegisterHITType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- RegisterHITType-method -->
+
+    
+      <div id="method-c-RejectAssignment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">RejectAssignment</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="RejectAssignment-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/reject_assignment.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">RejectAssignment</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">RejectAssignment</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- RejectAssignment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- RejectAssignment-method -->
+
+    
+      <div id="method-c-RejectQualificationRequest" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">RejectQualificationRequest</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="RejectQualificationRequest-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/reject_qualification_request.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">RejectQualificationRequest</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">RejectQualificationRequest</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- RejectQualificationRequest-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- RejectQualificationRequest-method -->
+
+    
+      <div id="method-c-Request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">Request</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="Request-source">
+            <pre><span class="ruby-comment"># File lib/rturk/requester.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">Request</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Requester</span>.<span class="ruby-identifier">request</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- Request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- Request-method -->
+
+    
+      <div id="method-c-RevokeQualification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">RevokeQualification</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="RevokeQualification-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/revoke_qualification.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">RevokeQualification</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">RevokeQualification</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- RevokeQualification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- RevokeQualification-method -->
+
+    
+      <div id="method-c-SearchHITs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">SearchHITs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="SearchHITs-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/search_hits.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SearchHITs</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SearchHITs</span>.<span class="ruby-identifier">create</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- SearchHITs-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- SearchHITs-method -->
+
+    
+      <div id="method-c-SearchQualificationTypes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">SearchQualificationTypes</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="SearchQualificationTypes-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/search_qualification_types.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SearchQualificationTypes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SearchQualificationTypes</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- SearchQualificationTypes-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- SearchQualificationTypes-method -->
+
+    
+      <div id="method-c-SendTestEventNotification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">SendTestEventNotification</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="SendTestEventNotification-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/send_test_event_notification.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SendTestEventNotification</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SendTestEventNotification</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- SendTestEventNotification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- SendTestEventNotification-method -->
+
+    
+      <div id="method-c-SetHITAsReviewing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">SetHITAsReviewing</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="SetHITAsReviewing-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/set_hit_as_reviewing.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SetHITAsReviewing</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SetHITAsReviewing</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- SetHITAsReviewing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- SetHITAsReviewing-method -->
+
+    
+      <div id="method-c-SetHITTypeNotification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">SetHITTypeNotification</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="SetHITTypeNotification-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/set_hit_type_notification.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SetHITTypeNotification</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SetHITTypeNotification</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- SetHITTypeNotification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- SetHITTypeNotification-method -->
+
+    
+      <div id="method-c-UnblockWorker" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">UnblockWorker</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="UnblockWorker-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/unblock_worker.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">UnblockWorker</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">UnblockWorker</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- UnblockWorker-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- UnblockWorker-method -->
+
+    
+      <div id="method-c-UpdateQualificationScore" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">UpdateQualificationScore</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="UpdateQualificationScore-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/update_qualification_score.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">UpdateQualificationScore</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">UpdateQualificationScore</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- UpdateQualificationScore-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- UpdateQualificationScore-method -->
+
+    
+      <div id="method-c-UpdateQualificationType" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">UpdateQualificationType</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="UpdateQualificationType-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/update_qualification_type.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">UpdateQualificationType</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">UpdateQualificationType</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- UpdateQualificationType-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- UpdateQualificationType-method -->
+
+    
+      <div id="method-c-logger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">logger</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="logger-source">
+            <pre><span class="ruby-comment"># File lib/rturk.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">logger</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Logger</span>.<span class="ruby-identifier">logger</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- logger-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- logger-method -->
+
+    
+      <div id="method-c-sandbox-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sandbox?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sandbox-3F-source">
+            <pre><span class="ruby-comment"># File lib/rturk.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sandbox?</span>
+  <span class="ruby-ivar">@host</span> <span class="ruby-operator">==</span> <span class="ruby-constant">SANDBOX</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sandbox-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sandbox-3F-method -->
+
+    
+      <div id="method-c-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">(access_key, secret_key, opts ={})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File lib/rturk.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">access_key</span>, <span class="ruby-identifier">secret_key</span>, <span class="ruby-identifier">opts</span> ={})
+  <span class="ruby-ivar">@access_key</span> = <span class="ruby-identifier">access_key</span>
+  <span class="ruby-ivar">@secret_key</span> = <span class="ruby-identifier">secret_key</span>
+  <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:sandbox</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">SANDBOX</span> <span class="ruby-operator">:</span> <span class="ruby-constant">PRODUCTION</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- setup-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- setup-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class RTurk::GetQualificationType - rturk-gem </title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/rturk/operations/get_qualification_type.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Operation.html">RTurk::Operation</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-parse">#parse</a>
+    
+    <li ><a href="#method-i-to_params">#to_params</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_markdown.html">README.markdown</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../RTurk.html">RTurk</a>
+  
+    <li><a href="../RTurk/Adapter.html">RTurk::Adapter</a>
+  
+    <li><a href="../RTurk/AnswerKey.html">RTurk::AnswerKey</a>
+  
+    <li><a href="../RTurk/AnswerParser.html">RTurk::AnswerParser</a>
+  
+    <li><a href="../RTurk/ApproveAssignment.html">RTurk::ApproveAssignment</a>
+  
+    <li><a href="../RTurk/ApproveRejectedAssignment.html">RTurk::ApproveRejectedAssignment</a>
+  
+    <li><a href="../RTurk/AssignQualification.html">RTurk::AssignQualification</a>
+  
+    <li><a href="../RTurk/Assignment.html">RTurk::Assignment</a>
+  
+    <li><a href="../RTurk/AssignmentParser.html">RTurk::AssignmentParser</a>
+  
+    <li><a href="../RTurk/BlockWorker.html">RTurk::BlockWorker</a>
+  
+    <li><a href="../RTurk/BonusPaymentParser.html">RTurk::BonusPaymentParser</a>
+  
+    <li><a href="../RTurk/CreateHIT.html">RTurk::CreateHIT</a>
+  
+    <li><a href="../RTurk/CreateHITResponse.html">RTurk::CreateHITResponse</a>
+  
+    <li><a href="../RTurk/CreateQualificationType.html">RTurk::CreateQualificationType</a>
+  
+    <li><a href="../RTurk/DisableHIT.html">RTurk::DisableHIT</a>
+  
+    <li><a href="../RTurk/DisposeHIT.html">RTurk::DisposeHIT</a>
+  
+    <li><a href="../RTurk/DisposeQualificationType.html">RTurk::DisposeQualificationType</a>
+  
+    <li><a href="../RTurk/ExternalQuestion.html">RTurk::ExternalQuestion</a>
+  
+    <li><a href="../RTurk/ForceExpireHIT.html">RTurk::ForceExpireHIT</a>
+  
+    <li><a href="../RTurk/GetAccountBalance.html">RTurk::GetAccountBalance</a>
+  
+    <li><a href="../RTurk/GetAccountBalanceResponse.html">RTurk::GetAccountBalanceResponse</a>
+  
+    <li><a href="../RTurk/GetAssignment.html">RTurk::GetAssignment</a>
+  
+    <li><a href="../RTurk/GetAssignmentResponse.html">RTurk::GetAssignmentResponse</a>
+  
+    <li><a href="../RTurk/GetAssignmentsForHIT.html">RTurk::GetAssignmentsForHIT</a>
+  
+    <li><a href="../RTurk/GetAssignmentsForHITResponse.html">RTurk::GetAssignmentsForHITResponse</a>
+  
+    <li><a href="../RTurk/GetBonusPayments.html">RTurk::GetBonusPayments</a>
+  
+    <li><a href="../RTurk/GetBonusPaymentsResponse.html">RTurk::GetBonusPaymentsResponse</a>
+  
+    <li><a href="../RTurk/GetHIT.html">RTurk::GetHIT</a>
+  
+    <li><a href="../RTurk/GetHITResponse.html">RTurk::GetHITResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationRequests.html">RTurk::GetQualificationRequests</a>
+  
+    <li><a href="../RTurk/GetQualificationRequestsResponse.html">RTurk::GetQualificationRequestsResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationScore.html">RTurk::GetQualificationScore</a>
+  
+    <li><a href="../RTurk/GetQualificationScoreResponse.html">RTurk::GetQualificationScoreResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationType.html">RTurk::GetQualificationType</a>
+  
+    <li><a href="../RTurk/GetQualificationTypeResponse.html">RTurk::GetQualificationTypeResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationsForQualificationType.html">RTurk::GetQualificationsForQualificationType</a>
+  
+    <li><a href="../RTurk/GetQualificationsForQualificationTypeResponse.html">RTurk::GetQualificationsForQualificationTypeResponse</a>
+  
+    <li><a href="../RTurk/GetReviewableHITs.html">RTurk::GetReviewableHITs</a>
+  
+    <li><a href="../RTurk/GetReviewableHITsResponse.html">RTurk::GetReviewableHITsResponse</a>
+  
+    <li><a href="../RTurk/GrantBonus.html">RTurk::GrantBonus</a>
+  
+    <li><a href="../RTurk/GrantQualification.html">RTurk::GrantQualification</a>
+  
+    <li><a href="../RTurk/HITParser.html">RTurk::HITParser</a>
+  
+    <li><a href="../RTurk/Hit.html">RTurk::Hit</a>
+  
+    <li><a href="../RTurk/InvalidRequest.html">RTurk::InvalidRequest</a>
+  
+    <li><a href="../RTurk/Logger.html">RTurk::Logger</a>
+  
+    <li><a href="../RTurk/Macros.html">RTurk::Macros</a>
+  
+    <li><a href="../RTurk/MissingParameters.html">RTurk::MissingParameters</a>
+  
+    <li><a href="../RTurk/NotifyWorkers.html">RTurk::NotifyWorkers</a>
+  
+    <li><a href="../RTurk/Operation.html">RTurk::Operation</a>
+  
+    <li><a href="../RTurk/Parser.html">RTurk::Parser</a>
+  
+    <li><a href="../RTurk/Qualification.html">RTurk::Qualification</a>
+  
+    <li><a href="../RTurk/QualificationParser.html">RTurk::QualificationParser</a>
+  
+    <li><a href="../RTurk/QualificationRequestParser.html">RTurk::QualificationRequestParser</a>
+  
+    <li><a href="../RTurk/QualificationTypeParser.html">RTurk::QualificationTypeParser</a>
+  
+    <li><a href="../RTurk/Qualifications.html">RTurk::Qualifications</a>
+  
+    <li><a href="../RTurk/ExternalQuestion.html">RTurk::Question</a>
+  
+    <li><a href="../RTurk/QuestionForm.html">RTurk::QuestionForm</a>
+  
+    <li><a href="../RTurk/RTurk.html">RTurk::RTurk</a>
+  
+    <li><a href="../RTurk/RTurk/RTurk.html">RTurk::RTurk::RTurk</a>
+  
+    <li><a href="../RTurk/RTurk/RTurk/ExtendHIT.html">RTurk::RTurk::RTurk::ExtendHIT</a>
+  
+    <li><a href="../RTurk/RTurkError.html">RTurk::RTurkError</a>
+  
+    <li><a href="../RTurk/RegisterHITType.html">RTurk::RegisterHITType</a>
+  
+    <li><a href="../RTurk/RegisterHITTypeResponse.html">RTurk::RegisterHITTypeResponse</a>
+  
+    <li><a href="../RTurk/RejectAssignment.html">RTurk::RejectAssignment</a>
+  
+    <li><a href="../RTurk/RejectQualificationRequest.html">RTurk::RejectQualificationRequest</a>
+  
+    <li><a href="../RTurk/Requester.html">RTurk::Requester</a>
+  
+    <li><a href="../RTurk/Response.html">RTurk::Response</a>
+  
+    <li><a href="../RTurk/RevokeQualification.html">RTurk::RevokeQualification</a>
+  
+    <li><a href="../RTurk/SearchHITs.html">RTurk::SearchHITs</a>
+  
+    <li><a href="../RTurk/SearchHITsResponse.html">RTurk::SearchHITsResponse</a>
+  
+    <li><a href="../RTurk/SearchQualificationTypes.html">RTurk::SearchQualificationTypes</a>
+  
+    <li><a href="../RTurk/SearchQualificationTypesResponse.html">RTurk::SearchQualificationTypesResponse</a>
+  
+    <li><a href="../RTurk/SendTestEventNotification.html">RTurk::SendTestEventNotification</a>
+  
+    <li><a href="../RTurk/ServiceUnavailable.html">RTurk::ServiceUnavailable</a>
+  
+    <li><a href="../RTurk/SetHITAsReviewing.html">RTurk::SetHITAsReviewing</a>
+  
+    <li><a href="../RTurk/SetHITTypeNotification.html">RTurk::SetHITTypeNotification</a>
+  
+    <li><a href="../RTurk/UnblockWorker.html">RTurk::UnblockWorker</a>
+  
+    <li><a href="../RTurk/UpdateQualificationScore.html">RTurk::UpdateQualificationScore</a>
+  
+    <li><a href="../RTurk/UpdateQualificationScoreResponse.html">RTurk::UpdateQualificationScoreResponse</a>
+  
+    <li><a href="../RTurk/UpdateQualificationType.html">RTurk::UpdateQualificationType</a>
+  
+    <li><a href="../RTurk/Utilities.html">RTurk::Utilities</a>
+  
+    <li><a href="../RTurk/Worker.html">RTurk::Worker</a>
+  
+    <li><a href="../RTurk/XMLUtilities.html">RTurk::XMLUtilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class RTurk::GetQualificationType</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-qualification_type_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">qualification_type_id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(xml)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualification_type.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">xml</span>)
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetQualificationTypeResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xml</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-to_params" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_params</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_params-source">
+            <pre><span class="ruby-comment"># File lib/rturk/operations/get_qualification_type.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_params</span>
+  {<span class="ruby-string">&#39;QualificationTypeId&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">qualification_type_id</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_params-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_params-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

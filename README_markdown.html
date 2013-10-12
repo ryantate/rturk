@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README.markdown - rturk-gem </title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-RTurk+-+A+ridiculously+simple+Mechanical+Turk+library+in+Ruby">RTurk - A ridiculously simple Mechanical Turk library in Ruby</a>
+      <li><a href="#label-What%27s+it+do%3F%21%3F">What&#39;s it do?!?</a>
+      <li><a href="#label-Installation">Installation</a>
+      <li><a href="#label-Use">Use</a>
+      <li><a href="#label-Creating+HIT%27s">Creating HIT&#39;s</a>
+      <li><a href="#label-Reviewing+and+Approving+hits+HIT%27s">Reviewing and Approving hits HIT&#39;s</a>
+      <li><a href="#label-Wiping+all+your+hits+out">Wiping all your hits out</a>
+      <li><a href="#label-Logging">Logging</a>
+      <li><a href="#label-Nitty+Gritty">Nitty Gritty</a>
+      <li><a href="#label-Testing">Testing</a>
+      <li><a href="#label-More+information">More information</a>
+      <li><a href="#label-Contributors">Contributors</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_markdown.html">README.markdown</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./RTurk.html">RTurk</a>
+  
+    <li><a href="./RTurk/Adapter.html">RTurk::Adapter</a>
+  
+    <li><a href="./RTurk/AnswerKey.html">RTurk::AnswerKey</a>
+  
+    <li><a href="./RTurk/AnswerParser.html">RTurk::AnswerParser</a>
+  
+    <li><a href="./RTurk/ApproveAssignment.html">RTurk::ApproveAssignment</a>
+  
+    <li><a href="./RTurk/ApproveRejectedAssignment.html">RTurk::ApproveRejectedAssignment</a>
+  
+    <li><a href="./RTurk/AssignQualification.html">RTurk::AssignQualification</a>
+  
+    <li><a href="./RTurk/Assignment.html">RTurk::Assignment</a>
+  
+    <li><a href="./RTurk/AssignmentParser.html">RTurk::AssignmentParser</a>
+  
+    <li><a href="./RTurk/BlockWorker.html">RTurk::BlockWorker</a>
+  
+    <li><a href="./RTurk/BonusPaymentParser.html">RTurk::BonusPaymentParser</a>
+  
+    <li><a href="./RTurk/CreateHIT.html">RTurk::CreateHIT</a>
+  
+    <li><a href="./RTurk/CreateHITResponse.html">RTurk::CreateHITResponse</a>
+  
+    <li><a href="./RTurk/CreateQualificationType.html">RTurk::CreateQualificationType</a>
+  
+    <li><a href="./RTurk/DisableHIT.html">RTurk::DisableHIT</a>
+  
+    <li><a href="./RTurk/DisposeHIT.html">RTurk::DisposeHIT</a>
+  
+    <li><a href="./RTurk/DisposeQualificationType.html">RTurk::DisposeQualificationType</a>
+  
+    <li><a href="./RTurk/ExternalQuestion.html">RTurk::ExternalQuestion</a>
+  
+    <li><a href="./RTurk/ForceExpireHIT.html">RTurk::ForceExpireHIT</a>
+  
+    <li><a href="./RTurk/GetAccountBalance.html">RTurk::GetAccountBalance</a>
+  
+    <li><a href="./RTurk/GetAccountBalanceResponse.html">RTurk::GetAccountBalanceResponse</a>
+  
+    <li><a href="./RTurk/GetAssignment.html">RTurk::GetAssignment</a>
+  
+    <li><a href="./RTurk/GetAssignmentResponse.html">RTurk::GetAssignmentResponse</a>
+  
+    <li><a href="./RTurk/GetAssignmentsForHIT.html">RTurk::GetAssignmentsForHIT</a>
+  
+    <li><a href="./RTurk/GetAssignmentsForHITResponse.html">RTurk::GetAssignmentsForHITResponse</a>
+  
+    <li><a href="./RTurk/GetBonusPayments.html">RTurk::GetBonusPayments</a>
+  
+    <li><a href="./RTurk/GetBonusPaymentsResponse.html">RTurk::GetBonusPaymentsResponse</a>
+  
+    <li><a href="./RTurk/GetHIT.html">RTurk::GetHIT</a>
+  
+    <li><a href="./RTurk/GetHITResponse.html">RTurk::GetHITResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationRequests.html">RTurk::GetQualificationRequests</a>
+  
+    <li><a href="./RTurk/GetQualificationRequestsResponse.html">RTurk::GetQualificationRequestsResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationScore.html">RTurk::GetQualificationScore</a>
+  
+    <li><a href="./RTurk/GetQualificationScoreResponse.html">RTurk::GetQualificationScoreResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationType.html">RTurk::GetQualificationType</a>
+  
+    <li><a href="./RTurk/GetQualificationTypeResponse.html">RTurk::GetQualificationTypeResponse</a>
+  
+    <li><a href="./RTurk/GetQualificationsForQualificationType.html">RTurk::GetQualificationsForQualificationType</a>
+  
+    <li><a href="./RTurk/GetQualificationsForQualificationTypeResponse.html">RTurk::GetQualificationsForQualificationTypeResponse</a>
+  
+    <li><a href="./RTurk/GetReviewableHITs.html">RTurk::GetReviewableHITs</a>
+  
+    <li><a href="./RTurk/GetReviewableHITsResponse.html">RTurk::GetReviewableHITsResponse</a>
+  
+    <li><a href="./RTurk/GrantBonus.html">RTurk::GrantBonus</a>
+  
+    <li><a href="./RTurk/GrantQualification.html">RTurk::GrantQualification</a>
+  
+    <li><a href="./RTurk/HITParser.html">RTurk::HITParser</a>
+  
+    <li><a href="./RTurk/Hit.html">RTurk::Hit</a>
+  
+    <li><a href="./RTurk/InvalidRequest.html">RTurk::InvalidRequest</a>
+  
+    <li><a href="./RTurk/Logger.html">RTurk::Logger</a>
+  
+    <li><a href="./RTurk/Macros.html">RTurk::Macros</a>
+  
+    <li><a href="./RTurk/MissingParameters.html">RTurk::MissingParameters</a>
+  
+    <li><a href="./RTurk/NotifyWorkers.html">RTurk::NotifyWorkers</a>
+  
+    <li><a href="./RTurk/Operation.html">RTurk::Operation</a>
+  
+    <li><a href="./RTurk/Parser.html">RTurk::Parser</a>
+  
+    <li><a href="./RTurk/Qualification.html">RTurk::Qualification</a>
+  
+    <li><a href="./RTurk/QualificationParser.html">RTurk::QualificationParser</a>
+  
+    <li><a href="./RTurk/QualificationRequestParser.html">RTurk::QualificationRequestParser</a>
+  
+    <li><a href="./RTurk/QualificationTypeParser.html">RTurk::QualificationTypeParser</a>
+  
+    <li><a href="./RTurk/Qualifications.html">RTurk::Qualifications</a>
+  
+    <li><a href="./RTurk/ExternalQuestion.html">RTurk::Question</a>
+  
+    <li><a href="./RTurk/QuestionForm.html">RTurk::QuestionForm</a>
+  
+    <li><a href="./RTurk/RTurk.html">RTurk::RTurk</a>
+  
+    <li><a href="./RTurk/RTurk/RTurk.html">RTurk::RTurk::RTurk</a>
+  
+    <li><a href="./RTurk/RTurk/RTurk/ExtendHIT.html">RTurk::RTurk::RTurk::ExtendHIT</a>
+  
+    <li><a href="./RTurk/RTurkError.html">RTurk::RTurkError</a>
+  
+    <li><a href="./RTurk/RegisterHITType.html">RTurk::RegisterHITType</a>
+  
+    <li><a href="./RTurk/RegisterHITTypeResponse.html">RTurk::RegisterHITTypeResponse</a>
+  
+    <li><a href="./RTurk/RejectAssignment.html">RTurk::RejectAssignment</a>
+  
+    <li><a href="./RTurk/RejectQualificationRequest.html">RTurk::RejectQualificationRequest</a>
+  
+    <li><a href="./RTurk/Requester.html">RTurk::Requester</a>
+  
+    <li><a href="./RTurk/Response.html">RTurk::Response</a>
+  
+    <li><a href="./RTurk/RevokeQualification.html">RTurk::RevokeQualification</a>
+  
+    <li><a href="./RTurk/SearchHITs.html">RTurk::SearchHITs</a>
+  
+    <li><a href="./RTurk/SearchHITsResponse.html">RTurk::SearchHITsResponse</a>
+  
+    <li><a href="./RTurk/SearchQualificationTypes.html">RTurk::SearchQualificationTypes</a>
+  
+    <li><a href="./RTurk/SearchQualificationTypesResponse.html">RTurk::SearchQualificationTypesResponse</a>
+  
+    <li><a href="./RTurk/SendTestEventNotification.html">RTurk::SendTestEventNotification</a>
+  
+    <li><a href="./RTurk/ServiceUnavailable.html">RTurk::ServiceUnavailable</a>
+  
+    <li><a href="./RTurk/SetHITAsReviewing.html">RTurk::SetHITAsReviewing</a>
+  
+    <li><a href="./RTurk/SetHITTypeNotification.html">RTurk::SetHITTypeNotification</a>
+  
+    <li><a href="./RTurk/UnblockWorker.html">RTurk::UnblockWorker</a>
+  
+    <li><a href="./RTurk/UpdateQualificationScore.html">RTurk::UpdateQualificationScore</a>
+  
+    <li><a href="./RTurk/UpdateQualificationScoreResponse.html">RTurk::UpdateQualificationScoreResponse</a>
+  
+    <li><a href="./RTurk/UpdateQualificationType.html">RTurk::UpdateQualificationType</a>
+  
+    <li><a href="./RTurk/Utilities.html">RTurk::Utilities</a>
+  
+    <li><a href="./RTurk/Worker.html">RTurk::Worker</a>
+  
+    <li><a href="./RTurk/XMLUtilities.html">RTurk::XMLUtilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-RTurk+-+A+ridiculously+simple+Mechanical+Turk+library+in+Ruby"><a href="RTurk.html">RTurk</a> - A ridiculously simple Mechanical Turk library in Ruby<span><a href="#label-RTurk+-+A+ridiculously+simple+Mechanical+Turk+library+in+Ruby">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p><img src="https://secure.travis-ci.org/mdp/rturk.png" />]</p>
+
+<h2 id="label-What%27s+it+do%3F%21%3F">What&#39;s it do?!?<span><a href="#label-What%27s+it+do%3F%21%3F">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p><a href="RTurk.html">RTurk</a> is designed to fire off Mechanical Turk
+tasks for pages that reside on an external site.</p>
+
+<p>The pages could be a part of a rails app, or just a simple javascript
+enabled form.</p>
+
+<p>If you&#39;re integrating <a href="RTurk.html">RTurk</a> with a Rails app,
+do yourself a favor and check out <a
+href="http://github.com/aantix/turkee">Turkee</a> by Jim Jones. It
+integrates your Rails forms with Mechanical Turk, and includes rake tasks
+to pull and process submissions. Definitely a time saver.</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<pre># Requires Ruby &gt;1.9.2
+gem install rturk</pre>
+
+<h2 id="label-Use">Use<span><a href="#label-Use">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Let&#39;s say you have a form at “<a
+href="http://myapp.com/turkers/add_tags">myapp.com/turkers/add_tags</a>”
+where Turkers can add some tags to items in your catalogue.</p>
+
+<h3 id="label-Creating+HIT%27s">Creating HIT&#39;s<span><a href="#label-Creating+HIT%27s">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;rturk&#39;</span>
+
+<span class="ruby-constant">RTurk</span>.<span class="ruby-identifier">setup</span>(<span class="ruby-constant">YourAWSAccessKeyId</span>, <span class="ruby-constant">YourAWSAccessKey</span>, :<span class="ruby-identifier">sandbox</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+<span class="ruby-identifier">hit</span> = <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Hit</span>.<span class="ruby-identifier">create</span>(:<span class="ruby-identifier">title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Add some tags to a photo&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">max_assignments</span> = <span class="ruby-value">2</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">description</span> = <span class="ruby-string">&#39;blah&#39;</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">question</span>(<span class="ruby-string">&quot;http://myapp.com/turkers/add_tags&quot;</span>,
+               :<span class="ruby-identifier">frame_height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1000</span>)  <span class="ruby-comment"># pixels for iframe</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">reward</span> = <span class="ruby-value">0.05</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">qualifications</span>.<span class="ruby-identifier">add</span> :<span class="ruby-identifier">approval_rate</span>, { :<span class="ruby-identifier">gt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">80</span> }
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">url</span> <span class="ruby-comment">#=&gt;  &#39;https://workersandbox.mturk.com:443/mturk/preview?groupId=Q29J3XZQ1ASZH5YNKZDZ&#39;</span>
+</pre>
+
+<h3 id="label-Reviewing+and+Approving+hits+HIT%27s">Reviewing and Approving hits HIT&#39;s<span><a href="#label-Reviewing+and+Approving+hits+HIT%27s">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">hits</span> = <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Hit</span>.<span class="ruby-identifier">all_reviewable</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{hits.size} reviewable hits. \n&quot;</span>
+
+<span class="ruby-keyword">unless</span> <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Reviewing all assignments&quot;</span>
+
+  <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">assignments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">assignment</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">answers</span>[<span class="ruby-string">&#39;tags&#39;</span>]
+      <span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">approve!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Submitted&#39;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-Wiping+all+your+hits+out">Wiping all your hits out<span><a href="#label-Wiping+all+your+hits+out">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">hits</span> = <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Hit</span>.<span class="ruby-identifier">all_reviewable</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{hits.size} reviewable hits. \n&quot;</span>
+
+<span class="ruby-keyword">unless</span> <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Approving all assignments and disposing of each hit!&quot;</span>
+
+  <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">expire!</span>
+    <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">assignments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">assignment</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">approve!</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">dispose!</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-Logging">Logging<span><a href="#label-Logging">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>Want to see what&#39;s going on - enable logging.</p>
+
+<pre>RTurk::logger.level = Logger::DEBUG</pre>
+
+<h2 id="label-Nitty+Gritty">Nitty Gritty<span><a href="#label-Nitty+Gritty">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Here&#39;s a quick peak at what happens on the Mechanical Turk side.</p>
+
+<p>A worker takes a look at your hit. The page will contain an iframe with
+your question URL loaded inside of it.</p>
+
+<p>If you want to use an Amazon-hosted <a
+href="http://docs.amazonwebservices.com/AWSMechTurk/2008-08-02/AWSMturkAPI/ApiReference_QuestionFormDataStructureArticle.html">QuestionForm</a>,
+do</p>
+
+<pre>hit.question_form &quot;&lt;Question&gt;What color is the sky?&lt;/Question&gt;&quot; # not the real format</pre>
+
+<p>Amazon will append the AssignmentID parameter to the URL for your own
+information. In preview mode this will look like</p>
+
+<pre>http://myapp.com/turkers/add_tags?item_id=1234&amp;AssignmentId=ASSIGNMENT_ID_NOT_AVAILABLE</pre>
+
+<p>If the Turker accepts the HIT, the page will reload and the iframe URL will
+resemble</p>
+
+<pre>http://myapp.com/turkers/add_tags?item_id=1234&amp;AssignmentId=1234567890123456789ABC</pre>
+
+<p>The form in your page MUST CONTAIN the AssignmentID in a hidden input
+element. You could do this on the server side with a rails app, or on the
+client side with javascript(check the examples)</p>
+
+<p>Anything submitted in this form will be sent to Amazon and saved for your
+review later.</p>
+
+<h2 id="label-Testing">Testing<span><a href="#label-Testing">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<pre>bundle install
+rake</pre>
+
+<h2 id="label-More+information">More information<span><a href="#label-More+information">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Take a look at the <a
+href="http://docs.amazonwebservices.com/AWSMechTurk/latest/AWSMechanicalTurkRequester/">Amazon
+MTurk developer docs</a> for more information. They have a complete list of
+API operations, many of which can be called with this library.</p>
+
+<h2 id="label-Contributors">Contributors<span><a href="#label-Contributors">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<ul><li>
+<p><a href="http://github.com/zachhale">Zach Hale</a></p>
+</li><li>
+<p><a href="http://github.com/dbalatero">David Balatero</a></p>
+</li><li>
+<p><a href="http://github.com/ohwillie">Rob Hanlon</a></p>
+</li><li>
+<p><a href="http://github.com/hamin">Haris Amin</a></p>
+</li><li>
+<p><a href="http://github.com/tkieft">Tyler</a></p>
+</li><li>
+<p><a href="http://github.com/newtonsapple">David Dai</a></p>
+</li><li>
+<p><a href="http://github.com/alexch">Alex Chaffee</a></p>
+</li></ul>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

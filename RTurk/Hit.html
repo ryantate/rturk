@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class RTurk::Hit - rturk-gem </title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-The+RTurk+Hit+Adapter">The RTurk Hit Adapter</a>
+      <li><a href="#label-Basic+usage">Basic usage</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/rturk/adapters/hit.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="XMLUtilities.html">RTurk::XMLUtilities</a>
+  
+  
+  </ul>
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-all">::all</a>
+    
+    <li ><a href="#method-c-all_reviewable">::all_reviewable</a>
+    
+    <li ><a href="#method-c-create">::create</a>
+    
+    <li ><a href="#method-c-find">::find</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-assignments">#assignments</a>
+    
+    <li ><a href="#method-i-bonus_payments">#bonus_payments</a>
+    
+    <li ><a href="#method-i-details">#details</a>
+    
+    <li ><a href="#method-i-disable-21">#disable!</a>
+    
+    <li ><a href="#method-i-dispose-21">#dispose!</a>
+    
+    <li ><a href="#method-i-expire-21">#expire!</a>
+    
+    <li ><a href="#method-i-extend-21">#extend!</a>
+    
+    <li class="calls-super" ><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li ><a href="#method-i-set_as_reviewable-21">#set_as_reviewable!</a>
+    
+    <li ><a href="#method-i-set_as_reviewing-21">#set_as_reviewing!</a>
+    
+    <li ><a href="#method-i-url">#url</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_markdown.html">README.markdown</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../RTurk.html">RTurk</a>
+  
+    <li><a href="../RTurk/Adapter.html">RTurk::Adapter</a>
+  
+    <li><a href="../RTurk/AnswerKey.html">RTurk::AnswerKey</a>
+  
+    <li><a href="../RTurk/AnswerParser.html">RTurk::AnswerParser</a>
+  
+    <li><a href="../RTurk/ApproveAssignment.html">RTurk::ApproveAssignment</a>
+  
+    <li><a href="../RTurk/ApproveRejectedAssignment.html">RTurk::ApproveRejectedAssignment</a>
+  
+    <li><a href="../RTurk/AssignQualification.html">RTurk::AssignQualification</a>
+  
+    <li><a href="../RTurk/Assignment.html">RTurk::Assignment</a>
+  
+    <li><a href="../RTurk/AssignmentParser.html">RTurk::AssignmentParser</a>
+  
+    <li><a href="../RTurk/BlockWorker.html">RTurk::BlockWorker</a>
+  
+    <li><a href="../RTurk/BonusPaymentParser.html">RTurk::BonusPaymentParser</a>
+  
+    <li><a href="../RTurk/CreateHIT.html">RTurk::CreateHIT</a>
+  
+    <li><a href="../RTurk/CreateHITResponse.html">RTurk::CreateHITResponse</a>
+  
+    <li><a href="../RTurk/CreateQualificationType.html">RTurk::CreateQualificationType</a>
+  
+    <li><a href="../RTurk/DisableHIT.html">RTurk::DisableHIT</a>
+  
+    <li><a href="../RTurk/DisposeHIT.html">RTurk::DisposeHIT</a>
+  
+    <li><a href="../RTurk/DisposeQualificationType.html">RTurk::DisposeQualificationType</a>
+  
+    <li><a href="../RTurk/ExternalQuestion.html">RTurk::ExternalQuestion</a>
+  
+    <li><a href="../RTurk/ForceExpireHIT.html">RTurk::ForceExpireHIT</a>
+  
+    <li><a href="../RTurk/GetAccountBalance.html">RTurk::GetAccountBalance</a>
+  
+    <li><a href="../RTurk/GetAccountBalanceResponse.html">RTurk::GetAccountBalanceResponse</a>
+  
+    <li><a href="../RTurk/GetAssignment.html">RTurk::GetAssignment</a>
+  
+    <li><a href="../RTurk/GetAssignmentResponse.html">RTurk::GetAssignmentResponse</a>
+  
+    <li><a href="../RTurk/GetAssignmentsForHIT.html">RTurk::GetAssignmentsForHIT</a>
+  
+    <li><a href="../RTurk/GetAssignmentsForHITResponse.html">RTurk::GetAssignmentsForHITResponse</a>
+  
+    <li><a href="../RTurk/GetBonusPayments.html">RTurk::GetBonusPayments</a>
+  
+    <li><a href="../RTurk/GetBonusPaymentsResponse.html">RTurk::GetBonusPaymentsResponse</a>
+  
+    <li><a href="../RTurk/GetHIT.html">RTurk::GetHIT</a>
+  
+    <li><a href="../RTurk/GetHITResponse.html">RTurk::GetHITResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationRequests.html">RTurk::GetQualificationRequests</a>
+  
+    <li><a href="../RTurk/GetQualificationRequestsResponse.html">RTurk::GetQualificationRequestsResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationScore.html">RTurk::GetQualificationScore</a>
+  
+    <li><a href="../RTurk/GetQualificationScoreResponse.html">RTurk::GetQualificationScoreResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationType.html">RTurk::GetQualificationType</a>
+  
+    <li><a href="../RTurk/GetQualificationTypeResponse.html">RTurk::GetQualificationTypeResponse</a>
+  
+    <li><a href="../RTurk/GetQualificationsForQualificationType.html">RTurk::GetQualificationsForQualificationType</a>
+  
+    <li><a href="../RTurk/GetQualificationsForQualificationTypeResponse.html">RTurk::GetQualificationsForQualificationTypeResponse</a>
+  
+    <li><a href="../RTurk/GetReviewableHITs.html">RTurk::GetReviewableHITs</a>
+  
+    <li><a href="../RTurk/GetReviewableHITsResponse.html">RTurk::GetReviewableHITsResponse</a>
+  
+    <li><a href="../RTurk/GrantBonus.html">RTurk::GrantBonus</a>
+  
+    <li><a href="../RTurk/GrantQualification.html">RTurk::GrantQualification</a>
+  
+    <li><a href="../RTurk/HITParser.html">RTurk::HITParser</a>
+  
+    <li><a href="../RTurk/Hit.html">RTurk::Hit</a>
+  
+    <li><a href="../RTurk/InvalidRequest.html">RTurk::InvalidRequest</a>
+  
+    <li><a href="../RTurk/Logger.html">RTurk::Logger</a>
+  
+    <li><a href="../RTurk/Macros.html">RTurk::Macros</a>
+  
+    <li><a href="../RTurk/MissingParameters.html">RTurk::MissingParameters</a>
+  
+    <li><a href="../RTurk/NotifyWorkers.html">RTurk::NotifyWorkers</a>
+  
+    <li><a href="../RTurk/Operation.html">RTurk::Operation</a>
+  
+    <li><a href="../RTurk/Parser.html">RTurk::Parser</a>
+  
+    <li><a href="../RTurk/Qualification.html">RTurk::Qualification</a>
+  
+    <li><a href="../RTurk/QualificationParser.html">RTurk::QualificationParser</a>
+  
+    <li><a href="../RTurk/QualificationRequestParser.html">RTurk::QualificationRequestParser</a>
+  
+    <li><a href="../RTurk/QualificationTypeParser.html">RTurk::QualificationTypeParser</a>
+  
+    <li><a href="../RTurk/Qualifications.html">RTurk::Qualifications</a>
+  
+    <li><a href="../RTurk/ExternalQuestion.html">RTurk::Question</a>
+  
+    <li><a href="../RTurk/QuestionForm.html">RTurk::QuestionForm</a>
+  
+    <li><a href="../RTurk/RTurk.html">RTurk::RTurk</a>
+  
+    <li><a href="../RTurk/RTurk/RTurk.html">RTurk::RTurk::RTurk</a>
+  
+    <li><a href="../RTurk/RTurk/RTurk/ExtendHIT.html">RTurk::RTurk::RTurk::ExtendHIT</a>
+  
+    <li><a href="../RTurk/RTurkError.html">RTurk::RTurkError</a>
+  
+    <li><a href="../RTurk/RegisterHITType.html">RTurk::RegisterHITType</a>
+  
+    <li><a href="../RTurk/RegisterHITTypeResponse.html">RTurk::RegisterHITTypeResponse</a>
+  
+    <li><a href="../RTurk/RejectAssignment.html">RTurk::RejectAssignment</a>
+  
+    <li><a href="../RTurk/RejectQualificationRequest.html">RTurk::RejectQualificationRequest</a>
+  
+    <li><a href="../RTurk/Requester.html">RTurk::Requester</a>
+  
+    <li><a href="../RTurk/Response.html">RTurk::Response</a>
+  
+    <li><a href="../RTurk/RevokeQualification.html">RTurk::RevokeQualification</a>
+  
+    <li><a href="../RTurk/SearchHITs.html">RTurk::SearchHITs</a>
+  
+    <li><a href="../RTurk/SearchHITsResponse.html">RTurk::SearchHITsResponse</a>
+  
+    <li><a href="../RTurk/SearchQualificationTypes.html">RTurk::SearchQualificationTypes</a>
+  
+    <li><a href="../RTurk/SearchQualificationTypesResponse.html">RTurk::SearchQualificationTypesResponse</a>
+  
+    <li><a href="../RTurk/SendTestEventNotification.html">RTurk::SendTestEventNotification</a>
+  
+    <li><a href="../RTurk/ServiceUnavailable.html">RTurk::ServiceUnavailable</a>
+  
+    <li><a href="../RTurk/SetHITAsReviewing.html">RTurk::SetHITAsReviewing</a>
+  
+    <li><a href="../RTurk/SetHITTypeNotification.html">RTurk::SetHITTypeNotification</a>
+  
+    <li><a href="../RTurk/UnblockWorker.html">RTurk::UnblockWorker</a>
+  
+    <li><a href="../RTurk/UpdateQualificationScore.html">RTurk::UpdateQualificationScore</a>
+  
+    <li><a href="../RTurk/UpdateQualificationScoreResponse.html">RTurk::UpdateQualificationScoreResponse</a>
+  
+    <li><a href="../RTurk/UpdateQualificationType.html">RTurk::UpdateQualificationType</a>
+  
+    <li><a href="../RTurk/Utilities.html">RTurk::Utilities</a>
+  
+    <li><a href="../RTurk/Worker.html">RTurk::Worker</a>
+  
+    <li><a href="../RTurk/XMLUtilities.html">RTurk::XMLUtilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class RTurk::Hit</h1>
+
+  <div id="description" class="description">
+    
+<h1 id="label-The+RTurk+Hit+Adapter">The <a href="RTurk.html">RTurk</a> <a href="Hit.html">Hit</a> <a href="Adapter.html">Adapter</a><span><a href="#label-The+RTurk+Hit+Adapter">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<p>Lets us interact with Mechanical Turk without having to know all the
+operations.</p>
+
+<h2 id="label-Basic+usage">Basic usage<span><a href="#label-Basic+usage">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>@example</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;rturk&#39;</span>
+
+<span class="ruby-constant">RTurk</span>.<span class="ruby-identifier">setup</span>(<span class="ruby-constant">YourAWSAccessKeyId</span>, <span class="ruby-constant">YourAWSAccessKey</span>, :<span class="ruby-identifier">sandbox</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+<span class="ruby-identifier">hit</span> = <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Hit</span>.<span class="ruby-identifier">create</span>(:<span class="ruby-identifier">title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Add some tags to a photo&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">max_assignments</span> = <span class="ruby-value">2</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">question</span>(<span class="ruby-string">&quot;http://myapp.com/turkers/add_tags&quot;</span>)
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">reward</span> = <span class="ruby-value">0.05</span>
+  <span class="ruby-identifier">hit</span>.<span class="ruby-identifier">qualifications</span>.<span class="ruby-identifier">approval_rate</span>, {:<span class="ruby-identifier">gt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">80</span>}
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">hit</span>.<span class="ruby-identifier">url</span> <span class="ruby-comment">#=&gt;  &#39;http://mturk.amazonaws.com/?group_id=12345678&#39;</span>
+</pre>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-source" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">source</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span>
+  [].<span class="ruby-identifier">tap</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hits</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">RTurk</span>.<span class="ruby-constant">SearchHITs</span>.<span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">hits</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">hit</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">hit</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all-method -->
+
+    
+      <div id="method-c-all_reviewable" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_reviewable</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all_reviewable-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_reviewable</span>
+  [].<span class="ruby-identifier">tap</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hits</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">RTurk</span>.<span class="ruby-constant">GetReviewableHITs</span>.<span class="ruby-identifier">hit_ids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hit_id</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">hits</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">hit_id</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all_reviewable-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all_reviewable-method -->
+
+    
+      <div id="method-c-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">(*args, &blk)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">CreateHIT</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">hit_id</span>, <span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+      <div id="method-c-find" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find</span><span
+            class="method-args">(id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Find all the details for a HIT You could do this manually with new(id), and
+only call for the details you need, or simply call this and get them all,
+and immediately see any errors</p>
+          
+          
+
+          
+          <div class="method-source-code" id="find-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">h</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">h</span>.<span class="ruby-identifier">details</span>
+  <span class="ruby-identifier">h</span>.<span class="ruby-identifier">assignments</span>
+  <span class="ruby-identifier">h</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(id, source = nil, options={})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">source</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@source</span> = <span class="ruby-identifier">id</span>, <span class="ruby-identifier">source</span>
+  <span class="ruby-ivar">@include_assignment_summary</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:include_assignment_summary</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-assignments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assignments</span><span
+            class="method-args">(options={})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>memoing</p>
+          
+          
+
+          
+          <div class="method-source-code" id="assignments-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assignments</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-ivar">@assignments</span> <span class="ruby-operator">||=</span> {}
+
+  <span class="ruby-ivar">@assignments</span>[<span class="ruby-identifier">options</span>] <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">assignments_options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">update</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+    
+    <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetAssignmentsForHIT</span>(<span class="ruby-identifier">assignments_options</span>).<span class="ruby-identifier">assignments</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arr</span>, <span class="ruby-identifier">assignment</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">Assignment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">assignment_id</span>, <span class="ruby-identifier">assignment</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assignments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assignments-method -->
+
+    
+      <div id="method-i-bonus_payments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bonus_payments</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="bonus_payments-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bonus_payments</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetBonusPayments</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>).<span class="ruby-identifier">payments</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- bonus_payments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- bonus_payments-method -->
+
+    
+      <div id="method-i-details" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">details</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="details-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">details</span>
+  <span class="ruby-ivar">@details</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">GetHIT</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>,
+                             <span class="ruby-value">:include_assignment_summary</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@include_assignment_summary</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- details-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- details-method -->
+
+    
+      <div id="method-i-disable-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">disable!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="disable-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">disable!</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">DisableHIT</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- disable-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- disable-21-method -->
+
+    
+      <div id="method-i-dispose-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dispose!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="dispose-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dispose!</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">DisposeHIT</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- dispose-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- dispose-21-method -->
+
+    
+      <div id="method-i-expire-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">expire!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="expire-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">expire!</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ForceExpireHIT</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- expire-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- expire-21-method -->
+
+    
+      <div id="method-i-extend-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extend!</span><span
+            class="method-args">(options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="extend-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extend!</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">ExtendHIT</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>}))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- extend-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- extend-21-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(method, *args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)
+    <span class="ruby-ivar">@source</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">details</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">details</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-set_as_reviewable-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_as_reviewable!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_as_reviewable-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_as_reviewable!</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SetHITAsReviewing</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:revert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_as_reviewable-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_as_reviewable-21-method -->
+
+    
+      <div id="method-i-set_as_reviewing-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_as_reviewing!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_as_reviewing-21-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_as_reviewing!</span>
+  <span class="ruby-constant">RTurk</span><span class="ruby-operator">::</span><span class="ruby-constant">SetHITAsReviewing</span>(<span class="ruby-value">:hit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_as_reviewing-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_as_reviewing-21-method -->
+
+    
+      <div id="method-i-url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">url</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="url-source">
+            <pre><span class="ruby-comment"># File lib/rturk/adapters/hit.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">url</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">RTurk</span>.<span class="ruby-identifier">sandbox?</span>
+    <span class="ruby-node">&quot;http://workersandbox.mturk.com/mturk/preview?groupId=#{self.type_id}&quot;</span> <span class="ruby-comment"># Sandbox Url</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">&quot;http://mturk.com/mturk/preview?groupId=#{self.type_id}&quot;</span> <span class="ruby-comment"># Production Url</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- url-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
