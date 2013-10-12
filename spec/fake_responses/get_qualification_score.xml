@@ -1,0 +1,8 @@
+<GetQualificationScoreResult>
+  <Qualification>
+    <QualificationTypeId>789RVWYBAZW00EXAMPLE</QualificationTypeId>
+    <SubjectId>AZ3456EXAMPLE</SubjectId>
+    <GrantTime>2005-01-31T23:59:59Z</GrantTime>
+    <IntegerValue>95</IntegerValue>
+  </Qualification>
+</GetQualificationScoreResult>

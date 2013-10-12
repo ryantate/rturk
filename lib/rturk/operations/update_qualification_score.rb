@@ -1,4 +1,5 @@
 # Operation to update a qualification score
+# http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_UpdateQualificationScoreOperation.html
 
 module RTurk
   class UpdateQualificationScore < Operation
