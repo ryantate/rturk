@@ -15,7 +15,7 @@ module RTurk
           if child.name == 'QuestionIdentifier'
             key = child.inner_text
           elsif child.name == 'SelectionIdentifier'
-            if answer.children.size = 1
+            if answer.children.length == 1
               value = child.inner_text
             else
               if value.nil?
