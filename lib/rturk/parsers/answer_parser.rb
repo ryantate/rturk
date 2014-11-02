@@ -14,6 +14,16 @@ module RTurk
           next if child.blank?
           if child.name == 'QuestionIdentifier'
             key = child.inner_text
+          elsif child.name == 'SelectionIdentifier'
+            if answer.children.length == 1
+              value = child.inner_text
+            else
+              if value.nil?
+                value = Array(child.inner_text)
+              else
+                value << child.inner_text
+              end
+            end
           else
             value = child.inner_text
           end
