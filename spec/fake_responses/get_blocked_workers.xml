@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<GetBlockedWorkersResult>
+  <Request>
+    <IsValid>True</IsValid>
+  </Request>
+  <PageNumber>1</PageNumber>
+  <NumResults>2</NumResults>
+  <TotalNumResults>2</TotalNumResults>
+  <WorkerBlock>
+    <WorkerId>A2QWESAMPLE1</WorkerId>
+    <Reason>Poor Quality Work on Categorization</Reason>
+  </WorkerBlock>
+  <WorkerBlock>
+    <WorkerId>A2QWESAMPLE2</WorkerId>
+    <Reason>Poor Quality Work on Photo Moderation</Reason>
+  </WorkerBlock>
+</GetBlockedWorkersResult>
